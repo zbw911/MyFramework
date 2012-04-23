@@ -1,0 +1,124 @@
+﻿@if (Kt.Framework.User.User.IS_LOGIN)
+{
+    <script type="text/javascript">
+        function ShowMessageCount() {
+            $.post("/UserHome/News/GetMessageCount", function (e) {
+                $("#MessageCount").html("<a href=\"/UserHome/News/InboxLetter\">短消息(" + e + ")</a>");
+            });
+        }
+        ShowMessageCount();
+    </script>
+}
+<div class="top">
+    <div class="top_in">
+        <div class="logo">
+            <a href="@(ViewBag.Index ?? "/")"></a>
+        </div>
+        <div class="top_right">
+            @if (Kt.Framework.User.User.IS_LOGIN)
+            {
+                <p>
+                    <a href="/UserHome/Account/Index?uid=@(Kt.Framework.User.User.MEMBER_ID)">@Kt.Framework.User.User.NICKNAME</a>，你好！</p>
+            }
+            <ul>
+                @if (Kt.Framework.User.User.IS_LOGIN)
+                {
+                    <li id="MessageCount"><a href="/UserHome/News/InboxLetter">短消息(0)</a></li>
+                    <li>
+                        <img src="/Content/images/top_nav_line.gif" /></li>
+                    <li><a href="/userhome/task">任务</a></li>
+                    <li>
+                        <img src="/Content/images/top_nav_line.gif" /></li>
+                    <li><a href="/GameWeiBo/Account/Base">设置</a></li>
+                }
+                <li>
+                    <img src="/Content/images/top_nav_line.gif" /></li>
+                <li><a target="_blank" href="/Content/Help/HelpCenter.html">帮助</a></li>
+                <li>
+                    <img src="/Content/images/top_nav_line.gif" /></li>
+                @if (Kt.Framework.User.User.IS_LOGIN)
+                {
+                    <li><a href="/Account/LogOff">退出</a></li>
+                }
+                else
+                {
+                    if (Kt.Framework.User.UserState.getIsNeedActived())
+                    { 
+                    <li><a href="/Account/LogOff/">退出</a></li>
+                    }
+                    else
+                    {
+                    <li><a href="/RegNav/LogOn/">登录</a></li>
+                    }
+                }
+            </ul>
+        </div>
+        <div class="nav">
+            <ul class="nav_ul">
+                <li class="nav_li nav_home"><a href="/UserHome/Index" class=" nav_em"></a></li>
+                <li class="nav_li nav_line"><a href="#"></a></li>
+                <li class="nav_li nav_homepage"><a href="/userhome/Account/Index?uid=@(Kt.Framework.User.User.MEMBER_ID)" class=" nav_em">
+                </a></li>
+                <li class="nav_li nav_line"><a href="#"></a></li>
+                <li class="nav_li nav_haoyou"><a href="javascript:void(0);" class="nav_em"></a>
+                    <div class="haoyou_list" style="display: none">
+                        <ul>
+                            <li><a href="/UserHome/Friend/friendContorl">我的好友</a></li>
+                            <li><a href="/UserHome/SearchUsers/SearchUser">寻找玩家</a></li>
+                            <li><a href="@System.Configuration.ConfigurationManager.AppSettings["TUANKA_URL"].ToString()/WebUser/mycall.aspx" target="_blank">
+                                邀请好友</a></li></ul>
+                        <div class="haoyou_list_bottom">
+                        </div>
+                    </div>
+                </li>
+                <li class="nav_li nav_line"><a href="#"></a></li>
+                <li class="nav_li nav_apply"><a href="javascript:void(0);" class="nav_em"></a>
+                    <div class="haoyou_list" style="display: none">
+                        <ul>
+                            <li><a href="/gameweibo">晒游历</a></li>
+                            <li><a href="/GameNav">玩游戏</a></li>
+                            <li><a href="/gamegroup/">游戏团</a></li>
+                            <li><a href="/UserHome/SearchUsers/SearchUser">找玩家</a></li>
+                            <li><a href="/UserHome/Active/ActiveCenter/">抢活动</a></li>
+                            <li><a href="@System.Configuration.ConfigurationManager.AppSettings["TUANKA_URL"].ToString()" target="_blank" >
+                                团点卡</a></li>
+                            <li><a href="/userhome/Account/albums?uid=@(Kt.Framework.User.User.MEMBER_ID)">秀照片</a></li>
+                            <li><a href="/UserHome/CardCenter" target="_blank">发号中心</a></li>
+                            <li><a href="@System.Configuration.ConfigurationManager.AppSettings["JIFEN_URL"].ToString()" target="_blank" >
+                                团豆商城</a></li>
+                            <li><a href="http://www.16768.com" target="_blank">热门游戏</a></li>
+                        </ul>
+                        <div class="haoyou_list_bottom">
+                        </div>
+                    </div>
+                </li>
+                <li class="nav_li nav_line"><a href="#"></a></li>
+                <li class="nav_li nav_game"><a href="#" class="nav_em"></a>
+                    <div class="haoyou_list" style="display: none">
+                        <ul>
+                            <li><a href="http://www.16768.com/mhxx/" target="_blank">梦幻修仙</a></li>
+                            <li><a href="http://www.16768.com/pmxy/" target="_blank">飘渺西游</a></li>
+                            <li><a href="http://www.16768.com/mcsd/" target="_blank">明朝时代</a></li>
+                            <li><a href="http://www.16768.com/pmxj/" target="_blank">飘渺仙剑 </a></li>
+                            <li><a href="http://www.16768.com/frxz/" target="_blank">凡人修真</a></li>
+                            <li><a href="http://www.16768.com/tdyx/" target="_blank">天地英雄</a></li>
+                            <li><a href="http://www.16768.com/tc/" target="_blank">天策</a></li>
+                            <li><a href="http://www.16768.com/bftx/" target="_blank">冰封天下</a></li>
+                        </ul>
+                        <div class="haoyou_list_bottom">
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <div class="clear">
+            </div>
+        </div>
+    </div>
+    <div class="clear">
+    </div>
+</div>
+@if (Kt.Framework.Tool.TrackEffect.TrackinfosString != null && Kt.Framework.Tool.TrackEffect.TrackinfosString.Length > 0)
+{
+    <div style="margin-left: 200px;display:none;">
+        下面是调试信息：<br />@(Html.Raw(Kt.Framework.Tool.TrackEffect.TrackinfosString.Replace("\r\n", "<br/>")))</div>
+}

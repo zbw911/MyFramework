@@ -1,0 +1,157 @@
+﻿@model IList<Kt.GameGroup.Model.ViewModel.GroupRankInfo>
+@{
+    ViewBag.Title = "加入游戏团_游戏说_网络游戏论坛社区";
+    Layout = "~/Views/Shared/_RegNavMain.cshtml";
+}
+<script language="javascript" type="text/javascript" src="@Url.Content("~/Scripts/GameGroup.js")"></script>
+<div class="main">
+    <div class="content">
+        <div class="reg_left">
+            <div class="reg_title">
+            @if (Model != null && Model.Count() > 0)
+                {
+                <text>推荐与您同游戏的游戏团，组团PK，共享团队荣耀。</text>
+            }
+            else
+            {
+            <text>您所在的游戏暂时还没有人创建游戏团</text>
+            }        
+            </div>
+            <div class="gametuan">
+                @if (Model != null && Model.Count() > 0)
+                {
+                    <ul>
+                        @{
+                    var i = 0;
+                    var glist = "";
+                        }
+                        @foreach (var item in Model)
+                        {                            
+                            var oname = "join" + item.Group_Infor.gId;
+                            var gname = item.Group_Infor.gName;
+                            if (gname.Length > 12)
+                            {
+                                gname = gname.Substring(0, 12);
+                            }
+                            i = i + 1;
+                            glist = glist + "," + item.Group_Infor.gId;
+                            var li_name = "li_" + i;
+                            <li id="@li_name" class="checked" onclick="changeclass('@li_name',@item.Group_Infor.gId)">
+                                <div class="awatr">
+                                    <a target="_blank" href="/GameGroup/group/?gid=@item.Group_Infor.gId"><img alt="@item.Group_Infor.gName" width="90px" height="90px"  src="@item.Group_Infor.gPic"/></a></div>
+                                <div id="@item.Group_Infor.gId" class="tuan_info">
+                                    <p><a target="_blank" href="/GameGroup/group/?gid=@item.Group_Infor.gId">@gname</a></p>
+                                    <p>
+                                        成员：@item.Group_Infor.memberNum</p>
+                                    <p>
+                                        排名：@item.OrderId</p>
+                                </div>
+                                <div class="checkbox">
+                                </div>
+                            </li>                                   
+                        }
+                    </ul>
+                    <input type="hidden" id="gid" name="gid" value="@glist" />
+                    <input type="hidden" id="rst" name="rst" value="" />
+                    <div class="clear">
+                    </div>
+                    <div class="send"><img onclick="addGroup()"  src="/content/reg/images/sent_btn.gif" /><a href="/RegNav/RecommendFriend">>>偷懒跳过</a></div>
+                }
+                else
+                { 
+                    <div class="clear">
+                    </div>
+                    <div class="send">
+                        <a target="_blank" href="/gamegroup/group/selectgame">>>创建新游戏团</a><a href="/RegNav/RecommendFriend">>>偷懒跳过</a></div>
+                }
+            </div>
+        </div>
+        <div class="reg_right2">
+            <div class="right_title">
+                <p>
+                    加入游戏团</p>
+                <div>
+                    与志同道合的游戏团成员一起升级、打怪、夺城池、发布帖子分享乐趣、探讨游戏心得、组团充值游戏卡享受最低团购价。<br>
+                    加入游戏团将获得<span>@ViewBag.tuandou</span>团豆，<span>@ViewBag.jingyan</span>经验值。</div>
+            </div>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+   
+    function changeclass(oname,ogid) {
+        var onames = "#" + oname;
+        var ischeck = $(onames).hasClass("checked").toString();
+        if (ischeck == "false") {
+            $(onames).addClass("checked");
+            var glist = document.getElementById("gid").value;
+            glist = glist + "," + ogid;            
+        }
+        else {
+            $(onames).removeClass("checked");
+            var glist = document.getElementById("gid").value;
+            glist = glist.replace("," + ogid, "");                  
+        }
+        document.getElementById("gid").value = glist;    
+    }
+
+    function addGroup() {
+        var glist = document.getElementById("gid").value;
+        if (glist.substring(0, 1) == ",") {
+            glist= glist.substring(1,glist.length)
+        }        
+        var garry = glist.split(",");        
+        var nums = 0;
+        var msg = "";
+        for (var i = 0; i < garry.length; i++) {
+            var gid = garry[i];
+            joinGroup(gid);
+            var isjoin = document.getElementById("rst").value;            
+            //alert(isjoin + "__" + gid);
+            if ('1' == isjoin) {
+                msg = msg+" " + gid + "审核中!";
+            }
+            else if ('0' == isjoin) {
+                msg = msg + " " + gid + "禁止加入！";
+            }
+            else if ('2' == isjoin) {
+                nums = nums + 1;
+            }
+        }
+        if (nums > 0) {
+            alert("已成功向" + nums + "个游戏团发送加入申请！");
+        }
+        if (msg.length > 2) {
+            alert(msg);
+        }
+        window.location.href = "/RegNav/RecommendFriend";
+    }
+    
+    function joinGroup(gid) {
+        var myAjax = $.post(
+        "/GameGroup/Group/joinGroupSimple",
+        {
+            gId: gid
+        }, function (d) {
+            document.getElementById("rst").value = d;
+            //alert(d);
+            //return d;
+            //            if ('1' == d) {
+            //                alert("审核中");
+            //                //$("#" + eid).html("<a href='javascript:void(0)' class='game_add'><img src='/content/gametuan/images/adding.gif'/></a>");
+            //            }
+            //            else if ('2' == d) {
+            //                alert("已加入");
+            //                //$("#" + eid).html("<a href='javascript:void(0)' onclick=\"outGroup(" + gid + "','join'," + joinPerm + ")\" class='game_add'><img src='/content/gametuan/images/out.gif'/></a>");
+            //                //doTask("寻找组织");
+            //            }
+            //            else {
+            //                alert("禁止加入");
+            //                //$("#" + eid).html("<a href='javascript:void(0)' onclick=\"joinGroup(" + gid + "','" + joinPerm + "','join')\" class='game_add'><img src='/content/gametuan/images/add_botton.gif'/></a>");
+            //            }
+        });
+    }
+
+</script>

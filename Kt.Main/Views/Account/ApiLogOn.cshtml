@@ -1,0 +1,107 @@
+﻿@{
+    Layout = null;
+    
+}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>帐号绑定</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/usercenter/jk_style.css")" type="text/css" />
+    <script src="@Url.Content("~/Scripts/jquery-1.4.4.min.js")" type="text/javascript"></script>
+    <script language="javascript" type="text/javascript">
+        function changeTab(flag) {
+            if (flag == 1) {
+                $("#signuped_1").show();
+                $("#signuped_0").hide();
+            }
+            else {
+                $("#signuped_0").show();
+                $("#signuped_1").hide();
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <form id="form1"  method="post" action="/Account/ApiLogOn">
+        <div class="jk_zhuce_wapper">
+            <div class="zhuce_top">
+            </div>
+            <div class="zhuce_main">
+                <div class="head">
+                @(new HtmlString(ViewBag.Tip))
+                    </div>
+                <div class="sect">
+                    <ul class="list">
+                        <li class="current">
+                            <div class="input">
+                                <input type="radio" checked="checked"  onclick="changeTab('1');" class="f-radio" autocomplete="off" value="1"
+                                    name="signuped" />
+                            </div>
+                            <div class="text">
+                                <h3>
+                                    已经注册过游戏说</h3>
+                                <div id="signuped_1" class="textbody" style="visibility: visible;">
+                                    <div class="textbody-c">
+                                        <table class="enter-account">
+                                            <tbody>
+                                                <tr>
+                                                    <td colspan="2">
+                                                        请输入您的游戏说注册Email和密码，以做帐号绑定</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="width: 50px;">
+                                                        Email</td>
+                                                    <td>
+                                                        <input type="text" value="" class="f-text" name="email" id="txtEmail"  /></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        密码</td>
+                                                    <td>
+                                                        <input type="password" class="f-text" name="password" id="txtPwd" /></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                    </td>
+                                                    <td class="commit">
+                                                        <input type="submit" class="formbutton" value="" />
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li id="kaixin-bind-unsignuped">
+                            <div class="input">
+                                <input type="radio"  class="f-radio" onclick="changeTab('0');" autocomplete="off" value="0" name="signuped"/>
+                            </div>
+                            <div  class="text">
+                                <h3>
+                                    还没有注册过游戏说</h3>
+                                <div id="signuped_0" class="textbody hide">
+                                    <div class="textbody-c">
+                                        <p>
+                                            将为您创建一个游戏说账户</p>
+                                        <p class="create">
+                                            <input type="button" onclick="javascript:location.href='/Account/Register/';" class="formbutton" value="" />
+                                            </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="clear">
+                    </div>
+                </div>
+            </div>
+            <div class="zhuce_bottom">
+            </div>
+        </div>
+    </form>
+</body>
+</html>
+

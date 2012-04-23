@@ -1,0 +1,3758 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DS.Web.UCenter</name>
+    </assembly>
+    <members>
+        <member name="T:DS.Web.UCenter.UcFeed">
+            <summary>
+            FeedModel
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.UcItemReceiveBase`1">
+            <summary>
+            项目基类
+            Dozer 版权所有
+            允许复制、修改，但请保留我的联系方式！
+            http://www.dozer.cc
+            mailto:dozer.cc@gmail.com
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:DS.Web.UCenter.UcItemBase">
+            <summary>
+            项目基类
+            Dozer 版权所有
+            允许复制、修改，但请保留我的联系方式！
+            http://www.dozer.cc
+            mailto:dozer.cc@gmail.com
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcItemBase.Data">
+            <summary>
+            数据
+            </summary>
+        </member>
+        <member name="M:DS.Web.UCenter.UcItemReceiveBase`1.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="xml">数据</param>
+        </member>
+        <member name="M:DS.Web.UCenter.UcItemReceiveBase`1.#ctor(System.Xml.XmlNode)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="xml">数据</param>
+        </member>
+        <member name="M:DS.Web.UCenter.UcItemReceiveBase`1.initialize(System.String)">
+            <summary>
+            初始化
+            </summary>
+            <param name="xml">参数</param>
+        </member>
+        <member name="M:DS.Web.UCenter.UcItemReceiveBase`1.initialize(System.Xml.XmlNode)">
+            <summary>
+            初始化
+            </summary>
+            <param name="xml">数据</param>
+        </member>
+        <member name="M:DS.Web.UCenter.UcItemReceiveBase`1.getItems(System.Xml.XmlNode)">
+            <summary>
+            得到UCenter项目
+            </summary>
+            <param name="node">节点</param>
+        </member>
+        <member name="M:DS.Web.UCenter.UcItemReceiveBase`1.unSerialize(System.String,System.String)">
+            <summary>
+            反序列化
+            </summary>
+            <param name="xml">XML</param>
+            <param name="rootNodeName">根目录</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.UcItemReceiveBase`1.SetProperty">
+            <summary>
+            设置属性
+            </summary>
+        </member>
+        <member name="M:DS.Web.UCenter.UcItemReceiveBase`1.CheckForSuccess(System.String[])">
+            <summary>
+            检查是否成功
+            </summary>
+            <param name="keys">必要的参数</param>
+        </member>
+        <member name="P:DS.Web.UCenter.UcItemReceiveBase`1.Success">
+            <summary>
+            是否成功
+            </summary>
+        </member>
+        <member name="M:DS.Web.UCenter.UcFeed.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="xml">数据</param>
+        </member>
+        <member name="M:DS.Web.UCenter.UcFeed.#ctor(System.Xml.XmlNode)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="xml">数据</param>
+        </member>
+        <member name="F:DS.Web.UCenter.UcFeed._images">
+            <summary>
+            图片链接对应图片地址
+            </summary>
+        </member>
+        <member name="M:DS.Web.UCenter.UcFeed.SetProperty">
+            <summary>
+            设置属性
+            </summary>
+        </member>
+        <member name="M:DS.Web.UCenter.UcFeed.GetImages">
+            <summary>
+            设置图片
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcFeed.FeedId">
+            <summary>
+            事件的 ID
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcFeed.AppId">
+            <summary>
+            所在应用的 ID
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcFeed.Icon">
+            <summary>
+            事件的图标 thread、poll、reward 等
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcFeed.Uid">
+            <summary>
+            事件的发起人的用户 ID
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcFeed.UserName">
+            <summary>
+            发起人的用户名
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcFeed.Time">
+            <summary>
+            时间
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcFeed.HashTemplate">
+            <summary>
+            模板的 Hash 值，用来相同类型事件的合并，32位字符串，如:c95dbd9aa75862c841b627e1e9598fd5
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcFeed.HashData">
+            <summary>
+            数据的 Hash 值，用来相同类型事件的合并，32位字符串，如:c95dbd9aa75862c841b627e1e9598fd5
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcFeed.TitleTemplate">
+            <summary>
+            标题模板
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcFeed.TitleData">
+            <summary>
+            标题数据
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcFeed.BodyTemplate">
+            <summary>
+            内容模板
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcFeed.BodyData">
+            <summary>
+            事件内容 HTML 格式，用 {xxx} 格式字符表示变量，如 {username}
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcFeed.BodyGeneral">
+            <summary>
+            保留
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcFeed.Images">
+            <summary>
+            图片链接对应图片地址
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.UcItemReturnBase">
+            <summary>
+            集合基类
+            Dozer 版权所有
+            允许复制、修改，但请保留我的联系方式！
+            http://www.dozer.cc
+            mailto:dozer.cc@gmail.com
+            </summary>
+        </member>
+        <member name="M:DS.Web.UCenter.UcItemReturnBase.serialize(System.Boolean,System.Boolean)">
+            <summary>
+            序列化
+            </summary>
+            <param name="htmlOn"></param>
+            <param name="isRoot"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.UcItemReturnBase.serialize(System.Collections.IDictionary,System.Boolean,System.Boolean)">
+            <summary>
+            序列化
+            </summary>
+            <param name="item">需要序列化的对象</param>
+            <param name="htmlOn">是否输出HTML</param>
+            <param name="isRoot">是否为根目录</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.UcItemReturnBase.ToString">
+            <summary>
+            序列化输出
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.UcItemReturnBase.ToString(System.Boolean)">
+            <summary>
+            序列化输出
+            </summary>
+            <param name="isRoot"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.UcItemReturnBase.SetItems">
+            <summary>
+            设置属性
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.UcFriend">
+            <summary>
+            好友Model
+            </summary>
+        </member>
+        <member name="M:DS.Web.UCenter.UcFriend.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="xml">数据</param>
+        </member>
+        <member name="M:DS.Web.UCenter.UcFriend.#ctor(System.Xml.XmlNode)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="xml">数据</param>
+        </member>
+        <member name="M:DS.Web.UCenter.UcFriend.SetProperty">
+            <summary>
+            设置属性
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcFriend.Uid">
+            <summary>
+            用户 ID
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcFriend.FriendId">
+            <summary>
+            好友用户 ID
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcFriend.Direction">
+            <summary>
+            方向
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcFriend.UserName">
+            <summary>
+            好友用户名
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.UcUserCheckEmail">
+            <summary>
+            检查右键Model
+            </summary>
+        </member>
+        <member name="M:DS.Web.UCenter.UcUserCheckEmail.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="xml">数据</param>
+        </member>
+        <member name="P:DS.Web.UCenter.UcUserCheckEmail.Result">
+            <summary>
+            检查结果
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.UcTagReturns">
+            <summary>
+            Tag集合
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.UcCollectionReturnBase`1">
+            <summary>
+            集合基类
+            Dozer 版权所有
+            允许复制、修改，但请保留我的联系方式！
+            http://www.dozer.cc
+            mailto:dozer.cc@gmail.com
+            </summary>
+            <typeparam name="T">项目</typeparam>
+        </member>
+        <member name="T:DS.Web.UCenter.UcCollectionBase">
+            <summary>
+            集合基类
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcCollectionBase.Data">
+            <summary>
+            数据
+            </summary>
+        </member>
+        <member name="M:DS.Web.UCenter.UcCollectionReturnBase`1.serialize(System.Boolean,System.Boolean)">
+            <summary>
+            序列化
+            </summary>
+            <param name="htmlOn">是否输出HTML</param>
+            <param name="isRoot">是否为根目录</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.UcCollectionReturnBase`1.ToString">
+            <summary>
+            序列化输出
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.UcCollectionReturnBase`1.ToString(System.Boolean)">
+            <summary>
+            序列化输出
+            </summary>
+            <param name="isRoot"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.UcCollectionReturnBase`1.SetItems">
+            <summary>
+            设置属性
+            </summary>
+        </member>
+        <member name="M:DS.Web.UCenter.UcCollectionReturnBase`1.AddToList(System.Collections.Generic.IList{`0},System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            加入List
+            </summary>
+            <param name="list"></param>
+            <param name="array"></param>
+        </member>
+        <member name="M:DS.Web.UCenter.UcTagReturns.#ctor(System.String,DS.Web.UCenter.UcTagReturn[])">
+            <summary>
+            构造函数
+            </summary>
+            <param name="tagName">Tag名字</param>
+            <param name="ucTagReturn">集合</param>
+        </member>
+        <member name="M:DS.Web.UCenter.UcTagReturns.SetItems">
+            <summary>
+            设置属性
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcTagReturns.Items">
+            <summary>
+            集合
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcTagReturns.TagName">
+            <summary>
+            Tag名字
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.LoginMethod">
+            <summary>
+            登录方式
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.LoginMethod.UserName">
+            <summary>
+            使用用户名
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.LoginMethod.Uid">
+            <summary>
+            使用Uid
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.LoginMethod.Mail">
+            <summary>
+            使用邮箱
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.InfoMethod">
+            <summary>
+            查询方式
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.InfoMethod.UserName">
+            <summary>
+            使用用户名
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.InfoMethod.Uid">
+            <summary>
+            使用Uid
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.SendMethod">
+            <summary>
+            发送方式
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.SendMethod.Uid">
+            <summary>
+            Uid
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.SendMethod.UserName">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.PmDeleteFolder">
+            <summary>
+            短消息文件夹
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.PmDeleteFolder.InBox">
+            <summary>
+            发件箱
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.PmDeleteFolder.OutBox">
+            <summary>
+            收件箱
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.PmReadFolder">
+            <summary>
+            短消息文件夹
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.PmReadFolder.NewBox">
+            <summary>
+            新建项
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.PmReadFolder.InBox">
+            <summary>
+            发件箱
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.PmReadFolder.OutBox">
+            <summary>
+            收件箱
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.PmReadFilter">
+            <summary>
+            短消息过滤器
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.PmReadFilter.NewPm">
+            <summary>
+            未读消息，folder 为 inbox 和 outbox 时使用
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.PmReadFilter.SystemPm">
+            <summary>
+            系统消息，folder 为 inbox 时使用
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.PmReadFilter.AnnouncePm">
+            <summary>
+            公共消息，folder 为 inbox 时使用
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.ReadStatus">
+            <summary>
+            阅读状态
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.ReadStatus.Readed">
+            <summary>
+            已读
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.ReadStatus.New">
+            <summary>
+            未读
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.ViewType">
+            <summary>
+            消息的类型
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.ViewType.Specified">
+            <summary>
+            获取指定单条消息
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.ViewType.LastOutput">
+            <summary>
+            获取指定用户发的最后单条消息
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.ViewType.LastInput">
+            <summary>
+            获取指定用户收的最后单条消息
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.DateRange">
+            <summary>
+            日期范围
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.DateRange.Today">
+            <summary>
+            今天
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.DateRange.Yestarday">
+            <summary>
+            昨天
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.DateRange.TheDayBeforeYesterday">
+            <summary>
+            前天
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.DateRange.LastWeek">
+            <summary>
+            上周
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.DateRange.Earlier">
+            <summary>
+            更早
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.FriendDirection">
+            <summary>
+            好友方向
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.FriendDirection.All">
+            <summary>
+            指定用户的全部好友
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.FriendDirection.Forward">
+            <summary>
+            正向，指定用户添加的好友，但没被对方添加
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.FriendDirection.Reverse">
+            <summary>
+            反向，指定用户被哪些用户添加为好友，但没被对方添加
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.FriendDirection.Both">
+            <summary>
+            双向，互相添加为好友
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.UserMergeResult">
+            <summary>
+            合并结果
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.UserMergeResult.Success">
+            <summary>
+            返回用户 ID，表示用户注册成功
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.UserMergeResult.UserNameIllegal">
+            <summary>
+            用户名不合法
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.UserMergeResult.ContainsInvalidWords">
+            <summary>
+            包含不允许注册的词语
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.UserMergeResult.UserNameExists">
+            <summary>
+            用户名已经存在
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.UserCheckEmailResult">
+            <summary>
+            邮箱检查结果
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.UserCheckEmailResult.Success">
+            <summary>
+            Email 正确
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.UserCheckEmailResult.IncorrectEmailFormat">
+            <summary>
+            Email 格式有误
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.UserCheckEmailResult.EmailNotAllowed">
+            <summary>
+            Email 不允许注册
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.UserCheckEmailResult.EmailHasBeenRegistered">
+            <summary>
+            该 Email 已经被注册
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.UserEditResult">
+            <summary>
+            修改结果
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.UserEditResult.Success">
+            <summary>
+            更新成功
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.UserEditResult.DoNotEdited">
+            <summary>
+            没有做任何修改
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.UserEditResult.PassWordError">
+            <summary>
+            旧密码错误
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.UserEditResult.IncorrectEmailFormat">
+            <summary>
+            Email 格式有误
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.UserEditResult.EmailNotAllowed">
+            <summary>
+            Email 不允许注册
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.UserEditResult.EmailHasBeenRegistered">
+            <summary>
+            该 Email 已经被注册
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.UserEditResult.EditedNothing">
+            <summary>
+            没有做任何修改
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.UserEditResult.UserIsProtected">
+            <summary>
+            该用户受保护无权限更改
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.LoginResult">
+            <summary>
+            登陆结果
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.LoginResult.Success">
+            <summary>
+            返回用户 ID，表示用户登录成功
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.LoginResult.NotExist">
+            <summary>
+            用户不存在，或者被删除
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.LoginResult.PassWordError">
+            <summary>
+            密码错
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.LoginResult.QuestionError">
+            <summary>
+            安全提问错
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.RegisterResult">
+            <summary>
+            注册结果
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.RegisterResult.Success">
+            <summary>
+            返回用户 ID，表示用户注册成功
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.RegisterResult.UserNameIllegal">
+            <summary>
+            用户名不合法
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.RegisterResult.ContainsInvalidWords">
+            <summary>
+            包含不允许注册的词语
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.RegisterResult.UserNameExists">
+            <summary>
+            用户名已经存在
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.RegisterResult.IncorrectEmailFormat">
+            <summary>
+            Email 格式有误
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.RegisterResult.EmailNotAllowed">
+            <summary>
+            Email 不允许注册
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.RegisterResult.EmailHasBeenRegistered">
+            <summary>
+            该 Email 已经被注册
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.PmSendResult">
+            <summary>
+            短信发送结果
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.PmSendResult.Success">
+            <summary>
+            发送成功
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.PmSendResult.Failed">
+            <summary>
+            发送失败
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.PmSendResult.BeyondMaxNumber">
+            <summary>
+            超出了24小时最大允许发送短消息数目
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.PmSendResult.SendTooFast">
+            <summary>
+            不满足两次发送短消息最短间隔
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.PmSendResult.CanNotBatchSendMsg">
+            <summary>
+            不能给非好友批量发送短消息
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.PmSendResult.CanNotSendNow">
+            <summary>
+            目前还不能使用发送短消息功能（注册多少日后才可以使用发短消息限制）
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.AvatarType">
+            <summary>
+            头像类型
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.AvatarType.Virtual">
+            <summary>
+            虚拟头像
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.AvatarType.Real">
+            <summary>
+            真实头像
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.AvatarSize">
+            <summary>
+            头像大小
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.AvatarSize.Big">
+            <summary>
+            大
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.AvatarSize.Middle">
+            <summary>
+            中
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.AvatarSize.Small">
+            <summary>
+            小
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.FeedIcon">
+            <summary>
+            图标
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.FeedIcon.Thread">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.FeedIcon.Post">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.FeedIcon.Video">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.FeedIcon.Goods">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.FeedIcon.Reward">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.FeedIcon.Debate">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.FeedIcon.Blog">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.FeedIcon.Album">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.FeedIcon.Comment">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.FeedIcon.Wall">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.FeedIcon.Friend">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.Api.UcRequestArguments">
+            <summary>
+            Requser参数
+            Dozer 版权所有
+            允许复制、修改，但请保留我的联系方式！
+            http://www.dozer.cc
+            mailto:dozer.cc@gmail.com
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.Api.IUcRequestArguments">
+            <summary>
+            Requser参数
+            Dozer 版权所有
+            允许复制、修改，但请保留我的联系方式！
+            http://www.dozer.cc
+            mailto:dozer.cc@gmail.com
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.Api.IUcRequestArguments.Action">
+            <summary>
+            Action
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.Api.IUcRequestArguments.Time">
+            <summary>
+            时间
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.Api.IUcRequestArguments.QueryString">
+            <summary>
+            Query参数
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.Api.IUcRequestArguments.FormData">
+            <summary>
+            Form参数
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.Api.IUcRequestArguments.IsInvalidRequest">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.Api.IUcRequestArguments.IsAuthracationExpiried">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DS.Web.UCenter.Api.UcRequestArguments.#ctor(System.Web.HttpRequest)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="request">Request</param>
+        </member>
+        <member name="P:DS.Web.UCenter.Api.UcRequestArguments.Action">
+            <summary>
+            Action
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.Api.UcRequestArguments.Time">
+            <summary>
+            时间
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.Api.UcRequestArguments.QueryString">
+            <summary>
+            Query参数
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.Api.UcRequestArguments.FormData">
+            <summary>
+            Form参数
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.Api.UcRequestArguments.IsInvalidRequest">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.Api.UcRequestArguments.IsAuthracationExpiried">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.Api.UcApiBase">
+            <summary>
+            UcApi
+            Dozer 版权所有
+            允许复制、修改，但请保留我的联系方式！
+            http://www.dozer.cc
+            mailto:dozer.cc@gmail.com
+            </summary>
+        </member>
+        <member name="M:DS.Web.UCenter.Api.UcApiBase.ProcessRequest(System.Web.HttpContext)">
+            <summary>
+            
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:DS.Web.UCenter.Api.UcApiBase.check">
+            <summary>
+            检查合法性
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Api.UcApiBase.DeleteUser(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            删除用户
+            </summary>
+            <param name="ids">Uid</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Api.UcApiBase.RenameUser(System.Decimal,System.String,System.String)">
+            <summary>
+            重命名
+            </summary>
+            <param name="uid">Uid</param>
+            <param name="oldUserName">旧用户名</param>
+            <param name="newUserName">新用户名</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Api.UcApiBase.GetTag(System.String)">
+            <summary>
+            得到标签
+            </summary>
+            <param name="tagName">标签名</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Api.UcApiBase.SynLogin(System.Decimal)">
+            <summary>
+            同步登陆
+            </summary>
+            <param name="uid">uid</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Api.UcApiBase.SynLogout">
+            <summary>
+            同步登出
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Api.UcApiBase.UpdatePw(System.String,System.String)">
+            <summary>
+            更新密码
+            </summary>
+            <param name="userName">用户名</param>
+            <param name="passWord">密码</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Api.UcApiBase.UpdateBadWords(DS.Web.UCenter.UcBadWords)">
+            <summary>
+            更新不良词汇
+            </summary>
+            <param name="badWords">不良词汇</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Api.UcApiBase.UpdateHosts(DS.Web.UCenter.UcHosts)">
+            <summary>
+            更新Hosts
+            </summary>
+            <param name="hosts">Hosts</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Api.UcApiBase.UpdateApps(DS.Web.UCenter.UcApps)">
+            <summary>
+            更新App
+            </summary>
+            <param name="apps">App</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Api.UcApiBase.UpdateClient(DS.Web.UCenter.UcClientSetting)">
+            <summary>
+            更新UCenter设置
+            </summary>
+            <param name="client">UCenter设置</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Api.UcApiBase.UpdateCredit(System.Decimal,System.Int32,System.Int32)">
+            <summary>
+            更新用户积分
+            </summary>
+            <param name="uid">Uid</param>
+            <param name="credit">积分编号</param>
+            <param name="amount">积分增减</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Api.UcApiBase.GetCreditSettings">
+            <summary>
+            得到积分设置
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Api.UcApiBase.GetCredit(System.Decimal,System.Int32)">
+            <summary>
+            得到积分
+            </summary>
+            <param name="uid">Uid</param>
+            <param name="credit">积分编号</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Api.UcApiBase.UpdateCreditSettings(DS.Web.UCenter.UcCreditSettings)">
+            <summary>
+            更新积分设置
+            </summary>
+            <param name="creditSettings">积分设置</param>
+            <returns></returns>
+        </member>
+        <member name="P:DS.Web.UCenter.Api.UcApiBase.IsReusable">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.Api.ApiReturn">
+            <summary>
+            返回类型
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.Api.ApiReturn.Failed">
+            <summary>
+            失败
+            </summary>
+        </member>
+        <member name="F:DS.Web.UCenter.Api.ApiReturn.Success">
+            <summary>
+            成功
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.UcCreditSettingReturn">
+            <summary>
+            积分设置Model
+            </summary>
+        </member>
+        <member name="M:DS.Web.UCenter.UcCreditSettingReturn.#ctor(System.String,System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="creditName">积分名字</param>
+            <param name="creditUnit">积分单位</param>
+        </member>
+        <member name="M:DS.Web.UCenter.UcCreditSettingReturn.SetItems">
+            <summary>
+            设置属性
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcCreditSettingReturn.CreditName">
+            <summary>
+            积分名字
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcCreditSettingReturn.CreditUnit">
+            <summary>
+            积分单位
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.UcUserEdit">
+            <summary>
+            用户修改Model
+            </summary>
+        </member>
+        <member name="M:DS.Web.UCenter.UcUserEdit.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="xml">数据</param>
+        </member>
+        <member name="P:DS.Web.UCenter.UcUserEdit.Result">
+            <summary>
+            修改结果
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.UcCreditSettings">
+            <summary>
+            积分设置集合
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.UcCollectionReceiveBase`2">
+            <summary>
+            集合基类
+            Dozer 版权所有
+            允许复制、修改，但请保留我的联系方式！
+            http://www.dozer.cc
+            mailto:dozer.cc@gmail.com
+            </summary>
+            <typeparam name="T">项目</typeparam>
+            <typeparam name="TThis">基类</typeparam>
+        </member>
+        <member name="M:DS.Web.UCenter.UcCollectionReceiveBase`2.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="xml">数据</param>
+        </member>
+        <member name="M:DS.Web.UCenter.UcCollectionReceiveBase`2.initialize(System.String)">
+            <summary>
+            初始化
+            </summary>
+            <param name="xml">数据</param>
+        </member>
+        <member name="M:DS.Web.UCenter.UcCollectionReceiveBase`2.unSerialize(System.String)">
+            <summary>
+            反序列化
+            </summary>
+            <param name="xml">XML</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.UcCollectionReceiveBase`2.unSerialize(System.Collections.IDictionary,System.Xml.XmlNode)">
+            <summary>
+            反序列化
+            </summary>
+            <param name="data"></param>
+            <param name="node"></param>
+        </member>
+        <member name="M:DS.Web.UCenter.UcCollectionReceiveBase`2.SetProperty">
+            <summary>
+            设置属性
+            </summary>
+        </member>
+        <member name="M:DS.Web.UCenter.UcCollectionReceiveBase`2.SetItems(System.Collections.Generic.IList{`0})">
+            <summary>
+            设置项目
+            </summary>
+            <param name="list"></param>
+        </member>
+        <member name="M:DS.Web.UCenter.UcCollectionReceiveBase`2.SetItems(System.Collections.Generic.IList{`0},System.Collections.IDictionary)">
+            <summary>
+            设置项目
+            </summary>
+            <param name="list"></param>
+            <param name="data"></param>
+        </member>
+        <member name="M:DS.Web.UCenter.UcCreditSettings.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="xml">数据</param>
+        </member>
+        <member name="M:DS.Web.UCenter.UcCreditSettings.SetProperty">
+            <summary>
+            设置属性
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcCreditSettings.Items">
+            <summary>
+            集合
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.Client.UcUserModelName">
+            <summary>
+            Dozer 版权所有
+            允许复制、修改，但请保留我的联系方式！
+            http://www.dozer.cc
+            mailto:dozer.cc@gmail.com
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.UcTagReturn">
+            <summary>
+            TagModel
+            </summary>
+        </member>
+        <member name="M:DS.Web.UCenter.UcTagReturn.#ctor(System.String,System.Int32,System.String,System.DateTime,System.String,System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="subject">主题</param>
+            <param name="authorid">作者ID</param>
+            <param name="author">作者</param>
+            <param name="time">时间</param>
+            <param name="url">地址</param>
+            <param name="image">图片</param>
+        </member>
+        <member name="M:DS.Web.UCenter.UcTagReturn.SetItems">
+            <summary>
+            设置属性
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcTagReturn.Subject">
+            <summary>
+            主题
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcTagReturn.AuthorId">
+            <summary>
+            作者ID
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcTagReturn.Author">
+            <summary>
+            作者
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcTagReturn.Time">
+            <summary>
+            时间
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcTagReturn.Url">
+            <summary>
+            地址
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcTagReturn.Image">
+            <summary>
+            图片
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.UcUserRegister">
+            <summary>
+            用户注册Model
+            </summary>
+        </member>
+        <member name="M:DS.Web.UCenter.UcUserRegister.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="xml">数据</param>
+        </member>
+        <member name="P:DS.Web.UCenter.UcUserRegister.Uid">
+            <summary>
+            Uid
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcUserRegister.Result">
+            <summary>
+            注册结果
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.UcBadWord">
+            <summary>
+            不良词语Model
+            </summary>
+        </member>
+        <member name="M:DS.Web.UCenter.UcBadWord.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="xml">数据</param>
+        </member>
+        <member name="M:DS.Web.UCenter.UcBadWord.#ctor(System.Xml.XmlNode)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="xml">数据</param>
+        </member>
+        <member name="M:DS.Web.UCenter.UcBadWord.SetProperty">
+            <summary>
+            设置属性
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcBadWord.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcBadWord.Admin">
+            <summary>
+            添加人
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcBadWord.Find">
+            <summary>
+            查找字符串
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcBadWord.Replacement">
+            <summary>
+            替换字符串
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.UcMailQueue">
+            <summary>
+            邮件Model
+            </summary>
+        </member>
+        <member name="M:DS.Web.UCenter.UcMailQueue.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="xml">数据</param>
+        </member>
+        <member name="P:DS.Web.UCenter.UcMailQueue.Result">
+            <summary>
+            修改结果
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcMailQueue.MailId">
+            <summary>
+            邮件Id
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.UcBadWords">
+            <summary>
+            不良词汇集合
+            </summary>
+        </member>
+        <member name="M:DS.Web.UCenter.UcBadWords.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="xml">数据</param>
+        </member>
+        <member name="M:DS.Web.UCenter.UcBadWords.SetProperty">
+            <summary>
+            设置属性
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcBadWords.Items">
+            <summary>
+            集合
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.UcHost">
+            <summary>
+            HostModel
+            </summary>
+        </member>
+        <member name="M:DS.Web.UCenter.UcHost.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="xml">数据</param>
+        </member>
+        <member name="M:DS.Web.UCenter.UcHost.#ctor(System.Xml.XmlNode)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="xml">数据</param>
+        </member>
+        <member name="M:DS.Web.UCenter.UcHost.SetProperty">
+            <summary>
+            设置属性
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcHost.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcHost.Domain">
+            <summary>
+            域名
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcHost.Ip">
+            <summary>
+            Ip
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.UcCreditSettingReturns">
+            <summary>
+            积分设置集合
+            </summary>
+        </member>
+        <member name="M:DS.Web.UCenter.UcCreditSettingReturns.#ctor(DS.Web.UCenter.UcCreditSettingReturn[])">
+            <summary>
+            构造函数
+            </summary>
+            <param name="ucCreditSetting">集合</param>
+        </member>
+        <member name="M:DS.Web.UCenter.UcCreditSettingReturns.SetItems">
+            <summary>
+            设置属性
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcCreditSettingReturns.Items">
+            <summary>
+            集合
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.UcTag">
+            <summary>
+            TagModel
+            </summary>
+        </member>
+        <member name="M:DS.Web.UCenter.UcTag.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="xml">数据</param>
+        </member>
+        <member name="M:DS.Web.UCenter.UcTag.#ctor(System.Xml.XmlNode)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="xml">数据</param>
+        </member>
+        <member name="M:DS.Web.UCenter.UcTag.SetProperty">
+            <summary>
+            设置属性
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcTag.Url">
+            <summary>
+            URL
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcTag.Subject">
+            <summary>
+            标题
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcTag.Extra">
+            <summary>
+            扩展数据
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.UcFeeds">
+            <summary>
+            Feed集合
+            </summary>
+        </member>
+        <member name="M:DS.Web.UCenter.UcFeeds.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="xml">数据</param>
+        </member>
+        <member name="M:DS.Web.UCenter.UcFeeds.SetProperty">
+            <summary>
+            设置属性
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcFeeds.Items">
+            <summary>
+            集合
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcFeeds.Type">
+            <summary>
+            总数
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.UcUtility">
+            <summary>
+            Dozer 版权所有
+            允许复制、修改，但请保留我的联系方式！
+            http://www.dozer.cc
+            mailto:dozer.cc@gmail.com
+            </summary>
+        </member>
+        <member name="M:DS.Web.UCenter.UcUtility.authCode(System.String,DS.Web.UCenter.AuthCodeMethod,System.String,System.Int32)">
+            <summary>
+            AuthCode
+            </summary>
+            <param name="sourceStr">源字符串</param>
+            <param name="operation">操作</param>
+            <param name="keyStr">KEY</param>
+            <param name="expiry">过期时间</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.UcUtility.check(System.Byte[],System.Byte[])">
+            <summary>
+            数据验证
+            </summary>
+            <param name="keyb">Keyb</param>
+            <param name="result">结果</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.UcUtility.getResult(System.Collections.Generic.IList{System.Byte},System.Collections.Generic.IList{System.Int32},System.Int32)">
+            <summary>
+            计算结果
+            </summary>
+            <param name="source">数据源</param>
+            <param name="box">Box</param>
+            <param name="sourceLength">数据源长度</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.UcUtility.rndBox(System.Collections.Generic.IList{System.Int32},System.Collections.Generic.IList{System.Int32})">
+            <summary>
+            Box乱序
+            </summary>
+            <param name="box"></param>
+            <param name="rndkey"></param>
+        </member>
+        <member name="M:DS.Web.UCenter.UcUtility.getRndkey(System.Byte[],System.Int32)">
+            <summary>
+            得到RandomKey
+            </summary>
+            <param name="cryptkey">cryptkey</param>
+            <param name="keyLength">keyLength</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.UcUtility.getBox">
+            <summary>
+            得到Box
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.UcUtility.getCKey(System.Int32,System.Int32,DS.Web.UCenter.AuthCodeMethod,System.Byte[],System.Byte[])">
+            <summary>
+            得到CKey
+            </summary>
+            <param name="expiry">过期时间</param>
+            <param name="ckeyLength">CKey长度</param>
+            <param name="operation">操作</param>
+            <param name="source">数据源</param>
+            <param name="keyb">Keyb</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.UcUtility.getKeyc(System.Int32,DS.Web.UCenter.AuthCodeMethod,System.Byte[])">
+            <summary>
+            得到keyc
+            </summary>
+            <param name="ckeyLength">ckey长度</param>
+            <param name="operation">操作</param>
+            <param name="source">数据源</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.UcUtility.AuthCodeDecode(System.String)">
+            <summary>
+            UCenter编码
+            </summary>
+            <param name="str">字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.UcUtility.AuthCodeDecode(System.String,System.String)">
+            <summary>
+            UCenter编码
+            </summary>
+            <param name="str">字符串</param>
+            <param name="key">UC KEY</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.UcUtility.AuthCodeDecode(System.String,System.String,System.Int32)">
+            <summary>
+            UCenter编码
+            </summary>
+            <param name="str">字符串</param>
+            <param name="key">UC KEY</param>
+            <param name="expiry">过期时间 0代表永不过期</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.UcUtility.AuthCodeEncode(System.String)">
+            <summary>
+            UCenter解码
+            </summary>
+            <param name="str">字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.UcUtility.AuthCodeEncode(System.String,System.String)">
+            <summary>
+            UCenter解码
+            </summary>
+            <param name="str">字符串</param>
+            <param name="key">UC KEY</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.UcUtility.AuthCodeEncode(System.String,System.String,System.Int32)">
+            <summary>
+            UCenter解码
+            </summary>
+            <param name="str">字符串</param>
+            <param name="key">UC KEY</param>
+            <param name="expiry">过期时间 0代表永不过期</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.UcUtility.GetUserAgent">
+            <summary>
+            得到 UserAgent 字符串
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.UcUtility.BytesToString(System.Byte[])">
+            <summary>
+            Byte数组转字符串
+            </summary>
+            <param name="b">数组</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.UcUtility.Md5(System.Byte[])">
+            <summary>
+            计算Md5
+            </summary>
+            <param name="b">byte数组</param>
+            <returns>计算好的字符串</returns>
+        </member>
+        <member name="M:DS.Web.UCenter.UcUtility.Md5(System.String)">
+            <summary>
+            计算Md5
+            </summary>
+            <param name="str">byte数组</param>
+            <returns>计算好的字符串</returns>
+        </member>
+        <member name="M:DS.Web.UCenter.UcUtility.AddBytes(System.Byte[][])">
+            <summary>
+            Byte数组相加
+            </summary>
+            <param name="bytes">数组</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.UcUtility.SubBytes(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Byte数组分割
+            </summary>
+            <param name="b">数组</param>
+            <param name="start">开始</param>
+            <param name="length">结束</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.UcUtility.PhpTimeNow">
+            <summary>
+            计算Php格式的当前时间
+            </summary>
+            <returns>Php格式的时间</returns>
+        </member>
+        <member name="M:DS.Web.UCenter.UcUtility.PhpTimeToDateTime(System.Int64)">
+            <summary>
+            PhpTime转DataTime
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.UcUtility.DateTimeToPhpTime(System.DateTime)">
+            <summary>
+            DataTime转PhpTime
+            </summary>
+            <param name="datetime">时间</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.UcUtility.RandomBytes(System.Int32)">
+            <summary>
+            随机字符串
+            </summary>
+            <param name="lens">长度</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.UcUtility.PhpUrlEncode(System.String)">
+            <summary>
+            PhpUrl编码
+            </summary>
+            <param name="str">字符串</param>
+            <returns></returns>
+        </member>
+        <member name="T:DS.Web.UCenter.AuthCodeMethod">
+            <summary>
+            操作类型
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.UcPmList">
+            <summary>
+            短消息集合
+            </summary>
+        </member>
+        <member name="M:DS.Web.UCenter.UcPmList.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="xml">数据</param>
+        </member>
+        <member name="M:DS.Web.UCenter.UcPmList.SetProperty">
+            <summary>
+            设置属性
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcPmList.Items">
+            <summary>
+            集合
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcPmList.Count">
+            <summary>
+            总数
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.UcPm">
+            <summary>
+            短消息Model
+            </summary>
+        </member>
+        <member name="M:DS.Web.UCenter.UcPm.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="xml">数据</param>
+        </member>
+        <member name="M:DS.Web.UCenter.UcPm.#ctor(System.Xml.XmlNode)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="xml">数据</param>
+        </member>
+        <member name="M:DS.Web.UCenter.UcPm.SetProperty">
+            <summary>
+            设置属性
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcPm.PmId">
+            <summary>
+            短消息Id
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcPm.MsgFrom">
+            <summary>
+            发件人
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcPm.MsgFromId">
+            <summary>
+            发件人Id
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcPm.MsgToId">
+            <summary>
+            收件人Id
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcPm.IsNew">
+            <summary>
+            是否未读
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcPm.Subject">
+            <summary>
+            主题
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcPm.Time">
+            <summary>
+            时间
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcPm.Message">
+            <summary>
+            消息
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.UcUserProtecteds">
+            <summary>
+            受保护用户集合
+            </summary>
+        </member>
+        <member name="M:DS.Web.UCenter.UcUserProtecteds.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="xml">数据</param>
+        </member>
+        <member name="M:DS.Web.UCenter.UcUserProtecteds.SetProperty">
+            <summary>
+            设置属性
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcUserProtecteds.Items">
+            <summary>
+            集合
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.UcFriends">
+            <summary>
+            短消息集合
+            </summary>
+        </member>
+        <member name="M:DS.Web.UCenter.UcFriends.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="xml">数据</param>
+        </member>
+        <member name="M:DS.Web.UCenter.UcFriends.SetProperty">
+            <summary>
+            设置属性
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcFriends.Items">
+            <summary>
+            集合
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.UcUserMerge">
+            <summary>
+            用户合并Model
+            </summary>
+        </member>
+        <member name="M:DS.Web.UCenter.UcUserMerge.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="xml">数据</param>
+        </member>
+        <member name="P:DS.Web.UCenter.UcUserMerge.Uid">
+            <summary>
+            Uid
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcUserMerge.Result">
+            <summary>
+            合并结果
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.UcUserProtected">
+            <summary>
+            受保护用户Model
+            </summary>
+        </member>
+        <member name="M:DS.Web.UCenter.UcUserProtected.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="xml">数据</param>
+        </member>
+        <member name="M:DS.Web.UCenter.UcUserProtected.#ctor(System.Xml.XmlNode)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="xml">数据</param>
+        </member>
+        <member name="M:DS.Web.UCenter.UcUserProtected.SetProperty">
+            <summary>
+            设置属性
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcUserProtected.Uid">
+            <summary>
+            Uid
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcUserProtected.UserName">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.UcApps">
+            <summary>
+            应用程序集合
+            </summary>
+        </member>
+        <member name="M:DS.Web.UCenter.UcApps.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="xml">数据</param>
+        </member>
+        <member name="M:DS.Web.UCenter.UcApps.SetProperty">
+            <summary>
+            设置属性
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcApps.Items">
+            <summary>
+            集合
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.UcHosts">
+            <summary>
+            Host集合
+            </summary>
+        </member>
+        <member name="M:DS.Web.UCenter.UcHosts.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="xml">数据</param>
+        </member>
+        <member name="M:DS.Web.UCenter.UcHosts.SetProperty">
+            <summary>
+            设置属性
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcHosts.Items">
+            <summary>
+            集合
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.Client.UcClientBase">
+            <summary>
+            UCenter API
+            Dozer 版权所有
+            允许复制、修改，但请保留我的联系方式！
+            http://www.dozer.cc
+            mailto:dozer.cc@gmail.com
+            </summary>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClientBase.GetInput(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            得到加密后的input参数
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClientBase.SendArgs(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String)">
+            <summary>
+            发送参数
+            </summary>
+            <param name="args">参数</param>
+            <param name="model">Model</param>
+            <param name="action">Action</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClientBase.ArgsToString(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.String}})">
+            <summary>
+            对象转换成字符串
+            </summary>
+            <param name="args">Dictionary对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClientBase.SendPost(System.String)">
+            <summary>
+            发送表单并得到返回的字符串数据
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClientBase.SendGet(System.String,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.String}})">
+            <summary>
+            发送Get
+            </summary>
+            <param name="url">地址</param>
+            <param name="args">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClientBase.getStr(System.Net.WebRequest)">
+            <summary>
+            处理Response对象，并得到字符串
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClientBase.getGetRequest(System.String)">
+            <summary>
+            得到Requset对象
+            </summary>
+            <param name="url">地址</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClientBase.getPostRequest(System.Byte[])">
+            <summary>
+            得到Requset对象
+            </summary>
+            <param name="data">POST数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClientBase.GetUrl">
+            <summary>
+            得到 Url
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClientBase.GetUserAgent">
+            <summary>
+            得到 UserAgent 字符串
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DS.Web.UCenter.UcPmBlacklsGet">
+            <summary>
+            黑名单Model
+            </summary>
+        </member>
+        <member name="M:DS.Web.UCenter.UcPmBlacklsGet.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="xml">数据</param>
+        </member>
+        <member name="P:DS.Web.UCenter.UcPmBlacklsGet.DeleteNumber">
+            <summary>
+            黑名单
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.UcPmSend">
+            <summary>
+            短信发送Model
+            </summary>
+        </member>
+        <member name="M:DS.Web.UCenter.UcPmSend.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="xml">数据</param>
+        </member>
+        <member name="P:DS.Web.UCenter.UcPmSend.PmId">
+            <summary>
+            短信Id
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcPmSend.Result">
+            <summary>
+            发送结果
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.UcConfig">
+            <summary>
+            配置
+            Dozer 版权所有
+            允许复制、修改，但请保留我的联系方式！
+            http://www.dozer.cc
+            mailto:dozer.cc@gmail.com
+            </summary>
+        </member>
+        <member name="M:DS.Web.UCenter.UcConfig.getValueTemp(System.String)">
+            <summary>
+            读取键值，并作缓存
+            </summary>
+            <param name="key">键</param>
+            <returns>值</returns>
+        </member>
+        <member name="M:DS.Web.UCenter.UcConfig.getStringValue(System.String,System.String,System.Boolean)">
+            <summary>
+            得到配置
+            </summary>
+            <param name="key">KEY</param>
+            <param name="defaultValue">默认值</param>
+            <param name="checkEmpty">是否检查是否为空</param>
+            <exception cref="T:System.Configuration.ConfigurationErrorsException">配置信息丢失错误</exception>
+            <returns>字符串类型</returns>
+        </member>
+        <member name="M:DS.Web.UCenter.UcConfig.getBoolValue(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            得到配置
+            </summary>
+            <param name="key">KEY</param>
+            <param name="defaultValue">默认值</param>
+            <param name="checkEmpty">是否检查是否为空</param>
+            <exception cref="T:System.Configuration.ConfigurationErrorsException">配置信息丢失错误</exception>
+            <returns>bool类型</returns>
+        </member>
+        <member name="M:DS.Web.UCenter.UcConfig.getIntValue(System.String,System.Int32,System.Boolean)">
+            <summary>
+            得到配置
+            </summary>
+            <param name="key">KEY</param>
+            <param name="defaultValue">默认值</param>
+            <param name="checkEmpty">是否检查是否为空</param>
+            <exception cref="T:System.Configuration.ConfigurationErrorsException">配置信息丢失错误</exception>
+            <returns>int类型</returns>
+        </member>
+        <member name="P:DS.Web.UCenter.UcConfig.UcClientVersion">
+            <summary>
+            客户端版本
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcConfig.UcClientRelease">
+            <summary>
+            发行时间
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcConfig.ApiDeleteUser">
+            <summary>
+            是否允许删除用户
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcConfig.ApiRenameUser">
+            <summary>
+            是否允许重命名用户
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcConfig.ApiGetTag">
+            <summary>
+            是否允许得到标签
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcConfig.ApiSynLogin">
+            <summary>
+            是否允许同步登录
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcConfig.ApiSynLogout">
+            <summary>
+            是否允许同步登出
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcConfig.ApiUpdatePw">
+            <summary>
+            是否允许更改密码
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcConfig.ApiUpdateBadWords">
+            <summary>
+            是否允许更新关键字
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcConfig.ApiUpdateHosts">
+            <summary>
+            是否允许更新域名解析缓存
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcConfig.ApiUpdateApps">
+            <summary>
+            是否允许更新应用列表
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcConfig.ApiUpdateClient">
+            <summary>
+            是否允许更新客户端缓存
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcConfig.ApiUpdateCredit">
+            <summary>
+            是否允许更新用户积分
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcConfig.ApiGetCreditSettings">
+            <summary>
+            是否允许向UCenter提供积分设置
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcConfig.ApiGetCredit">
+            <summary>
+            是否允许获取用户的某项积分
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcConfig.ApiUpdateCreditSettings">
+            <summary>
+            是否允许更新应用积分设置
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcConfig.ApiReturnSucceed">
+            <summary>
+            返回成功
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcConfig.ApiReturnFailed">
+            <summary>
+            返回失败
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcConfig.ApiReturnForbidden">
+            <summary>
+            返回禁用
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcConfig.UcKey">
+            <summary>
+            与 UCenter 的通信密钥, 要与 UCenter 保持一致
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcConfig.UcApi">
+            <summary>
+            UCenter地址
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcConfig.UcCharset">
+            <summary>
+            默认编码
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcConfig.UcIp">
+            <summary>
+            UCenter IP
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcConfig.UcAppid">
+            <summary>
+            应用ID
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.UcTags">
+            <summary>
+            短消息集合
+            </summary>
+        </member>
+        <member name="M:DS.Web.UCenter.UcTags.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="xml">数据</param>
+        </member>
+        <member name="M:DS.Web.UCenter.UcTags.SetProperty">
+            <summary>
+            设置属性
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcTags.Items">
+            <summary>
+            集合
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcTags.Type">
+            <summary>
+            总数
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.UcPmCheckNew">
+            <summary>
+            检查邮件 Model
+            </summary>
+        </member>
+        <member name="M:DS.Web.UCenter.UcPmCheckNew.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="xml">数据</param>
+        </member>
+        <member name="M:DS.Web.UCenter.UcPmCheckNew.#ctor(System.Xml.XmlNode)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="xml">数据</param>
+        </member>
+        <member name="M:DS.Web.UCenter.UcPmCheckNew.SetProperty">
+            <summary>
+            设置属性
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcPmCheckNew.NewPm">
+            <summary>
+            未读消息数
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcPmCheckNew.NewProvatePm">
+            <summary>
+            私人消息数
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcPmCheckNew.AnnouncePm">
+            <summary>
+            公共消息数
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcPmCheckNew.SystemPm">
+            <summary>
+            系统消息数
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcPmCheckNew.LastDate">
+            <summary>
+            最后消息时间
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcPmCheckNew.LastMsgFromId">
+            <summary>
+            最后消息发件人 ID
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcPmCheckNew.LastMsgFrom">
+            <summary>
+            最后消息发件人用户名
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcPmCheckNew.LastMsg">
+            <summary>
+            最后消息内容
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.Client.UcClient">
+            <summary>
+            UCenter Client
+            Dozer 版权所有
+            允许复制、修改，但请保留我的联系方式！
+            http://www.dozer.cc
+            mailto:dozer.cc@gmail.com
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.Client.IUcClient">
+            <summary>
+             UcApi Client
+             Dozer 版权所有
+             允许复制、修改，但请保留我的联系方式！
+             http://www.dozer.cc
+             mailto:dozer.cc@gmail.com
+            </summary>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.IUcClient.UserRegister(System.String,System.String,System.String,System.Int32,System.String)">
+            <summary>
+            用户注册
+            </summary>
+            <param name="userName">用户名</param>
+            <param name="passWord">密码</param>
+            <param name="email">Email</param>
+            <param name="questionId">登陆问题</param>
+            <param name="answer">答案</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.IUcClient.UserLogin(System.String,System.String,DS.Web.UCenter.LoginMethod,System.Boolean,System.Int32,System.String)">
+            <summary>
+            用户登陆
+            </summary>
+            <param name="userName">用户名/Uid/Email</param>
+            <param name="passWord">密码</param>
+            <param name="loginMethod">登录方式</param>
+            <param name="checkques">需要登陆问题</param>
+            <param name="questionId">问题ID</param>
+            <param name="answer">答案</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.IUcClient.UserInfo(System.String)">
+            <summary>
+            得到用户信息
+            </summary>
+            <param name="userName">用户名</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.IUcClient.UserInfo(System.Decimal)">
+            <summary>
+            得到用户信息
+            </summary>
+            <param name="uid">Uid</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.IUcClient.UserEdit(System.String,System.String,System.String,System.String,System.Boolean,System.Int32,System.String)">
+            <summary>
+            更新用户信息
+            更新资料需验证用户的原密码是否正确，除非指定 ignoreoldpw 为 1。
+            如果只修改 Email 不修改密码，可让 newpw 为空；
+            同理如果只修改密码不修改 Email，可让 email 为空。
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.IUcClient.UserDelete(System.Int32[])">
+            <summary>
+            删除用户
+            </summary>
+            <param name="uid">Uid</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.IUcClient.UserDeleteAvatar(System.Int32[])">
+            <summary>
+            删除用户头像
+            </summary>
+            <param name="uid">Uid</param>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.IUcClient.UserSynlogin(System.Decimal)">
+            <summary>
+            同步登陆
+            </summary>
+            <param name="uid">Uid</param>
+            <returns>同步登陆的 Html 代码</returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.IUcClient.UserSynLogout">
+            <summary>
+            同步登出
+            </summary>
+            <returns>同步登出的 Html 代码</returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.IUcClient.UserCheckEmail(System.String)">
+            <summary>
+            检查 Email 格式
+            </summary>
+            <param name="email">Email</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.IUcClient.UserAddProtected(System.String,System.String[])">
+            <summary>
+            增加受保护用户
+            </summary>
+            <param name="admin">操作管理员</param>
+            <param name="userName">用户名</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.IUcClient.UserDeleteProtected(System.String,System.String[])">
+            <summary>
+            删除受保护用户
+            </summary>
+            <param name="admin">操作管理员</param>
+            <param name="userName">用户名</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.IUcClient.UserGetProtected">
+            <summary>
+            得到受保护用户
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.IUcClient.UserMerge(System.String,System.String,System.Decimal,System.String,System.String)">
+            <summary>
+            合并用户
+            </summary>
+            <param name="oldUserName">老用户名</param>
+            <param name="newUserName">新用户名</param>
+            <param name="uid">Uid</param>
+            <param name="passWord">密码</param>
+            <param name="email">Email</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.IUcClient.UserMergeRemove(System.String)">
+            <summary>
+            移除重名用户记录
+            </summary>
+            <param name="userName">用户名</param>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.IUcClient.UserGetCredit(System.Int32,System.Decimal,System.Int32)">
+            <summary>
+            得到用户积分
+            </summary>
+            <param name="appId">应用程序Id</param>
+            <param name="uid">Uid</param>
+            <param name="credit">积分编号</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.IUcClient.PmCheckNew(System.Decimal)">
+            <summary>
+            检查新消息
+            </summary>
+            <param name="uid">Uid</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.IUcClient.PmSend(System.Int32,System.Int32,System.String,System.String,System.Int32[])">
+            <summary>
+            发送短消息
+            </summary>
+            <param name="fromUid">发件人用户 ID，0 为系统消息</param>
+            <param name="replyPmId">回复的消息 ID，0:发送新的短消息，大于 0:回复指定的短消息</param>
+            <param name="subject">消息标题</param>
+            <param name="message">消息内容</param>
+            <param name="msgTo">收件人ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.IUcClient.PmSend(System.Int32,System.Int32,System.String,System.String,System.String[])">
+            <summary>
+            发送短消息
+            </summary>
+            <param name="fromUid">发件人用户 ID，0 为系统消息</param>
+            <param name="replyPmId">回复的消息 ID，0:发送新的短消息，大于 0:回复指定的短消息</param>
+            <param name="subject">消息标题</param>
+            <param name="message">消息内容</param>
+            <param name="msgTo">收件人用户名</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.IUcClient.PmDelete(System.Decimal,DS.Web.UCenter.PmDeleteFolder,System.Int32[])">
+            <summary>
+            删除短消息
+            </summary>
+            <param name="uid">Uid</param>
+            <param name="folder">文件夹</param>
+            <param name="pmIds">短消息ID</param>
+            <returns>删除的数量</returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.IUcClient.PmDelete(System.Decimal,System.Int32[])">
+            <summary>
+            删除会话
+            </summary>
+            <param name="uid">发件人</param>
+            <param name="toUids">收件人</param>
+            <returns>删除的数量</returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.IUcClient.PmReadStatus(System.Decimal,System.Int32,System.Int32,DS.Web.UCenter.ReadStatus)">
+            <summary>
+            修改阅读状态
+            </summary>
+            <param name="uid">发件人</param>
+            <param name="toUids">收件人</param>
+            <param name="pmIds">短消息ID</param>
+            <param name="readStatus">阅读状态</param>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.IUcClient.PmReadStatus(System.Decimal,System.Collections.Generic.IEnumerable{System.Int32},System.Collections.Generic.IEnumerable{System.Int32},DS.Web.UCenter.ReadStatus)">
+            <summary>
+            修改阅读状态
+            </summary>
+            <param name="uid">发件人</param>
+            <param name="toUids">收件人数组</param>
+            <param name="pmIds">短消息ID数组</param>
+            <param name="readStatus">阅读状态</param>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.IUcClient.PmList(System.Decimal,System.Int32,System.Int32,DS.Web.UCenter.PmReadFolder,DS.Web.UCenter.PmReadFilter,System.Int32)">
+            <summary>
+            获取短消息列表
+            </summary>
+            <param name="uid">Uid</param>
+            <param name="page">当前页编号，默认值 1</param>
+            <param name="pageSize">每页最大条目数，默认值 10</param>
+            <param name="folder">短消息所在的文件夹</param>
+            <param name="filter">过滤方式</param>
+            <param name="msgLen">截取短消息内容文字的长度，0 为不截取，默认值 0</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.IUcClient.PmView(System.Decimal,System.Int32,System.Int32,DS.Web.UCenter.DateRange)">
+            <summary>
+            获取短消息内容
+            本接口函数用于返回指定用户的指定消息 ID 的消息，返回的数据中包含针对这个消息的回复。
+            如果指定 touid 参数，那么短消息将列出所有 uid 和 touid 之间的短消息，daterange 可以指定返回消息的日期范围。
+            </summary>
+            <param name="uid">Uid</param>
+            <param name="pmId">短消息ID</param>
+            <param name="toUid">收件人ID</param>
+            <param name="dateRange">日期范围</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.IUcClient.PmViewNode(System.Decimal,DS.Web.UCenter.ViewType,System.Int32)">
+            <summary>
+            获取单条短消息内容
+            </summary>
+            <param name="uid">Uid</param>
+            <param name="type">类型</param>
+            <param name="pmId">短消息ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.IUcClient.PmIgnore(System.Decimal)">
+            <summary>
+            忽略未读消息提示
+            </summary>
+            <param name="uid">Uid</param>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.IUcClient.PmBlacklsGet(System.Decimal)">
+            <summary>
+            得到黑名单
+            </summary>
+            <param name="uid">Uid</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.IUcClient.PmBlacklsSetAll(System.Decimal)">
+            <summary>
+            设置黑名单为禁止所有人（清空原数据）
+            </summary>
+            <param name="uid">Uid</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.IUcClient.PmBlacklsSet(System.Decimal,System.String[])">
+            <summary>
+            设置黑名单（清空原数据）
+            </summary>
+            <param name="uid">Uid</param>
+            <param name="userName">黑名单用户名</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.IUcClient.PmBlacklsAddAll(System.Decimal)">
+            <summary>
+            添加黑名单为禁止所有人
+            </summary>
+            <param name="uid">Uid</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.IUcClient.PmBlacklsAdd(System.Decimal,System.String[])">
+            <summary>
+            增加黑名单
+            </summary>
+            <param name="uid">Uid</param>
+            <param name="userName">黑名单用户名</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.IUcClient.PmBlacklsDeleteAll(System.Decimal)">
+            <summary>
+            删除黑名单中的禁止所有人
+            </summary>
+            <param name="uid">Uid</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.IUcClient.PmBlacklsDelete(System.Decimal,System.String[])">
+            <summary>
+            删除黑名单
+            </summary>
+            <param name="uid">Uid</param>
+            <param name="userName">黑名单用户名</param>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.IUcClient.UcFriendAdd(System.Decimal,System.Int32,System.String)">
+            <summary>
+            增加好友
+            </summary>
+            <param name="uid">Uid</param>
+            <param name="friendId">好友ID</param>
+            <param name="comment">备注</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.IUcClient.UcFriendDelete(System.Decimal,System.Int32[])">
+            <summary>
+            删除好友
+            </summary>
+            <param name="uid">Uid</param>
+            <param name="friendIds">好友ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.IUcClient.UcFriendTotalNum(System.Decimal,DS.Web.UCenter.FriendDirection)">
+            <summary>
+            获取好友总数
+            </summary>
+            <param name="uid">Uid</param>
+            <param name="direction">方向</param>
+            <returns>好友数目</returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.IUcClient.UcFriendList(System.Decimal,System.Int32,System.Int32,System.Int32,DS.Web.UCenter.FriendDirection)">
+            <summary>
+            好友列表
+            </summary>
+            <param name="uid">Uid</param>
+            <param name="page">当前页编号</param>
+            <param name="pageSize">每页最大条目数</param>
+            <param name="totalNum">好友总数</param>
+            <param name="direction">方向</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.IUcClient.UcCreditExchangeRequest(System.Decimal,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            积分兑换请求
+            </summary>
+            <param name="uid">Uid</param>
+            <param name="from">原积分</param>
+            <param name="to">目标积分</param>
+            <param name="toAppId">目标应用ID</param>
+            <param name="amount">积分数额</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.IUcClient.Avatar(System.Decimal,DS.Web.UCenter.AvatarType)">
+            <summary>
+             修改头像
+            </summary>
+            <param name="uid">Uid</param>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.IUcClient.AvatarUrl(System.Decimal,DS.Web.UCenter.AvatarSize,DS.Web.UCenter.AvatarType)">
+            <summary>
+            得到头像地址
+            </summary>
+            <param name="uid">Uid</param>
+            <param name="size">大小</param>
+            <param name="type">类型</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.IUcClient.AvatarCheck(System.Decimal,DS.Web.UCenter.AvatarSize,DS.Web.UCenter.AvatarType)">
+            <summary>
+            检查头像是否存在
+            </summary>
+            <param name="uid"></param>
+            <param name="size"></param>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.IUcClient.TagGet(System.String,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.String}})">
+            <summary>
+            获取标签数据
+            </summary>
+            <param name="tagName">标签名</param>
+            <param name="number">应用程序ID对应的数量</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.IUcClient.FeedAdd(DS.Web.UCenter.FeedIcon,System.Decimal,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String[])">
+            <summary>
+            添加事件
+            </summary>
+            <param name="icon">图标类型，如：thread、post、video、goods、reward、debate、blog、album、comment、wall、friend</param>
+            <param name="uid">Uid</param>
+            <param name="userName">用户名</param>
+            <param name="titleTemplate">标题模板</param>
+            <param name="titleData">标题数据数组</param>
+            <param name="bodyTemplate">内容模板</param>
+            <param name="bodyData">模板数据</param>
+            <param name="bodyGeneral">相同事件合并时用到的数据：特定的数组，只有两项：name、link，保留</param>
+            <param name="targetIds">保留</param>
+            <param name="images">相关图片的 URL 和链接地址。一个图片地址，一个链接地址</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.IUcClient.FeedGet(System.Int32)">
+            <summary>
+            得到Feed
+            </summary>
+            <param name="limit">数量限制</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.IUcClient.AppList">
+            <summary>
+            得到应用列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.IUcClient.MailQueue(System.String,System.String,System.Int32[])">
+            <summary>
+            添加邮件到队列
+            </summary>
+            <param name="subject">标题</param>
+            <param name="message">内容</param>
+            <param name="uids">Uid</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.IUcClient.MailQueue(System.String,System.String,System.String[])">
+            <summary>
+            添加邮件到队列
+            </summary>
+            <param name="subject">标题</param>
+            <param name="message">内容</param>
+            <param name="emails">目标Email</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.IUcClient.MailQueue(System.String,System.String,System.Int32[],System.String[])">
+            <summary>
+            添加邮件到队列
+            </summary>
+            <param name="subject">标题</param>
+            <param name="message">内容</param>
+            <param name="uids">Uid</param>
+            <param name="emails">目标email</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.IUcClient.MailQueue(System.String,System.String,System.String,System.String,System.Boolean,System.Int32,System.Int32[],System.String[])">
+            <summary>
+            添加邮件到队列
+            </summary>
+            <param name="subject">标题</param>
+            <param name="message">内容</param>
+            <param name="fromMail">发信人，可选参数，默认为空，uc后台设置的邮件来源作为发信人地址</param>
+            <param name="charset">邮件字符集，可选参数，默认为gbk</param>
+            <param name="htmlOn">是否是html格式的邮件，可选参数，默认为FALSE，即文本邮件</param>
+            <param name="level">邮件级别，可选参数，默认为1，数字大的优先发送，取值为0的时候立即发送，邮件不入队列</param>
+            <param name="uids">Uid</param>
+            <param name="emails">目标email</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClient.UserRegister(System.String,System.String,System.String,System.Int32,System.String)">
+            <summary>
+            用户注册
+            </summary>
+            <param name="userName">用户名</param>
+            <param name="passWord">密码</param>
+            <param name="email">Email</param>
+            <param name="questionId">登陆问题</param>
+            <param name="answer">答案</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClient.UserLogin(System.String,System.String,DS.Web.UCenter.LoginMethod,System.Boolean,System.Int32,System.String)">
+            <summary>
+            用户登陆
+            </summary>
+            <param name="userName">用户名/Uid/Email</param>
+            <param name="passWord">密码</param>
+            <param name="loginMethod">登录方式</param>
+            <param name="checkques">需要登陆问题</param>
+            <param name="questionId">问题ID</param>
+            <param name="answer">答案</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClient.UserInfo(System.String)">
+            <summary>
+            得到用户信息
+            </summary>
+            <param name="userName">用户名</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClient.UserInfo(System.Decimal)">
+            <summary>
+            得到用户信息
+            </summary>
+            <param name="uid">Uid</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClient.userInfo(System.String,DS.Web.UCenter.InfoMethod)">
+            <summary>
+            得到用户信息
+            </summary>
+            <param name="userName">用户名/Uid</param>
+            <param name="infoMethod">查询方式</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClient.UserEdit(System.String,System.String,System.String,System.String,System.Boolean,System.Int32,System.String)">
+            <summary>
+            更新用户信息
+            更新资料需验证用户的原密码是否正确，除非指定 ignoreoldpw 为 1。
+            如果只修改 Email 不修改密码，可让 newpw 为空；
+            同理如果只修改密码不修改 Email，可让 email 为空。
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClient.UserDelete(System.Int32[])">
+            <summary>
+            删除用户
+            </summary>
+            <param name="uid">Uid</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClient.UserDeleteAvatar(System.Int32[])">
+            <summary>
+            删除用户头像
+            </summary>
+            <param name="uid">Uid</param>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClient.UserSynlogin(System.Decimal)">
+            <summary>
+            同步登陆
+            </summary>
+            <param name="uid">Uid</param>
+            <returns>同步登陆的 Html 代码</returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClient.UserSynLogout">
+            <summary>
+            同步登出
+            </summary>
+            <returns>同步登出的 Html 代码</returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClient.UserCheckEmail(System.String)">
+            <summary>
+            检查 Email 格式
+            </summary>
+            <param name="email">Email</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClient.UserAddProtected(System.String,System.String[])">
+            <summary>
+            增加受保护用户
+            </summary>
+            <param name="admin">操作管理员</param>
+            <param name="userName">用户名</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClient.UserDeleteProtected(System.String,System.String[])">
+            <summary>
+            删除受保护用户
+            </summary>
+            <param name="admin">操作管理员</param>
+            <param name="userName">用户名</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClient.UserGetProtected">
+            <summary>
+            得到受保护用户
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClient.UserMerge(System.String,System.String,System.Decimal,System.String,System.String)">
+            <summary>
+            合并用户
+            </summary>
+            <param name="oldUserName">老用户名</param>
+            <param name="newUserName">新用户名</param>
+            <param name="uid">Uid</param>
+            <param name="passWord">密码</param>
+            <param name="email">Email</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClient.UserMergeRemove(System.String)">
+            <summary>
+            移除重名用户记录
+            </summary>
+            <param name="userName">用户名</param>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClient.UserGetCredit(System.Int32,System.Decimal,System.Int32)">
+            <summary>
+            得到用户积分
+            </summary>
+            <param name="appId">应用程序Id</param>
+            <param name="uid">Uid</param>
+            <param name="credit">积分编号</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClient.PmCheckNew(System.Decimal)">
+            <summary>
+            检查新消息
+            </summary>
+            <param name="uid">Uid</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClient.PmSend(System.Int32,System.Int32,System.String,System.String,System.Int32[])">
+            <summary>
+            发送短消息
+            </summary>
+            <param name="fromUid">发件人用户 ID，0 为系统消息</param>
+            <param name="replyPmId">回复的消息 ID，0:发送新的短消息，大于 0:回复指定的短消息</param>
+            <param name="subject">消息标题</param>
+            <param name="message">消息内容</param>
+            <param name="msgTo">收件人ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClient.PmSend(System.Int32,System.Int32,System.String,System.String,System.String[])">
+            <summary>
+            发送短消息
+            </summary>
+            <param name="fromUid">发件人用户 ID，0 为系统消息</param>
+            <param name="replyPmId">回复的消息 ID，0:发送新的短消息，大于 0:回复指定的短消息</param>
+            <param name="subject">消息标题</param>
+            <param name="message">消息内容</param>
+            <param name="msgTo">收件人用户名</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClient.pmSend(System.Int32,System.String,System.String,System.String,System.Int32,DS.Web.UCenter.SendMethod)">
+            <summary>
+            发送短消息
+            </summary>
+            <param name="fromUid">发件人用户 ID，0 为系统消息</param>
+            <param name="msgTo">收件人用户名 / 用户 ID，多个用逗号分割，默认为ID</param>
+            <param name="subject">消息标题</param>
+            <param name="message">消息内容</param>
+            <param name="replyPmId">回复的消息 ID，0:(默认值) 发送新的短消息，大于 0:回复指定的短消息</param>
+            <param name="sendMethod">msgto 参数类型</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClient.PmDelete(System.Decimal,DS.Web.UCenter.PmDeleteFolder,System.Int32[])">
+            <summary>
+            删除短消息
+            </summary>
+            <param name="uid">Uid</param>
+            <param name="folder">文件夹</param>
+            <param name="pmIds">短消息ID</param>
+            <returns>删除的数量</returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClient.PmDelete(System.Decimal,System.Int32[])">
+            <summary>
+            删除会话
+            </summary>
+            <param name="uid">发件人</param>
+            <param name="toUids">收件人</param>
+            <returns>删除的数量</returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClient.PmReadStatus(System.Decimal,System.Int32,System.Int32,DS.Web.UCenter.ReadStatus)">
+            <summary>
+            修改阅读状态
+            </summary>
+            <param name="uid">发件人</param>
+            <param name="toUids">收件人</param>
+            <param name="pmIds">短消息ID</param>
+            <param name="readStatus">阅读状态</param>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClient.PmReadStatus(System.Decimal,System.Collections.Generic.IEnumerable{System.Int32},System.Collections.Generic.IEnumerable{System.Int32},DS.Web.UCenter.ReadStatus)">
+            <summary>
+            修改阅读状态
+            </summary>
+            <param name="uid">发件人</param>
+            <param name="toUids">收件人数组</param>
+            <param name="pmIds">短消息ID数组</param>
+            <param name="readStatus">阅读状态</param>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClient.PmList(System.Decimal,System.Int32,System.Int32,DS.Web.UCenter.PmReadFolder,DS.Web.UCenter.PmReadFilter,System.Int32)">
+            <summary>
+            获取短消息列表
+            </summary>
+            <param name="uid">Uid</param>
+            <param name="page">当前页编号，默认值 1</param>
+            <param name="pageSize">每页最大条目数，默认值 10</param>
+            <param name="folder">短消息所在的文件夹</param>
+            <param name="filter">过滤方式</param>
+            <param name="msgLen">截取短消息内容文字的长度，0 为不截取，默认值 0</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClient.PmView(System.Decimal,System.Int32,System.Int32,DS.Web.UCenter.DateRange)">
+            <summary>
+            获取短消息内容
+            本接口函数用于返回指定用户的指定消息 ID 的消息，返回的数据中包含针对这个消息的回复。
+            如果指定 touid 参数，那么短消息将列出所有 uid 和 touid 之间的短消息，daterange 可以指定返回消息的日期范围。
+            </summary>
+            <param name="uid">Uid</param>
+            <param name="pmId">短消息ID</param>
+            <param name="toUid">收件人ID</param>
+            <param name="dateRange">日期范围</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClient.PmViewNode(System.Decimal,DS.Web.UCenter.ViewType,System.Int32)">
+            <summary>
+            获取单条短消息内容
+            </summary>
+            <param name="uid">Uid</param>
+            <param name="type">类型</param>
+            <param name="pmId">短消息ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClient.PmIgnore(System.Decimal)">
+            <summary>
+            忽略未读消息提示
+            </summary>
+            <param name="uid">Uid</param>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClient.PmBlacklsGet(System.Decimal)">
+            <summary>
+            得到黑名单
+            </summary>
+            <param name="uid">Uid</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClient.PmBlacklsSetAll(System.Decimal)">
+            <summary>
+            设置黑名单为禁止所有人（清空原数据）
+            </summary>
+            <param name="uid">Uid</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClient.PmBlacklsSet(System.Decimal,System.String[])">
+            <summary>
+            设置黑名单（清空原数据）
+            </summary>
+            <param name="uid">Uid</param>
+            <param name="userName">黑名单用户名</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClient.PmBlacklsAddAll(System.Decimal)">
+            <summary>
+            添加黑名单为禁止所有人
+            </summary>
+            <param name="uid">Uid</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClient.PmBlacklsAdd(System.Decimal,System.String[])">
+            <summary>
+            增加黑名单
+            </summary>
+            <param name="uid">Uid</param>
+            <param name="userName">黑名单用户名</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClient.PmBlacklsDeleteAll(System.Decimal)">
+            <summary>
+            删除黑名单中的禁止所有人
+            </summary>
+            <param name="uid">Uid</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClient.PmBlacklsDelete(System.Decimal,System.String[])">
+            <summary>
+            删除黑名单
+            </summary>
+            <param name="uid">Uid</param>
+            <param name="userName">黑名单用户名</param>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClient.UcFriendAdd(System.Decimal,System.Int32,System.String)">
+            <summary>
+            增加好友
+            </summary>
+            <param name="uid">Uid</param>
+            <param name="friendId">好友ID</param>
+            <param name="comment">备注</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClient.UcFriendDelete(System.Decimal,System.Int32[])">
+            <summary>
+            删除好友
+            </summary>
+            <param name="uid">Uid</param>
+            <param name="friendIds">好友ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClient.UcFriendTotalNum(System.Decimal,DS.Web.UCenter.FriendDirection)">
+            <summary>
+            获取好友总数
+            </summary>
+            <param name="uid">Uid</param>
+            <param name="direction">方向</param>
+            <returns>好友数目</returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClient.UcFriendList(System.Decimal,System.Int32,System.Int32,System.Int32,DS.Web.UCenter.FriendDirection)">
+            <summary>
+            好友列表
+            </summary>
+            <param name="uid">Uid</param>
+            <param name="page">当前页编号</param>
+            <param name="pageSize">每页最大条目数</param>
+            <param name="totalNum">好友总数</param>
+            <param name="direction">方向</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClient.UcCreditExchangeRequest(System.Decimal,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            积分兑换请求
+            </summary>
+            <param name="uid">Uid</param>
+            <param name="from">原积分</param>
+            <param name="to">目标积分</param>
+            <param name="toAppId">目标应用ID</param>
+            <param name="amount">积分数额</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClient.Avatar(System.Decimal,DS.Web.UCenter.AvatarType)">
+            <summary>
+             修改头像
+            </summary>
+            <param name="uid">Uid</param>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClient.AvatarUrl(System.Decimal,DS.Web.UCenter.AvatarSize,DS.Web.UCenter.AvatarType)">
+            <summary>
+            得到头像地址
+            </summary>
+            <param name="uid">Uid</param>
+            <param name="size">大小</param>
+            <param name="type">类型</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClient.AvatarCheck(System.Decimal,DS.Web.UCenter.AvatarSize,DS.Web.UCenter.AvatarType)">
+            <summary>
+            检查头像是否存在
+            </summary>
+            <param name="uid"></param>
+            <param name="size"></param>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClient.TagGet(System.String,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.String}})">
+            <summary>
+            获取标签数据
+            </summary>
+            <param name="tagName">标签名</param>
+            <param name="number">应用程序ID对应的数量</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClient.FeedAdd(DS.Web.UCenter.FeedIcon,System.Decimal,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String[])">
+            <summary>
+            添加事件
+            </summary>
+            <param name="icon">图标类型，如：thread、post、video、goods、reward、debate、blog、album、comment、wall、friend</param>
+            <param name="uid">Uid</param>
+            <param name="userName">用户名</param>
+            <param name="titleTemplate">标题模板</param>
+            <param name="titleData">标题数据数组</param>
+            <param name="bodyTemplate">内容模板</param>
+            <param name="bodyData">模板数据</param>
+            <param name="bodyGeneral">相同事件合并时用到的数据：特定的数组，只有两项：name、link，保留</param>
+            <param name="targetIds">保留</param>
+            <param name="images">相关图片的 URL 和链接地址。一个图片地址，一个链接地址</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClient.FeedGet(System.Int32)">
+            <summary>
+            得到Feed
+            </summary>
+            <param name="limit">数量限制</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClient.AppList">
+            <summary>
+            得到应用列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClient.MailQueue(System.String,System.String,System.Int32[])">
+            <summary>
+            添加邮件到队列
+            </summary>
+            <param name="subject">标题</param>
+            <param name="message">内容</param>
+            <param name="uids">Uid</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClient.MailQueue(System.String,System.String,System.String[])">
+            <summary>
+            添加邮件到队列
+            </summary>
+            <param name="subject">标题</param>
+            <param name="message">内容</param>
+            <param name="emails">目标email</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClient.MailQueue(System.String,System.String,System.Int32[],System.String[])">
+            <summary>
+            添加邮件到队列
+            </summary>
+            <param name="subject">标题</param>
+            <param name="message">内容</param>
+            <param name="uids">Uid</param>
+            <param name="emails">目标email</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClient.MailQueue(System.String,System.String,System.String,System.String,System.Boolean,System.Int32,System.Int32[],System.String[])">
+            <summary>
+            添加邮件到队列
+            </summary>
+            <param name="subject">标题</param>
+            <param name="message">内容</param>
+            <param name="fromMail">发信人，可选参数，默认为空，uc后台设置的邮件来源作为发信人地址</param>
+            <param name="charset">邮件字符集，可选参数，默认为gbk</param>
+            <param name="htmlOn">是否是html格式的邮件，可选参数，默认为FALSE，即文本邮件</param>
+            <param name="level">邮件级别，可选参数，默认为1，数字大的优先发送，取值为0的时候立即发送，邮件不入队列</param>
+            <param name="uids">Uid</param>
+            <param name="emails">目标email</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClient.intToString(System.Int32[])">
+            <summary>
+            Int数组转换为String数组
+            </summary>
+            <param name="data">数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClient.addArray(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            添加数组
+            </summary>
+            <param name="args">参数结合</param>
+            <param name="key">Key</param>
+            <param name="value">Value</param>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClient.addArray(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            添加数组
+            </summary>
+            <param name="args">参数结合</param>
+            <param name="key">Key</param>
+            <param name="value">Value</param>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClient.toBool(System.String)">
+            <summary>
+            转到到Bool
+            </summary>
+            <param name="input">判断为true的条件：大于0，或者为非空、非"false"的字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.Client.UcClient.toInt(System.String)">
+            <summary>
+            转换到Int
+            </summary>
+            <param name="input">原数据</param>
+            <returns></returns>
+        </member>
+        <member name="T:DS.Web.UCenter.UcApp">
+            <summary>
+            应用Model
+            </summary>
+        </member>
+        <member name="M:DS.Web.UCenter.UcApp.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="xml">数据</param>
+        </member>
+        <member name="M:DS.Web.UCenter.UcApp.#ctor(System.Xml.XmlNode)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="xml">数据</param>
+        </member>
+        <member name="M:DS.Web.UCenter.UcApp.SetProperty">
+            <summary>
+            设置属性
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcApp.AppId">
+            <summary>
+            AppId
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcApp.TypeName">
+            <summary>
+            类型
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcApp.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcApp.Url">
+            <summary>
+            地址
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcApp.Ip">
+            <summary>
+            Ip
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcApp.ViewProUrl">
+            <summary>
+            其他地址
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcApp.ApiFileName">
+            <summary>
+            接口名称
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcApp.CharSet">
+            <summary>
+            字符集
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcApp.SynLogin">
+            <summary>
+            是否同步登陆
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcApp.Extra">
+            <summary>
+            附加信息
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcApp.RecvNote">
+            <summary>
+            传输信息
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.UcPmView">
+            <summary>
+            短消息集合
+            </summary>
+        </member>
+        <member name="M:DS.Web.UCenter.UcPmView.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="xml">数据</param>
+        </member>
+        <member name="M:DS.Web.UCenter.UcPmView.SetProperty">
+            <summary>
+            设置属性
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcPmView.Items">
+            <summary>
+            集合
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.UcUserLogin">
+            <summary>
+            用户登陆Model
+            </summary>
+        </member>
+        <member name="M:DS.Web.UCenter.UcUserLogin.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="xml">数据</param>
+        </member>
+        <member name="M:DS.Web.UCenter.UcUserLogin.#ctor(System.Xml.XmlNode)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="xml">数据</param>
+        </member>
+        <member name="M:DS.Web.UCenter.UcUserLogin.SetProperty">
+            <summary>
+            设置属性
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcUserLogin.Uid">
+            <summary>
+            Uid
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcUserLogin.UserName">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcUserLogin.PassWord">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcUserLogin.Mail">
+            <summary>
+            邮箱
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcUserLogin.HasSameName">
+            <summary>
+            是否有重复的名称
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcUserLogin.Result">
+            <summary>
+            登陆结果
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.DictionaryExtension">
+            <summary>   
+            Dozer 版权所有
+            允许复制、修改，但请保留我的联系方式！
+            http://www.dozer.cc
+            mailto:dozer.cc@gmail.com
+            </summary>
+        </member>
+        <member name="M:DS.Web.UCenter.DictionaryExtension.GetInt(System.Collections.IDictionary,System.String)">
+            <summary>
+            得到Int
+            </summary>
+            <param name="data"></param>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.DictionaryExtension.GetString(System.Collections.IDictionary,System.String)">
+            <summary>
+            得到String
+            </summary>
+            <param name="data"></param>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.DictionaryExtension.GetBool(System.Collections.IDictionary,System.String,System.String)">
+            <summary>
+            得到Bool
+            </summary>
+            <param name="data"></param>
+            <param name="key"></param>
+            <param name="compare"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.DictionaryExtension.GetDateTime(System.Collections.IDictionary,System.String)">
+            <summary>
+            得到DateTime
+            </summary>
+            <param name="data"></param>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.DictionaryExtension.GetDouble(System.Collections.IDictionary,System.String)">
+            <summary>
+            得到Double
+            </summary>
+            <param name="data"></param>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DS.Web.UCenter.DictionaryExtension.GetHashtable(System.Collections.IDictionary,System.String)">
+            <summary>
+            得到Hashtable
+            </summary>
+            <param name="data"></param>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DS.Web.UCenter.UcUserInfo">
+            <summary>
+            用户信息Model
+            </summary>
+        </member>
+        <member name="M:DS.Web.UCenter.UcUserInfo.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="xml">数据</param>
+        </member>
+        <member name="M:DS.Web.UCenter.UcUserInfo.#ctor(System.Xml.XmlNode)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="xml">数据</param>
+        </member>
+        <member name="M:DS.Web.UCenter.UcUserInfo.SetProperty">
+            <summary>
+            设置属性
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcUserInfo.Uid">
+            <summary>
+            Uid
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcUserInfo.UserName">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcUserInfo.Mail">
+            <summary>
+            邮箱
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.UcCreditSetting">
+            <summary>
+            积分设置Model
+            </summary>
+        </member>
+        <member name="M:DS.Web.UCenter.UcCreditSetting.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="xml">数据</param>
+        </member>
+        <member name="M:DS.Web.UCenter.UcCreditSetting.#ctor(System.Xml.XmlNode)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="xml">数据</param>
+        </member>
+        <member name="M:DS.Web.UCenter.UcCreditSetting.SetProperty">
+            <summary>
+            设置属性
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcCreditSetting.AppIdDesc">
+            <summary>
+            积分兑换的目标应用程序 ID
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcCreditSetting.CreditDesc">
+            <summary>
+            积分兑换的目标积分编号
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcCreditSetting.CreditSrce">
+            <summary>
+            积分兑换的源积分编号
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcCreditSetting.Title">
+            <summary>
+            积分名称
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcCreditSetting.Unit">
+            <summary>
+            积分单位
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcCreditSetting.Ratio">
+            <summary>
+            积分兑换比率
+            </summary>
+        </member>
+        <member name="T:DS.Web.UCenter.UcClientSetting">
+            <summary>
+            积分设置Model
+            </summary>
+        </member>
+        <member name="M:DS.Web.UCenter.UcClientSetting.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="xml">数据</param>
+        </member>
+        <member name="M:DS.Web.UCenter.UcClientSetting.#ctor(System.Xml.XmlNode)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="xml">数据</param>
+        </member>
+        <member name="M:DS.Web.UCenter.UcClientSetting.SetProperty">
+            <summary>
+            设置属性
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcClientSetting.AccessEmail">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcClientSetting.CensorEmail">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcClientSetting.CensoruserName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcClientSetting.DateFormat">
+            <summary>
+            时间格式
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcClientSetting.Doublee">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcClientSetting.TimeoffSet">
+            <summary>
+            时区（秒）
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcClientSetting.PmLimit1Day">
+            <summary>
+            每日短消息限制
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcClientSetting.PmFloodCtrl">
+            <summary>
+            短信间隔时间
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcClientSetting.PmCenter">
+            <summary>
+            启用短消息中心
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcClientSetting.SendPmSeccode">
+            <summary>
+            启用短信验证码
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcClientSetting.PmSendRegDays">
+            <summary>
+            发短消息最少注册天数
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcClientSetting.MailDefault">
+            <summary>
+            邮件来源地址
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcClientSetting.MailSend">
+            <summary>
+            邮件发送方式
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcClientSetting.MailServer">
+            <summary>
+            SMTP 服务器
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcClientSetting.MailPort">
+            <summary>
+            SMTP 端口
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcClientSetting.MailAuth">
+            <summary>
+            SMTP 服务器要求身份验证
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcClientSetting.MailFrom">
+            <summary>
+            发信人邮件地址
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcClientSetting.MailAuthUserName">
+            <summary>
+            SMTP 身份验证用户名
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcClientSetting.MailAuthPassWord">
+            <summary>
+            SMTP 身份验证密码
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcClientSetting.MailDelimiter">
+            <summary>
+            邮件分隔符
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcClientSetting.MailUserName">
+            <summary>
+            收件人地址中包含用户名
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcClientSetting.MailSilent">
+            <summary>
+            屏蔽邮件发送中的全部错误提示
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.UcClientSetting.TimeFormat">
+            <summary>
+            12/24小时
+            </summary>
+        </member>
+        <member name="M:DS.Web.UCenter.Api.UcActions.Contains(System.String)">
+            <summary>
+            是否存在这个Action
+            </summary>
+            <param name="action">Action</param>
+            <returns></returns>
+        </member>
+        <member name="P:DS.Web.UCenter.Api.UcActions.Test">
+            <summary>
+            此接口供仅测试连接。当 UCenter 发起 test 的接口请求时，
+            如果成功获取到接口返回的 API_RETURN_SUCCEED 值，表示 UCenter 和应用通讯正常。
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.Api.UcActions.DeleteUser">
+            <summary>
+            当 UCenter 删除一个用户时，会发起 deleteuser 的接口请求，通知所有应用程序删除相应的用户。
+            输入的参数放在 $get['ids'] 中，值为用逗号分隔的用户 ID。如果删除成功则输出 API_RETURN_SUCCEED。
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.Api.UcActions.RenameUser">
+            <summary>
+            当 UCenter 更改一个用户的用户名时，会发起 renameuser 的接口请求，通知所有应用程序改名。
+            输入的参数 $get['uid'] 表示用户 ID，$get['oldusername'] 表示旧用户名，$get['newusername'] 表示新用户名。如果修改成功则输出 API_RETURN_SUCCEED。
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.Api.UcActions.UpdatePw">
+            <summary>
+            当用户更改用户密码时，此接口负责接受 UCenter 发来的新密码。
+            输入的参数 $get['username'] 表示用户名，$get['password'] 表示新密码。如果修改成功则输出 API_RETURN_SUCCEED。
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.Api.UcActions.GetTag">
+            <summary>
+            如果应用程序存在标签功能，可以通过此接口把应用程序的标签数据传递给 UCenter。
+            输入的参数放在 $get['id'] 中，值为标签名称。输出的数组需经过 uc_serialize 处理。
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.Api.UcActions.SynLogin">
+            <summary>
+            如果应用程序需要和其他应用程序进行同步登录，此部分代码负责标记指定用户的登录状态。
+            输入的参数放在 $get['uid'] 中，值为用户 ID。此接口为通知接口，无输出内容。同步登录需使用 P3P 标准。
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.Api.UcActions.SynLogout">
+            <summary>
+            如果应用程序需要和其他应用程序进行同步退出登录，此部分代码负责撤销用户的登录的状态。
+            此接口为通知接口，无输入参数和输出内容。同步退出需使用 P3P 标准。
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.Api.UcActions.UpdateBadWords">
+            <summary>
+            当 UCenter 的词语过滤设置变更时，此接口负责通知所有应用程序更新后的词语过滤设置内容。
+            设置内容用 POST 方式提交到接口。接口运行完毕输出 API_RETURN_SUCCEED。
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.Api.UcActions.UpdateHosts">
+            <summary>
+            当 UCenter 的域名解析设置变更时，此接口负责通知所有应用程序更新后的域名解析设置内容。
+            设置内容用 POST 方式提交到接口。接口运行完毕输出 API_RETURN_SUCCEED。
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.Api.UcActions.UpdateApps">
+            <summary>
+            当 UCenter 的应用程序列表变更时，此接口负责通知所有应用程序更新后的应用程序列表。
+            设置内容用 POST 方式提交到接口。接口运行完毕输出 API_RETURN_SUCCEED。
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.Api.UcActions.UpdateClient">
+            <summary>
+            当 UCenter 的基本设置信息变更时，此接口负责通知所有应用程序更新后的基本设置内容。
+            设置内容用 POST 方式提交到接口。接口运行完毕输出 API_RETURN_SUCCEED。
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.Api.UcActions.UpdateCredit">
+            <summary>
+            当某应用执行了积分兑换请求的接口函数 uc_credit_exchange_request() 后，此接口负责通知被兑换的目的应用程序所需修改的用户积分值。
+            输入的参数 $get['credit'] 表示积分编号，$get['amount'] 表示积分的增减值，$get['uid'] 表示用户 ID
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.Api.UcActions.GetCreditSettings">
+            <summary>
+            此接口负责把应用程序的积分设置传递给 UCenter，以供 UCenter 在积分兑换设置中使用。
+            此接口无输入参数。输出的数组需经过 uc_serialize 处理。
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.Api.UcActions.UpdateCreditSettings">
+            <summary>
+            此接口负责接收 UCenter 积分兑换设置的参数。
+            输入的参数放在 $get['credit'] 中，值为设置的参数数组。接口运行完毕输出 API_RETURN_SUCCEED。
+            </summary>
+        </member>
+        <member name="P:DS.Web.UCenter.Api.UcActions.GetCredit">
+            <summary>
+            此接口用于把应用程序中指定用户的积分传递给 UCenter。
+            输入的参数 $get['uid'] 为用户 ID，$get['credit'] 为积分编号。接口运行完毕输出积分值。
+            </summary>
+        </member>
+    </members>
+</doc>

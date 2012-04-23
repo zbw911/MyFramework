@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "GetDate";
+}
+<script src="../../Scripts/jquery-1.4.4-vsdoc.js" type="text/javascript"></script>
+<script src="../../Scripts/plugin/jSelectDate/jquery.jSelectDate.js" type="text/javascript"></script>
+<script src="../../Content/default/js/provincedate.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".jq_selectdate").jSelectDate({
+            css: "date",
+            yearBegin: 1960,
+            yearEnd: new Date().getFullYear(),
+            disabled: false,
+            showLabel: false,
+            showday: true
+        });
+    });    
+</script>
+<form id="form_date" action="/RegNav/ShowDate">
+<div>
+    <div class="basic_title">
+        <label id="l_birth">
+            生日：</label></div>
+    <input id="birthday" type="text" name="bday" style="display: none;" class="jq_selectdate"
+        value="" />&nbsp;
+</div>
+<input type="submit" id="ck" value="提交" />
+</form>
+
+
+<form action="/Account/AjaxValideRegInfo/" method="post">
+<input type="text" name="code" value="check_nickname" />
+<input type="text" name="check_value" value="门神_2" />
+<input type="submit" value="顶" />
+</form>

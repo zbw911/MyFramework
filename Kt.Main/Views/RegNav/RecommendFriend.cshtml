@@ -1,0 +1,107 @@
+﻿@model IList< Kt.GameWeiBo.Data.Members>
+@{
+    ViewBag.Title = "推荐好友";
+    Layout = "~/Views/Shared/_RegNavMain.cshtml";
+}
+<script type="text/javascript" language="javascript" >
+    function clickLi(id) {
+        
+        var li = $("#" + id);
+        if (li.attr("class") == "") {
+            li.addClass("checked");
+            $("#uids").val($("#uids").val() + id + ",");
+        }
+        else {
+            li.removeClass();
+            $("#uids").val($("#uids").val().replace(id + ",", ""));
+        }
+    }
+    function addfriend() {
+        if ($("#uids").val() == "") {
+            alert("请选择要添加的好友。");
+            return;
+        }
+        
+        $.ajax({
+
+            type: "POST",
+
+            url: "/RegNav/AddmutiFriends",
+            dataType: "html",
+            data: "uids=" + $("#uids").val(),
+            success: function (e) {
+
+                if (e == "true") {
+                    alert("好友申请发送成功");
+                    window.location.href("/UserHome/Index/");
+                }
+                else {
+                    alert("好友申请发送失败请稍后再试");
+                }
+
+
+            }
+
+
+
+
+        });
+
+    }
+
+    
+
+</script>
+
+	<div class="reg_left">
+    <input type="hidden" id="uids" value="@ViewData["uids"].ToString()" />
+    	<div class="reg_title">我们为您找到与您信息相关的21位战友，邂逅身边的游戏情缘</div>
+        <div class="hy">
+        	<ul>
+            @foreach (var item in Model)
+            {
+                <li id="@item.uid" class="checked" onclick="clickLi('@item.uid')"><div class="awatr"><img style="cursor:pointer"  src="@item.face"/></div>
+                    <div class="username">
+                    @if (item.extcredits8 == 1)
+                    {
+                        if (item.gender == 1)
+                        {
+                        <span class="man_on"></span>
+                        }
+                        else if (item.gender == 2)
+                        {
+                            <span class="woman_on"></span>
+                        }
+                    }
+                    else
+                    {
+                        if (item.gender == 1)
+                        {
+                        <span class="man_off"></span>
+                        }
+                        else if (item.gender == 2)
+                        {
+                            <span class="woman_off"></span>
+                        }
+                    }
+                    
+                    
+                    <a target="_blank" href="/userhome/Account/Index?uid=@item.uid">@item.nickname</a></div>
+                    <div class="checkbox"><input type="checkbox" /></div></li>
+            }
+            	
+                
+                    </ul>
+                    <div class="clear"></div>
+              <div class="send"><a href="javascript:void(0)"><img onclick="addfriend()" src="@Url.Content("~/Content/reg/images/add_btn.gif")"/></a><a href="/UserHome/Index/">>>进入个人中心</a></div>      
+        </div>
+        </div>
+     <div class="reg_right2">
+     	<div class="right_title">
+        	<p>找到好友</p>
+            <div>与同城、同游戏的玩家成为好友，随时知道他的游戏现状，与自身游戏玩家共同探讨游戏心得。<br>
+            发送好友申请后将获得<span>@ViewBag.tuandou</span>团豆，<span>@ViewBag.jingyan</span>经验值。</div></div></div>
+
+<div class="clear"></div>
+
+

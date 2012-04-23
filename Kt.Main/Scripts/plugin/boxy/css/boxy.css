@@ -1,0 +1,59 @@
+﻿.boxy-wrapper { position: absolute; }
+.boxy-wrapper.fixed { position: fixed; }
+/* Modal */
+.boxy-modal-blackout { position: absolute; background-color: black; left: 0; top: 0; }
+/* Border */
+.boxy-wrapper { empty-cells: show; }
+.boxy-wrapper .top-left,
+.boxy-wrapper .top-right,
+.boxy-wrapper .bottom-right,
+.boxy-wrapper .bottom-left { width: 10px; height: 10px; padding: 0 }
+.boxy-wrapper .top-left     { background: url(../images/boxy-nw.png); }
+.boxy-wrapper .top-right    { background: url(../images/boxy-ne.png); }
+.boxy-wrapper .bottom-right { background: url(../images/boxy-se.png); }
+.boxy-wrapper .bottom-left  { background: url(../images/boxy-sw.png); }
+/* IE6+7 hacks for the border. IE7 should support this natively but fails in conjuction with modal blackout bg. */
+/* NB: these must be absolute paths or URLs to your images 
+.boxy-wrapper .top-left     { #background: none; #filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src=../images/boxy-nw.png); }
+.boxy-wrapper .top-right    { #background: none; #filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src=../images/boxy-ne.png); }
+.boxy-wrapper .bottom-right { #background: none; #filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src=../images/boxy-se.png); }
+.boxy-wrapper .bottom-left  { #background: none; #filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src=../images/boxy-sw.png); }*/
+.boxy-wrapper .top_boxy,
+.boxy-wrapper .bottom_boxy { height: 10px; background-color: black; opacity: 0.4; filter: alpha(opacity=60); padding: 0 }
+.boxy-wrapper .left_boxy,
+.boxy-wrapper .right_boxy { width: 10px; background-color: black; opacity: 0.4; filter: alpha(opacity=60); padding: 0 }
+/* Title bar */
+.boxy-wrapper .title-bar { background-color:#0066CB;line-height:18px; padding:9px; position: relative; }
+.boxy-wrapper .title-bar .dragging { cursor: move; }
+.boxy-wrapper .title-bar h2 { font-size: 12px; color: white; line-height: 1; margin: 0; padding: 0; font-weight: normal; 
+text-align:left }
+.boxy-wrapper .title-bar a.close:link, .boxy-wrapper .title-bar a.close:visited {text-decoration:none;background-image: url(../images/x_to_hide.gif);background-repeat: no-repeat;background-position: center center;width:14px;height:14px;vertical-align:middle;position: absolute; top: 6px; right: 6px;}
+.boxy-wrapper .title-bar a.close:active, .boxy-wrapper .title-bar a.close:hover {text-decoration:none;background-image: url(../images/x_to_hide_hover.gif);background-repeat: no-repeat;background-position: center center;width:14px;height:14px;vertical-align:middle;position: absolute; top: 6px; right: 6px;}
+/* Content Region */
+.boxy-inner { background-color: white; padding: 0 }
+.boxy-content { padding: 0px; }
+/* Question Boxes */
+.boxy-wrapper .question { width:auto; padding-left:16px; padding-right:16px;max-width:400px; min-height: 40px; font-size:14px; padding-top: 10px;line-height: 2em; text-align: center; color:#4C4C4C;}
+.boxy-wrapper .answers {background-color:#dfdfdf; border-top:1px solid #CCC; padding: 2px; text-align:right; position: relative; font-size:12px; clear:left;}
+.boxy_bottom_bar{background-color:#dfdfdf; border-top:1px solid #CCC; padding: 3px; line-height:23px; text-align:right; position: relative; font-size:12px; clear:left;margin-bottom:0px;}
+.boxy_bottom_bar #btnOk {border-top:1px solid #CCC;border-right:1px solid #666;border-bottom:1px solid #333;border-left:1px solid #CCC;background-color:#B70000;font-size:12px;color:#FFF;padding:3px 13px 3px 13px;width: auto;cursor: pointer;margin-right: 6px;}
+.boxy_bottom_bar #btnCancel {border-top:1px solid #CCC;border-right:1px solid #666;border-bottom:1px solid #333;border-left:1px solid #CCC;background-color:#666;font-size: 12px;color: #FFF;padding:3px 13px 3px 13px;width: auto;cursor: pointer;margin-right: 6px;}
+.boxy_bottom_bar #btnOther {border-top:1px solid #CCC;border-right:1px solid #666;border-bottom:1px solid #333;border-left:1px solid #CCC;background-color:#3366FF;font-size: 12px;color: #FFF;padding:3px 13px 3px 13px;width: auto;cursor: pointer;margin-right: 6px;}
+.flaotWrap{ padding:5px; font-size:12px;}
+.flaotWrap table{ margin:0px; padding:0px; width:100%; background-color:#fff; }
+.flaotWrap .flaotClose{background-color:#d5f0fd; width:20%; height:20px;padding:5px; text-align:right;}
+.flaotWrap .flaotClose a{ float:right; background:url(../images/flaotClose.gif) no-repeat left top; width:14px; height:14px; text-decoration:none;}
+.flaotWrap .flaotClew{ width:80%; background-color:#d5f0fd; height:20px; padding:5px; color:#0688C6; font-weight:bold; font-size:14px;}
+.flaotWrap .flaotBt{ clear:both; overflow:auto; _width:100%; background-color:#d5f0fd; text-align:center; margin-top:10px; padding:5px;}
+.flaotWrap .flaotBt span{ padding:0px 10px;}
+.flaotWrap .flaotContent{background-color:#fff; padding:5px; line-height:20px;}
+.flaotWrap .flaotContent p{ margin:5px 0px; padding:0px;}
+.flaotWrap .flaotContent .c666{ color:#666;}
+.flaotWrap .flaotContent .cFf0{ color:#FF3300;}
+.flaotWrap .flaotContent .hTitle{ margin:0px; padding-top:10px; font-size:12px; width:100%;}
+.flaotWrap .flaotBt .btnCancel {float: right; padding:3px 13px 3px 13px;width: auto;cursor: pointer;margin-right:10px;  border-top:1px solid #ccc;border-right:1px solid #666;border-bottom:1px solid #333;border-left: 1px solid #ccc;background-color:#B00000;font-size: 12px;color:#FFF;}
+.flaotWrap .flaotBt .btnOk {float: right; padding:3px 13px 3px 13px;width: auto;cursor: pointer;margin-right:10px;  border-top:1px solid #ccc;border-right:1px solid #666;border-bottom:1px solid #333;border-left: 1px solid #ccc;background-color:#336699;font-size: 12px;color:#fff;}
+
+.tagSummary{ margin:10px 2px; padding:5px; border:1px solid #feda84; background-color:#fffbe7;}
+.tagSummary h3{ margin:10px 0px; font-size:16px;color:#FF6633;}
+.tagSummary .p1{ margin-left:100px; margin-top:5px; color:#333;}

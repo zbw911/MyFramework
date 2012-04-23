@@ -1,0 +1,101 @@
+.jcarousel-skin-web .jcarousel-container
+{
+    -moz-border-radius: 10px; /*background: #D4D0C8;*/
+    border: 0px ;
+}
+
+.jcarousel-skin-web .jcarousel-container-horizontal
+{
+    width: 716px;
+    height: 110px;
+    margin:44px 8px 0 8px;
+   
+    padding-left:40px;
+    padding-right:0px;
+}
+
+.jcarousel-skin-web .jcarousel-clip-horizontal
+{
+    width: 650px;
+    height: 110px;
+}
+
+.jcarousel-skin-web .jcarousel-item
+{
+    
+    width:145px;
+	height:108px;
+	float:left;
+	border:1px #d8d8d8 solid;
+}
+
+.jcarousel-skin-web .jcarousel-item:hover
+{
+    border-color: #808080;
+}
+
+.jcarousel-skin-web .jcarousel-item-horizontal
+{
+   margin-right: 20px;
+}
+
+.jcarousel-skin-web .jcarousel-item-placeholder
+{
+}
+
+/**
+ *  Horizontal Buttons
+ */
+.jcarousel-skin-web .jcarousel-next-horizontal
+{
+    position: absolute;
+    top: 43px;
+    right: 35px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    background: transparent url(next-horizontal.gif) no-repeat 0 0;
+}
+
+.jcarousel-skin-web .jcarousel-next-horizontal:hover
+{
+    background-position: -32px 0;
+}
+
+.jcarousel-skin-web .jcarousel-next-horizontal:active
+{
+    background-position: -64px 0;
+}
+
+.jcarousel-skin-web .jcarousel-next-disabled-horizontal, .jcarousel-skin-web .jcarousel-next-disabled-horizontal:hover, .jcarousel-skin-web .jcarousel-next-disabled-horizontal:active
+{
+    cursor: default;
+    background-position: -96px 0;
+}
+
+.jcarousel-skin-web .jcarousel-prev-horizontal
+{
+    position: absolute;
+    top: 43px;
+    left: 0px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    background: transparent url(prev-horizontal.gif) no-repeat 0 0;
+}
+
+.jcarousel-skin-web .jcarousel-prev-horizontal:hover
+{
+    background-position: -32px 0;
+}
+
+.jcarousel-skin-web .jcarousel-prev-horizontal:active
+{
+    background-position: -64px 0;
+}
+
+.jcarousel-skin-web .jcarousel-prev-disabled-horizontal, .jcarousel-skin-web .jcarousel-prev-disabled-horizontal:hover, .jcarousel-skin-web .jcarousel-prev-disabled-horizontal:active
+{
+    cursor: default;
+    background-position: -96px 0;
+}

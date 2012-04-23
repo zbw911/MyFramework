@@ -1,0 +1,374 @@
+﻿@{
+    Layout = "~/Views/Shared/_RegNavMain.cshtml";
+    ViewBag.Title = "基本资料 个人资料_游戏说_网络游戏论坛社区";
+    Kt.GameWeiBo.Model.MemberFields _my = ViewData["Members"] as Kt.GameWeiBo.Model.MemberFields;
+}
+<script language="javascript" type="text/javascript" src="@Url.Content("~/Content/default/js/provincedate.js")"></script>
+<script language="javascript" type="text/javascript" src="@Url.Content("~/Scripts/plugin/jSelectDate/jquery.jSelectDateForUserInfo.js")"></script>
+<script language="javascript" type="text/javascript" src="@Url.Content("~/Content/default/js/city.js")"></script>
+<div class="content">
+    <div class="reg_left">
+        <div class="reg_title">
+            认真填写资料，为您更精准的推荐朋友。</div>
+        <form method="post" id="uinfo" action="/RegNav/UserInfo?fromsys=@ViewBag.fromsys">
+        <div class="reg_form">
+            <div class="new_item">
+                <div class="tit">
+                    真实姓名</div>
+                <div class="bdmain" id="tname_info">
+                    <div class="bd_input">
+                        <input type="text" id="truename" name="truename" onblur="javascript:blurTruename()"
+                            onfocus="javascript:truenamefocus()"  value="@(_my.Members.truename)"/>
+                    </div>
+                    <input type="text" id="uid" name="uid" style="display:none" value="@Kt.Framework.User.User.MEMBER_ID" />
+                </div>
+                <div class="clear">
+                </div>
+            </div>
+            <div class="new_item">
+                <div class="tit">
+                    婚恋</div>
+                <div class="bdmain">
+                    <div class="bd_zl_select">
+                        <select name="marriage" id="marriage">
+                            <option value="" @if (_my.Memberfields.marriage == null)
+                                             { 
+                                @:selected="selected"
+                                }>请选择</option>
+                            <option value="0" @if (_my.Memberfields.marriage != null && Convert.ToInt32(_my.Memberfields.marriage) == 0)
+                                              { 
+                                @:selected="selected"
+                                }>未婚</option>
+                            <option value="1" @if (Convert.ToInt32(_my.Memberfields.marriage) == 1)
+                                              { 
+                                @:selected="selected"
+                                }>已婚</option>
+                        </select></div>
+                </div>
+                <div class="clear">
+                </div>
+            </div>
+            <div class="new_item">
+                <div class="tit">
+                    血型</div>
+                <div class="bdmain">
+                    <div class="bd_zl_select">
+                        <select name="blood" id="bloodtype">
+                            <option value="" @if (String.IsNullOrEmpty(_my.Memberfields.blood.ToString()))
+                                             { 
+                                @:selected="selected"
+                                }>请选择</option>
+                            <option value="1" @if (Convert.ToInt32(_my.Memberfields.blood) == 1)
+                                              { 
+                                @:selected="selected"
+                                }>A型</option>
+                            <option value="2" @if (Convert.ToInt32(_my.Memberfields.blood) == 2)
+                                              { 
+                                @:selected="selected"
+                                }>B型</option>
+                            <option value="3" @if (Convert.ToInt32(_my.Memberfields.blood) == 3)
+                                              { 
+                                @:selected="selected"
+                                }>O型</option>
+                            <option value="4" @if (Convert.ToInt32(_my.Memberfields.blood) == 4)
+                                              { 
+                                @:selected="selected"
+                                }>AB型</option>
+                            <option value="5" @if (Convert.ToInt32(_my.Memberfields.blood) == 5)
+                                              { 
+                                @:selected="selected"
+                                }>其它</option>
+                        </select></div>
+                </div>
+                <div class="clear">
+                </div>
+            </div>
+            <div class="new_item">
+                <div class="tit">
+                    生日</div>
+                <div class="bdmain">
+                    <div class="bd_zl_select">
+                        @{
+                            var temp = _my.Members.bday.ToString();
+                            if (temp == "0001-01-01 0:00:00")
+                            {
+                                temp = "";
+                            }
+                        }
+                        <input type="text" name="bday" id="bday" class="jq_selectdate" style="display: none;" value="@(temp)"/></div>
+                </div>
+                <div class="clear">
+                </div>
+            </div>
+            <div class="new_item">
+                <div class="tit">
+                    星座</div>
+                <div class="bdmain">
+                    <div class="bd_xz">
+                        <select name="constellation" id="constellation">
+                            <option value="-1" @if (_my.Memberfields.constellation == null)
+                                               { 
+                                @:selected="selected"
+                                }>请选择</option>
+                            <option value="0" @if (_my.Memberfields.constellation != null && Convert.ToInt32(_my.Memberfields.constellation) == 0)
+                                              { 
+                                @:selected="selected"
+                                }>白羊座(03/21 - 04/19) </option>
+                            <option value="1" @if (Convert.ToInt32(_my.Memberfields.constellation) == 1)
+                                              { 
+                                @:selected="selected"
+                                }>金牛座(04/20 - 05/20) </option>
+                            <option value="2" @if (Convert.ToInt32(_my.Memberfields.constellation) == 2)
+                                              { 
+                                @:selected="selected"
+                                }>双子座(05/21 - 06/21) </option>
+                            <option value="3" @if (Convert.ToInt32(_my.Memberfields.constellation) == 3)
+                                              { 
+                                @:selected="selected"
+                                }>巨蟹座(06/22 - 07/22) </option>
+                            <option value="4" @if (Convert.ToInt32(_my.Memberfields.constellation) == 4)
+                                              { 
+                                @:selected="selected"
+                                }>狮子座(07/23 - 08/22) </option>
+                            <option value="5" @if (Convert.ToInt32(_my.Memberfields.constellation) == 5)
+                                              { 
+                                @:selected="selected"
+                                }>处女座(08/23 - 09/22) </option>
+                            <option value="6" @if (Convert.ToInt32(_my.Memberfields.constellation) == 6)
+                                              { 
+                                @:selected="selected"
+                                }>天秤座(09/23 - 10/23) </option>
+                            <option value="7" @if (Convert.ToInt32(_my.Memberfields.constellation) == 7)
+                                              { 
+                                @:selected="selected"
+                                }>天蝎座(10/24 - 11/22) </option>
+                            <option value="8" @if (Convert.ToInt32(_my.Memberfields.constellation) == 8)
+                                              { 
+                                @:selected="selected"
+                                }>射手座(11/23 - 12/21) </option>
+                            <option value="9" @if (Convert.ToInt32(_my.Memberfields.constellation) == 9)
+                                              { 
+                                @:selected="selected"
+                                }>摩羯座(12/22 - 01/19) </option>
+                            <option value="10" @if (Convert.ToInt32(_my.Memberfields.constellation) == 10)
+                                               { 
+                                @:selected="selected"
+                                }>水瓶座(01/20 - 02/18) </option>
+                            <option value="11" @if (Convert.ToInt32(_my.Memberfields.constellation) == 11)
+                                               { 
+                                @:selected="selected"
+                                }>双鱼座(02/19 - 03/20) </option>
+                        </select></div>
+                </div>
+                <div class="clear">
+                </div>
+            </div>
+            <div class="new_item">
+                <div class="tit">
+                    家乡</div>
+                <div class="bdmain">
+                    <div class="bd_zl_select">
+                        <select id="homeprovince" name="homeprovince">
+                        </select>
+                        省(直辖市)
+                        <select id="homecity" name="homecity">
+                        </select>
+                        市(地区)</div>
+                </div>
+                <div class="clear">
+                </div>
+            </div>
+            <div class="new_item">
+                <div class="tit">
+                    联系QQ</div>
+                <div class="bdmain" id="phone_info">
+                    <div class="bd_input">
+                        <input type="text" name="qq" id="qq" onfocus="javascript:QQFocus();" onblur="javascript:QQBlur();" value="@(Dx.Common.EncryptFunc.JieMi(_my.Members.qq))" /></div>
+                </div>
+                <div class="clear">
+                </div>
+            </div>
+            <div class="new_item">
+                <p class="con_button">
+                    <a class="" href="javascript:void(0)" onclick="javascript:submitbtn();return false;">
+                        <img src="@Url.Content("~/content/reg/images/ws_btn.png")"></a><a href="javascript:void(0)"
+                            onclick="javascript:window.location.href='/regnav/createrole';return false;"
+                            id="a_tiaoguo">>>偷懒跳过</a></p>
+            </div>
+        </div>
+        </form>
+    </div>
+    <div class="reg_right2">
+        <div class="right_title">
+            <p>
+                填写基本资料</p>
+            <div>
+                完整的填写左侧个人信息，您将得到<span>@ViewBag.tuandou</span>团豆，<span>@ViewBag.jingyan</span>经验值，此外我们还能为您提供更多个性服务。</div>
+        </div>
+        <div class="right_alert">
+            <p>
+                根据您的注册信息，</p>
+            <p>
+                我们找到了您可能感兴趣的朋友。</p>
+        </div>
+        <div class="right_2">
+            <div class="right_name">
+                同城朋友<<
+            </div>
+            <div id="samecityfriend">
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+        <div class="right_2">
+            <div class="right_name">
+                异性朋友<<
+            </div>
+            <div id="OppositeSex">
+            </div>
+        </div>
+    </div>
+    <div class="clear">
+    </div>
+</div>
+<script language="javascript" type="text/javascript">
+    $(document).ready(function () {
+        $(".jq_selectdate").jSelectDate({
+            css: "date",
+            yearBegin: 1960,
+            yearEnd: new Date().getFullYear(),
+            disabled: false,
+            showLabel: false,
+            showday: true
+        });
+        //生日增加请选择的选项
+        $("#selYear1").prepend("<option value=''>请选择</option>");
+        $("#selYear1").val("");
+        $("#selMonth1").prepend("<option value=''>请选择</option>");
+        $("#selMonth1").val("");
+        $("#selDay1").prepend("<option value=''>请选择</option>");
+        $("#selDay1").val("");
+
+        $("#homeprovince").doubleSelect('homecity', selectOption, { preselectFirst: '@_my.Members.homeprovince', preselectSecond: '@_my.Members.homecity' });
+        if ($("#truename").val().length > 0)
+            $('#tname_info').next(".reg_warn").remove();
+        //获取同城朋友
+        $.ajax({
+            type: "POST",
+            url: "/userhome/friend/_SameCityFriend",
+            async: true,
+            success: function (data) {
+                $("#samecityfriend").html(data);
+            }
+        });
+        //获取异性朋友
+        $.ajax({
+            type: "POST",
+            url: "/userhome/friend/_OppositeSexFriend",
+            async: true,
+            success: function (data) {
+                $("#OppositeSex").html(data);
+            }
+        });
+        //判断 是否是从团卡过来的 从团卡过来的隐藏 偷懒跳过 连接
+        var temp = "@ViewBag.fromsys";
+        if (temp == "groupbuy") {
+            $("#a_tiaoguo").hide();
+        }
+        //生日选择
+        if ($(".jq_selectdate").val().length > 0) {
+            var temp = $(".jq_selectdate").val().split(" ");
+            if (temp.length == 2) {
+                var tempa = temp[0].split("-");
+                if (tempa.length == 3) {
+                    $("#selYear1").val(tempa[0]);
+                    $("#selMonth1").val(tempa[1]);
+                    $("#selDay1").val(tempa[2]);
+                }
+            }
+        }
+    });
+
+    //form按钮的提交
+    function submitbtn() {
+        //alert($("#selYear1").val() + "," + $("#selMonth1").val() + "," + $("#selDay1").val());
+
+        if ($("#selYear1").val().length == 0 && $("#selMonth1").val().length == 0 && $("#selDay1").val().length == 0)
+            $(".jq_selectdate").val("");
+
+        if ($(".reg_msg").html() == null && $(".error").html() == null) {
+            $("#uinfo").submit();
+        }
+    }
+
+    // 
+</script>
+<!--真实姓名-->
+<script language="javascript" type="text/javascript">
+    function truenamefocus() {
+        //if ($('#tname_info').after(".reg_warn") != null)
+        $('#tname_info').next(".reg_warn").remove();
+        $('#tname_info').after('<div class=\'reg_msg\'><span>请输入4-16个字符，默认仅好友可见</span></div>');
+    }
+    function blurTruename() {//提示的方式和信息后来和郑丽洁核实过，按代码里的提示。若按文档里要求的，则提示的错误信息换行了。
+        //检测 只允许输入汉字和字母
+        //alert($("#tname_info").next(".reg_msg").html());
+        $("#tname_info").next(".reg_msg").remove();
+        var temp = $("#truename").val();
+        if (temp.length == 0) {
+            $("#tname_info").next(".reg_warn").remove();
+            $("#tname_info").after("<div class='reg_warn'><span class='error'></span><span>请输入4-16个字符，默认仅好友可见</span></div>");
+        }
+        for (var i = 0; i < temp.length; i++) {
+            var tempc = temp.charCodeAt(i);
+            if (tempc > 255 || (tempc >= 97 && tempc <= 122) || (tempc >= 65 && tempc <= 90)) {
+                continue;
+            } else {
+                $("#tname_info").next(".reg_warn").remove();
+                $("#tname_info").after("<div class='reg_warn'><span class='error'></span><span>请输入汉字或字母</span></div>");
+                return;
+            }
+        }
+
+        var templen = GetCharLength(temp);
+        if (templen < 4) {
+            $("#tname_info").next(".reg_warn").remove();
+            $("#tname_info").after("<div class='reg_warn'><span class='error'></span><span>最少4个字符，一个汉字等于两个字符</span></div>");
+        }
+        else
+            if (templen > 16) {
+                $("#tname_info").next(".reg_warn").remove();
+                $("#tname_info").after("<div class='reg_warn'><span class='error'></span><span>最多16个字符,一个汉字等于两个字符</span></div>");
+            }
+            else
+                $("#tname_info").next(".reg_warn").remove(); ;
+    }
+    function GetCharLength(str) {
+        var iLength = 0;
+        for (var i = 0; i < str.length; i++) {
+            if (str.charCodeAt(i) > 255) {
+                iLength += 2;
+            } else {
+                iLength += 1;
+            }
+        }
+        return iLength;
+    }
+</script>
+<!--联系QQ相关的函数-->
+<script language="javascript" type="text/javascript">
+
+    function QQBlur() {
+        $('#phone_info').next('.reg_msg').remove();
+        $('#phone_info').next('.reg_warn').remove();
+        if (!(/^[0-9]*[1-9][0-9]*$/.test($("#qq").val()))) {
+            $('#phone_info').after('<div class=\'reg_warn\'><span class=\'error\'></span><span>联系QQ只能输入整数！</span></div>');
+        }
+    }
+    function QQFocus() {
+        $('#phone_info').next('.reg_msg').remove();
+        $('#phone_info').next('.reg_warn').remove();
+        $('#phone_info').after('<div class=\'reg_msg\'><span>联系QQ只能输入整数！默认仅好友可见</span></div>');
+    }
+    
+</script>

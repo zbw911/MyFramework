@@ -1,0 +1,123 @@
+﻿@model Kt.GameWeiBo.Model.ViewMember
+@{
+    ViewBag.Title = "账号激活信息提示";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+<link href="@Url.Content("~/Content/default/styles/main.css")" rel="stylesheet" type="text/css" />
+<script language="javascript" type="text/javascript" src="@Url.Content("~/Scripts/jquery-1.4.4-vsdoc.js")"></script>
+<div class="main_2">
+  <div class="main_t">
+        @if (Model.Members != null)
+        {
+            <span>请点击下边按钮进行邮件激活</span>
+        }
+        else
+        { 
+            <span>请点击下边按钮进行账号激活</span>
+        }
+        </div>
+<div class="set_warp">
+<div class="jihuo_wapper">
+
+
+@if (Model.Members != null)
+{
+    <form action="/account/activateaccount/" method="POST" name="theForm">
+    <input type="hidden" name="redirect" value="1" />
+    <input type="hidden" name="activestatus" value="1" />
+    <p>
+        <span>账号：</span>@(ViewBag.loginId)</p>
+    <p>
+        <span>邮箱：</span><input type="text" name="email"  id="email" maxlength="25" value="@(Model.Members.email)" readonly="readonly" style="border:0px;"/></p>
+    <p>
+        <span>昵称：</span><input type="text" name="nickname"  id="nickname" maxlength="14" value="@(Model.Members.nickname)"  readonly="readonly" style="border:0px;"/>
+    </p>
+    <p>
+        <span>密码：</span><input type="password" name="password" id="password" /></p>
+    <input type="submit" value="邮件激活" name="submit" class="jihuo_sub" onclick="return checkSubmit();" />
+    </form>
+}
+else
+{ 
+    <form action="/account/activateaccount/" method="POST" name="theForm">
+    <input type="hidden" name="redirect" value="1" />
+    <input type="hidden" name="activestatus" value="0" />
+    <p>
+        <span>账号：</span>@(ViewBag.loginId)
+    </p>
+    @if (!string.IsNullOrEmpty (ViewBag.email)|| ViewBag.email == "0@0.com")
+    {
+        <p>
+            <span>邮箱：</span><input type="text" name="email" id="email" maxlength="25" value="@(ViewBag.email)" style="border:0px;" readonly="readonly" />
+        </p>
+    }
+    else
+    { 
+        <p>
+            <span>邮箱：</span><input type="text" name="email" id="email" maxlength="25" />
+        </p>
+    }
+    <p>
+        <span>昵称：</span><input type="text" name="nickname" id="nickname" maxlength="14" /></p>
+    <p>
+        <span>密码：</span><input type="password" name="password" id="password" /></p>
+    <input type="submit" value="账号激活" name="submit" class="jihuo_sub" onclick="return checkSubmit();" />
+    </form>
+}
+</div>
+</div>
+</div>
+<script type="text/javascript" language="javascript">
+    function checkSubmit() {
+        if (!!$("#email").val() == false) {
+            window.alert("激活邮箱不能为空！");
+            return false;
+        }
+        else if (!!$("#nickname").val() == false) {
+            window.alert("用户昵称不能为空！");
+            return false;
+        }
+        else if (!!$("#password").val() == false) {
+            window.alert("密码不能为空！");
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+    //昵称截取
+    $("#nickname").keyup(function () {
+        val = $(this).val();
+        if (GetCharLength(val) > 14) {
+            $(this).val(CutStr(val, 14));
+        }
+    });
+    function GetCharLength(str) {
+        var iLength = 0;
+        for (var i = 0; i < str.length; i++) {
+            if (str.charCodeAt(i) > 255) {
+                iLength += 2;
+            } else {
+                iLength += 1;
+            }
+        }
+        return iLength;
+    }
+    function CutStr(Str, Len) {
+        var CurStr = "";
+        for (var i = 0; i < Str.length; i++) {
+            CurStr += Str.charAt(i);
+            if (GetCharLength(CurStr) > Len) {
+                return Str.substring(0, i);
+            }
+        }
+        return CurStr;
+    } 
+</script>
+<style type="text/css">
+.jihuo_wapper{width:400px;margin:10px auto;font-size:14px;}
+.jihuo_wapper p{margin-bottom:20px}
+.jihuo_wapper p input{width:230px;height:21px;}
+.jihuo_wapper p span{display:inline-block;width:50px;}
+.jihuo_sub{margin-left:115px;width:80px}
+</style>

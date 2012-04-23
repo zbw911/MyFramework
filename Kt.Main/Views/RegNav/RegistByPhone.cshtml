@@ -1,0 +1,629 @@
+﻿@model Kt.GameWeiBo.Model.ViewModel.ViewDataStatistics 
+@{
+    ViewBag.Title = "手机号码注册_游戏说_网络游戏论坛社区";
+    Layout = "/Views/Shared/_RegNavMain.cshtml";
+}
+<link href="@Url.Content("~/Content/default/images/favicon.ico")" rel="shortcut icon" type="text/css" />
+<!--
+<link href="@Url.Content("~/Content/default/styles/main.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/top.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/default/styles/reg.css")" rel="stylesheet" type="text/css" />
+-->
+<script type="text/javascript" src="/Content/default/js/reg.js"></script>
+<script language="javascript" type="text/javascript" src="/Content/default/js/provincedate.js"></script>
+<!--
+<script src="/Scripts/plugin/autocomplete/ui/jquery.autocomplete.js" type="text/javascript"></script>
+<link href="/Scripts/plugin/autocomplete/css/jquery.autocomplete.css" rel="stylesheet"
+    type="text/css" />
+   -->
+<script src="/Scripts/plugin/autocomplete/ui/jquery-ui-1.8.11.custom.min.js" type="text/javascript"></script>
+<link type="text/css" rel="Stylesheet" href="/Scripts/plugin/autocomplete/css/jquery-ui-1.8.11.custom.css" />
+<style type="text/css">
+    #check_img
+    {
+        vertical-align: middle;
+    }
+</style>
+<div class="reg_left">
+    <div class="reg_tab">
+        <span class="tab1"><a href="/RegNav/RegistByEmail/">电子邮箱注册</a></span> <span class="tab2">
+            <a href="/RegNav/RegistByPhone/" class="cur">手机号码注册</a></span>
+    </div>
+    <div class="tk_title">
+        欢迎加入游戏说</div>
+    <form id="regForm" action="/RegNav/RegistByPhone/" method="post" target="_top">
+    <div class="reg_form">
+        <div class="new_item">
+            <div class="tit">
+                我的手机号</div>
+            <div class="bdmain" id="b_phone">
+                <div class="bd_input">
+                    <input type="text" name="phone" id="phone" autocomplete="off" value="" class="regP"
+                        maxlength="11" />
+                </div>
+            </div>
+            <!--
+            <div class="reg_msg" id="Waiter"><span>请填写手机号，必须是11位数字，且以13/14/15/18开头</span></div>
+            -->
+            <div>
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+        <div class="new_item">
+            <div class="tit">
+                创建密码</div>
+            <div class="bdmain" id="b_pass">
+                <div class="bd_input">
+                    <input type="password" name="password" id="password" value="" class="regP" maxlength="16"
+                        onkeyup="pwStrength2(this.value)" />
+                </div>
+            </div>
+            <!--
+            <div class="reg_msg">
+                <span>密码由6-16位半角字符组成，区分大小写</span>
+            </div>
+            -->
+            <div>
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+        <div class="new_item">
+            <div class="tit">
+                确认密码</div>
+            <div class="bdmain" id="b_pass2">
+                <div class="bd_input">
+                    <input type="password" name="password2" id="password2" value="" class="regP" maxlength="16" />
+                </div>
+            </div>
+            <!--
+            <div class="reg_msg">
+                <span>确认密码由6-16位半角字符组成，区分大小写</span>
+            </div>
+            -->
+            <div>
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+        <div class="new_item">
+            <div class="tit">
+                昵称</div>
+            <div class="bdmain" id="b_nickname">
+                <div class="bd_input">
+                    <input name="nickname" value="@ViewBag.apiNickName" type="text" id="nickname" maxlength="14"  class="regP"/>
+                </div>
+            </div>
+            <div>
+            </div>
+            <!--
+            <div class="reg_msg">
+                <span>设定后不允许修改，长度在4至14个字符之间</span>
+            </div>
+            -->
+            <div class="clear">
+            </div>
+        </div>
+        <div class="new_item">
+            <div class="tit">
+                性别</div>
+            <div class="bdmain">
+                <div class="bd_radio">
+                    <span class="man">
+                        <input type="radio" id="man" name="gender" value="1" checked="checked" /><label for="man">男</label></span>
+                    <span class="woman">
+                        <input type="radio" id="woman" name="gender" value="2" /><label for="woman">女</label></span></div>
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+        <div class="new_item">
+            <div class="tit">
+                所在地</div>
+            <div class="bdmain" id="b_area">
+                <div class="bd_select">
+                    <span>
+                        <select id="province" name="province" style="width: 80px">
+                        </select></span> <span>
+                            <select id="city" name="city" style="width: 80px;">
+                            </select></span></div>
+                <div class="bd-con">
+                    <span>选择所在地帮你找到离你最近的游戏战友</span></div>
+            </div>
+            <div>
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+        <div class="new_item">
+            <div class="tit">
+                手机认证码</div>
+            <div class="bdmain" id="b_valid">
+                <div class="bd_check">
+                    <span>
+                        <input name="authenticationcode" value="" type="text" id="authenticationcode" maxlength="4" /></span>
+                </div>
+            </div>
+            <div class="phone_alert1">
+                1分钟内手机还没有收到验证码，请点击此处<a href="javascript:void(0)" onclick="sendATcode()">重发</a><br />
+                尝试多次仍收不到验证码，请使用<a href="/RegNav/RegistByEmail">电子邮箱注册</a>
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+        <!--
+        <div class="new_item">
+            <div class="bd-des">
+                <div class="tit">
+                </div>
+                <div class="bdmain">
+                    <p>
+                        <input type="checkbox" name="istakeshortmessage" id="istakeshortmessage" checked="checked" />
+                        <label for="check">
+                            订阅每日最新团购信息</label></p>
+                    <p>
+                        <span>订阅后将收到每日团购邮件，可随时取消订阅。</span></p>
+                </div>
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+        -->
+        <div class="new_item">
+            <p class="reg_button">
+                <a onclick="regForm()" id="Submit" name="Submit" class="">
+                    <img src="/content/reg/images/reg.png" alt="加入我们一起玩" /></a></p>
+            <p class="xieyi">
+                点击注册，即表明您已阅读并同意<a href="/Content/Help/agreement.html" target="_blank">用户协议</a></p>
+        </div>
+    </div>
+    </form>
+</div>
+<div class="reg_right">
+    <div class="reg_login">
+        <p>
+            已有@(Kt.GameWeiBo.Common.GlobalConfig.site_name)账号？</p>
+        <p>
+            <a href="/regnav/Logon/" class="reg_login_bt" title="登录即可分享新鲜事">登录</a></p>
+    </div>
+    <div class="login_other" style="display: none">
+        <p>
+            <span class="ico o1"></span><a id="a01">使用QQ号登录</a></p>
+        <p>
+            <span class="ico o2"></span><a id="a02">使用新浪微博账号登录</a></p>
+    </div>
+    <div class="reg_r2">
+        <div>
+            游戏说</div>
+        <p>
+            已有<span>@(Model.regCount)</span>用户加入，</p>
+        <p>
+            已发布<span>@(Model.topicCount)</span>条游历，</p>
+        <p>
+            已收录<span>@(ViewBag.gameCount)</span>余款游戏，<span>@(ViewBag.serverCount)</span>组服务器。</p>
+    </div>
+</div>
+<div class="clear">
+</div>
+<script language="javascript" type="text/javascript">
+$(document).ready(function () {
+        var url = "@System.Configuration.ConfigurationSettings.AppSettings["ApiCenter"].ToString()" + "?from=youxishuo&to=";
+        $("#a01").attr("href", "@System.Configuration.ConfigurationSettings.AppSettings["QQApiCenter"].ToString()"+"?from=youxishuo&to=qzone");
+        $("#a02").attr("href", url + "sina");
+        $("#a03").attr("href", url+"kaixin");            
+        $("#a04").attr("href", url + "taobao");
+});
+</script>
+<script type="text/javascript">
+
+    function regForm() {
+        $("#regForm").submit();
+    }
+
+    function sendATcode() {
+        var phone = $("#phone").val();
+
+        $.post("/Regnav/SendCode/", { phone: phone }, function (d) {
+            if (String(d).toLowerCase() == "true") {
+                $("#Waiter").html('<span class="second_w">请等待<span id="seconds">60</span>秒后再发！</span>');
+                countseconds(60, "seconds");
+                setTimeout(function () {
+                    clearInterval(X_Des);
+                    $("#Waiter").html('<span class="right"></span><a href="javascript:void(0)" onclick="sendATcode()">免费获取认证码</a>')
+                }, 60000);
+            }
+        });
+    }
+
+    var X_Des;
+    function countseconds(sec, domid) {
+        X_Des = setInterval(function () {
+            sec = sec - 1;
+            $("#" + domid).html(sec);
+        }, 1000);
+    }
+
+</script>
+<!--密码强度提示-->
+<script type="text/javascript" language="javascript">
+    function CharMode(iN) {
+        if (iN >= 48 && iN <= 57) //数字
+            return 1;
+        if (iN >= 65 && iN <= 90) //大写字母
+            return 2;
+        if (iN >= 97 && iN <= 122) //小写
+            return 4;
+        else
+            return 8; //特殊字符
+    }
+    function bitTotal(num) {
+        modes = 0;
+        for (i = 0; i < 5; i++) {
+            if (num & 1) modes++;
+            num >>>= 1;
+        }
+        return modes;
+    }
+    function checkStrong(sPW) {
+        if (sPW.length <= 5)
+            return 0;  //密码太短
+        Modes = 0;
+        for (i = 0; i < sPW.length; i++) {
+            Modes |= CharMode(sPW.charCodeAt(i));
+        }
+        return bitTotal(Modes);
+    }
+    function pwStrength(pwd, vImg, vImgs, ilength) {
+
+        if (pwd == null || pwd == '') {
+            document.getElementById(vImg).className = "m";
+        }
+        else {
+            S_level = checkStrong(pwd);
+            switch (S_level) {
+                case 0:
+                    document.getElementById(vImg).className = "m";
+                    break;
+                case 1:
+                    document.getElementById(vImg).className = "r";
+                    break;
+                case 2:
+                    document.getElementById(vImg).className = "z";
+                    break;
+                default:
+                    document.getElementById(vImg).className = "q";
+
+            }
+        }
+        return;
+    }
+
+    function pwStrength2(pwd) {
+        if (pwd == null || pwd == '') {
+            //document.getElementById(vImg).className = "m";
+            //$("#" + sPan).hide();            
+        }
+        else {
+            S_level = checkStrong(pwd);
+            switch (S_level) {
+                case 0:
+                    //document.getElementById(vImg).className = "m";
+                    //$("#b_pass").after('<div class="reg_msg" id="tips_email"><span>密码由6-16位半角字符组成，区分大小写</span></div>');
+
+                    break;
+                case 1:
+                    //document.getElementById(vImg).className = "r";
+                    $("#b_pass").next().remove();
+                    $("#b_pass").after('<div class="reg_warn"><span class="right"></span><span class="w1 w"></span></div>');
+                    break;
+                case 2:
+                    //document.getElementById(vImg).className = "z";
+                    $("#b_pass").next().remove();
+                    $("#b_pass").after('<div class="reg_warn"><span class="right"></span><span class="w2 w"></span></div>');
+                    break;
+                default:
+                    //document.getElementById(vImg).className = "q";
+                    $("#b_pass").next().remove();
+                    $("#b_pass").after('<div class="reg_warn"><span class="right"></span><span class="w3 w"></span></div>');
+            }
+        }
+        return;
+    }
+</script>
+<script type="text/javascript" language="javascript">
+    var weburl = '@(System.Configuration.ConfigurationManager.AppSettings["KATUAN_URL"].ToString())';
+    var error = 1;
+
+    function _intiValidCodeTips() {
+        //validcode
+        if ($.trim($("#authenticationcode").val()) == "") {
+            $("#b_valid").next().remove();
+            $("#authenticationcode").val("");
+            $("#b_valid").after('<div></div>');
+        }
+    }
+
+    function _checkValidCode() {
+        var obj = $('input[name=authenticationcode]');
+        $("#b_valid").next().remove();
+        error = 0;
+
+        if (GetCharLength($(obj).val()) != 4) {
+            $("#b_valid").after('<div class="reg_warn"><span class="error"></span><span>请输入4位认证码</span></div>');
+            error = 1;
+            return false;
+        }
+        else {
+            $("#b_valid").after('<div class="phone_alert1"><span class="right"></span><span>1分钟内手机还没有收到验证码，请点击此处<a href="javascript:void(0)" onclick="sendATcode()">重发</a><br />尝试多次仍收不到验证码，请使用<a href="/RegNav/RegistByEmail">电子邮箱注册</a></span></div>');
+            error = 0;
+            return true;
+        }
+    }
+
+    function _initusernameTips() {
+        if ($.trim($("#nickname").val()) == "") {
+            $("#b_nickname").next().remove();
+            $("#nickname").val("");
+            $("#b_nickname").after('<div class="reg_msg"><span>长度在4至14个字符之间</span></div>');
+        }
+    }
+
+    function _checkusername(toserver) {
+        var obj = $('input[name=nickname]');
+        $("#b_nickname").next().remove();
+        error = 0;
+        if (GetCharLength($(obj).val()) < 4 || GetCharLength($(obj).val()) > 14) {
+            $("#b_nickname").after('<div class="reg_warn"><span class="error"></span><span>长度在4至14个字符之间</span></div>');
+            error = 1;
+            return false;
+        }
+        //window.alert(!toserver);
+        if (!toserver) return true; //是否进行server验证
+        $.ajax({
+            url: "/Account/AjaxValideRegInfo/",
+            async: false,
+            type: "POST",
+            data: "code=check_nickname&check_value=" + encodeURI($(obj).val()),
+            timeout: 100000,
+            error: function () { },
+            success: function (r) {
+                if (r != '') {
+                    $("#b_nickname").after('<div class="reg_warn"><span class="error"></span><span>' + r + '</span></div>');
+                    error = 1;
+                    return false;
+                }
+                else {
+                    $("#b_nickname").after('<div class="reg_warn"><span class="right"></span><span>设定后不允许修改</span></div>');
+                    error = 0;
+                    return true;
+                }
+            }
+        });
+    }
+
+    function _initPasswordTips() {
+        if ($.trim($("#password").val()) == "") {
+            $("#b_pass").next().remove();
+            $("#password").val("");
+            $("#b_pass").after('<div class="reg_msg"><span>密码由6-16位半角字符组成，区分大小写</span></div>');
+        }
+    }
+
+    function _checkPassword() {
+        var obj = $('input[name=password]');
+        $("#b_pass").next().remove();
+        error = 0;
+        if ($(obj).val() == "") {
+            $('#b_pass').after('<div class="reg_warn"><span class="error"></span><span>密码不能为空</span></div>');
+        }
+
+        else if ($(obj).val() != $('input[name=password2]').val() && $('input[name=password2]').val().length > 0) {
+            $('#b_pass2').next().remove();
+            $('#b_pass2').after('<div class="reg_warn"><span class="error"></span><span>两次输入密码不一致</span></div>');
+            $('#b_pass').after('<div class="reg_warn" id="ps_1"><span class="error"></span><span>两次输入密码不一致</span></div>');
+        }
+
+        else if ($(obj).val().length < 6 || $(obj).val().length > 16) {
+            $("#b_pass").after('<div class="reg_warn"><span class="error"></span><span>密码长度应在6到16之间</span></div>');
+            error = 1;
+            return false;
+        }
+        else if (checkStrong($(obj).val()) < 1) {
+            $("#b_pass").after('<div class="reg_warn"><span class="error"></span><span>密码强度太低，请输入更复杂的密码</span></div>');
+            error = 1;
+            return false;
+        }
+        else {
+            $("#b_pass").after('<div class="reg_warn"><span class="right"></span></div>');
+            error = 0;
+            return true;
+        }
+    }
+
+    function _intiRepasswordTips() {
+        if ($.trim($("#password2").val()) == "") {
+            $("#b_pass2").next().remove();
+            $("#password2").val("");
+            $("#b_pass2").after('<div class="reg_msg"><span>确认密码由6-16位半角字符组成，区分大小写</span></div>');
+        }
+    }
+
+    function _checkRepassword() {
+        var obj = $('input[name=password2]');
+        $("#b_pass2").next().remove();
+        error = 0;
+        if ($(obj).val().length == 0) {
+            $("#b_pass2").after('<div class="reg_warn"><span class="error"></span><span>请输入确认密码</span></div>');
+            error = 1;
+            return false;
+        }
+        else if ($(obj).val() != $('input[name=password]').val()) {
+            $("#b_pass2").after('<div class="reg_warn"><span class="error"></span><span>两次输入密码不一致</span></div>');
+            error = 1;
+            return false;
+        }
+        else {
+            $("#b_pass2").after('<div class="reg_warn"><span class="right"></span></div>');
+            if ($("#ps_1") != undefined) {
+                $("#b_pass").next().remove();
+                $("#b_pass").after('<div class="reg_warn"><span class="right"></span></div>');
+            }
+            error = 0;
+            return true;
+        }
+    }
+    function _initPhoneTips() {
+        if ($.trim($("#phone").val()) == "") {
+            $("#b_phone").next().remove();
+            $("#phone").val("");
+            $("#b_phone").after('<div class="reg_msg"><span>请填写手机号，必须是11位数字，且以13/14/15/18开头</span></div>');
+        }
+    }
+
+    function _checkPhone(toserver) {
+        var obj = $('input[name=phone]');
+        $("#b_phone").next().remove();
+        error = 0;
+        if ($(obj).val().length == 0) {
+            $("#b_phone").after('<div class="reg_warn"><span class="error"></span><span>请输入手机号码</span></div>');
+            error = 1;
+            return false;
+        }
+        var regu = /^[1]+[3,4,5,8]+\d{9}$/;
+        if (!regu.test($(obj).val())) {
+            $("#b_phone").after('<div class="reg_warn"><span class="error"></span><span>手机格式不正确</span></div>');
+            error = 1;
+            return false;
+        }
+        if (!toserver) return true; //是否进行server验证
+        $.ajax({
+            url: "/Account/AjaxValideRegInfo/",
+            async: false,
+            type: "POST",
+            data: "code=check_phone&check_value=" + encodeURI($(obj).val()),
+            timeout: 100000,
+            error: function () { },
+            success: function (r) {
+                if (r != '') {
+                    $("#b_phone").after('<div class="reg_warn"><span class="error"></span><span>帐号已被使用，可以直接<a href="/RegNav/Logon/?username=' + encodeURI($(obj).val()) + '">登录</a></span></div>');
+                    error = 1;
+                    return false;
+                }
+                else {
+                    $("#b_phone").after('<div class="phone_alert2" id="Waiter"><span class="right"></span><a href="javascript:void(0)" onclick="sendATcode()">免费获取认证码</a></div>');
+                    error = 0;
+                    return true;
+                }
+            }
+        });
+    }
+
+    function _intiArea() {
+        var province = "@ViewBag.Province";
+        var city = "@ViewBag.City";
+        $("#province").attr("value", province);
+        $("#city").attr("value", city);
+    }
+
+    function _checkArea() {
+        $('#b_area').next().remove();
+        if ($('#city').val() == 0) {
+            $('#b_area').after('<div class="reg_warn"><span class="error"></span><span>请选择所在地</span></div>');
+            error = 1;
+            return false;
+        }
+        else {
+            $('#b_area').after('<div class="reg_warn"><span class="right"></span></div>');
+            error = 0;
+            return true;
+        }
+    }
+
+    $(document).ready(function () {
+        //地区赋值
+        $("#province").doubleSelect('city', selectOption);
+        _intiArea();
+        $('#province').change();
+        //昵称截取
+        $("#nickname_input").keyup(function () {
+            val = $(this).val();
+            if (GetCharLength(val) > 14) {
+                $(this).val(CutStr(val, 14));
+            }
+        });
+        //用户名
+        $('input[name=nickname]').blur(_checkusername);
+        //密码
+        $('input[name=password]').blur(_checkPassword);
+        //确认密码
+        $('input[name=password2]').blur(_checkRepassword);
+        //邮件
+        $('input[name=phone]').blur(_checkPhone);
+
+        $('input[name=authenticationcode]').blur(_checkValidCode);
+
+        $('input[name=authenticationcode]').focus(_intiValidCodeTips);
+
+        $('input[name=phone]').focus(_initPhoneTips);
+
+        $('input[name=password]').focus(_initPasswordTips);
+
+        $('input[name=password2]').focus(_intiRepasswordTips);
+
+        $('input[name=nickname]').focus(_initusernameTips);
+        //地区
+        $('#province').change(_checkArea);
+        //提交前验证
+        $('form').submit(function () {
+            var LastCode = 0;
+            var v1 = _checkusername(true);
+            LastCode = LastCode + error;
+
+            var v2 = _checkPhone(true);
+            LastCode = LastCode + error;
+
+            var v3 = _checkPassword();
+            LastCode = LastCode + error;
+
+            var v4 = _checkRepassword();
+            LastCode = LastCode + error;
+
+            var v5 = _checkArea();
+            LastCode = LastCode + error;
+
+            var v6 = _checkValidCode();
+            LastCode = LastCode + error;
+
+            if (LastCode != 0) {
+                return false;
+            }
+            else {
+                return true;
+            }
+        });
+    });
+</script>
+<script type="text/javascript" language="javascript">
+    function GetCharLength(str) {
+        var iLength = 0;
+        for (var i = 0; i < str.length; i++) {
+            if (str.charCodeAt(i) > 255) {
+                iLength += 2;
+            } else {
+                iLength += 1;
+            }
+        }
+        return iLength;
+    }
+    function CutStr(Str, Len) {
+        var CurStr = "";
+        for (var i = 0; i < Str.length; i++) {
+            CurStr += Str.charAt(i);
+            if (GetCharLength(CurStr) > Len) {
+                return Str.substring(0, i);
+            }
+        }
+        return CurStr;
+    } 
+</script>

@@ -1,0 +1,133 @@
+﻿@{
+    ViewBag.Title = "用户登录";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+<link rel="shortcut icon" href="@Url.Content("~/Content/default/images/favicon.ico")" />
+<link href="@Url.Content("~/Content/default/styles/main.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/top.css")" rel="stylesheet" type="text/css" />
+<div class="main_2">
+    <div class="main_t">
+        <span>已注册会员请登录</span></div>
+    <div class="set_warp Nlogin">
+        <div class="Nll">
+            <form id="loginForm" method="POST" action="/RegNav/LogOn/" @*onsubmit="return checkLogInfo('username','password');"*@>
+            <table width="100%" border="0">
+                <tr>
+                    <td width="30%" align="right" valign="top">
+                        用户名：
+                    </td>
+                    <td width="70%">
+                        <input name="username" type="text" class="regP" id="username" />
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right" valign="top">
+                        登录密码：
+                    </td>
+                    <td>
+                        <input name="password" type="password" class="regP" id="password" />
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right" valign="middle">
+                        &nbsp;
+                    </td>
+                    <td class="retip">
+                        <input type="checkbox" class="checkb" value="1" title="请不要在公共电脑上使用自动登录功能" name="rember" />
+                        下次自动登录 &nbsp;&nbsp; <a href="/Account/GetPassword/" title="点此可通过2种方式重设密码">忘记密码？</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right" valign="middle">
+                        &nbsp;
+                    </td>
+                    <td>
+                        <input type="hidden"  name="ret" value="@(ViewBag.ret as string)" />
+                        <input name="" value="" class="Nbtn_login" onclick="checkUserRight()" />
+                        @*&nbsp;<br/>
+	    <a title="使用新浪游历帐号登录 记事狗游历" href="#" onclick="window.location.href='http://t.jishigou.net/index.php?mod=xwb&m=xwbAuth.login';return false;"><img src="@Url.Content("~/Content/images/sina_login_btn.gif")" alt="使用新浪游历帐号登录 记事狗游历" /></a>
+		*@
+                    </td>
+                </tr>
+            </table>
+            </form>
+        </div>
+        <div class="Nlr">
+            <span class="font14px">还没账户？</span> <a title="注册游戏说" onclick="window.location.href='/Account/Register/'"
+                class="Nbtn_reg">注册@(Kt.GameWeiBo.Common.GlobalConfig.site_name)
+            </a>注册后，可以即时分享新鲜事，并可方便关注用户分享； @*
+可随时随地用<a href="index.php?mod=other&code=wap" target="_blank"><b>手机访问</b></a>，如果<a href="index.php?mod=settings&code=qqrobot" target="_blank" rel="nofollow"><b>绑定QQ机器人</b></a>，*@还可以第一时间知道谁关注、评论我的游历，并参与互动。
+        </div>
+    </div>
+</div>
+<script language="javascript" type="text/javascript">
+    $(function () {
+        $("#username").focus(function () { $(this).css("background", "#CBFE9F"); }).blur(function () { $(this).css("background", "#FFF"); });
+        $("#password").focus(function () { $(this).css("background", "#CBFE9F"); }).blur(function () { $(this).css("background", "#FFF"); });
+    });
+    function checkLogInfo(obj1, obj2) {
+        var obj1 = $("#" + obj1).val();
+        var obj2 = $("#" + obj2).val();
+        var Message = "";
+        var flag = false;
+        if (!!obj1 == false) { Message = "登录帐号不能为空\n"; }
+        if (!!obj2 == false) { Message = Message + "登录密码不能为空"; }
+        if (!!Message == true) {
+            alert(Message);
+            return false;
+        }
+        $.ajax({ url: "/Account/AjaxValideLogInfo/" + new Date().getTime(),
+            type: "POST",
+            dataType: "text",
+            data: "obj1=" + encodeURIComponent(obj1) + "&obj2=" + encodeURIComponent(obj2),
+            async: false,
+            timeout: 10000,
+            success: function (data) {
+                if (!!data == true) {
+                    alert(data);
+                    flag = false;
+                } else {
+                    flag = true;
+                }
+            }
+        });
+        return flag;
+    }
+    //对某一个文本框的默认文字trigger实现
+    $.fn.triggerText = function (text) {
+        $(this).val(text);
+        $(this).focus(function () {
+            if ($(this).val() == text) $(this).val('');
+        });
+        $(this).blur(function () {
+            if ($(this).val() == '') $(this).val(text);
+        });
+    };
+    $("#username").triggerText('用户名或邮箱');
+
+    function checkUserRight() {
+        //进行ajax调用，获得团卡用户状态，如果是禁用，则在此提示
+        //string username, string password, string rember
+        var username = $("#username").val();
+        var password = $("#password").val();
+        var rember = "1";
+        $.post('/Account/PageLogOn/', { username: username, password: password, rember: rember }, function (data) {
+            if (data.toLowerCase() == "nopower") {
+                $("#username").val('');
+                $("#password").val('');
+                //alert("您的账号未开通，请点击页面上的客服qq或在线客服联系开通。");
+                //$.post('/Account/Tips/');
+                window.location.href = '/Account/Tips';
+            }
+            else {
+                $("#loginForm").submit();
+            }
+        });
+    }
+
+    document.onkeydown = function (e) {
+        if (!e) e = window.event; //火狐中是 window.event
+        if ((e.keyCode || e.which) == 13)
+            checkUserRight();
+    }
+</script>

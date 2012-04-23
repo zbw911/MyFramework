@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>@ViewBag.Title - 游戏说</title>
+    @if (!string.IsNullOrEmpty(ViewBag.description))
+    {
+        <meta name="description" content="@ViewBag.description" />
+    }
+    @if (!string.IsNullOrEmpty(ViewBag.keywords))
+    {
+        <meta name="keywords" content="@ViewBag.keywords" />
+    }
+    <link href="@Url.Content("~/Content/top.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/dotask.css")" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        a.goTop{width:24px;height:79px;display:block;background:url(@Url.Content("~/Content/default/images/up.gif")) 0 0 no-repeat;}
+        a.goTop:hover{background-position:-30px 0;}
+    </style>
+    <script src="@Url.Content("~/Scripts/jquery-1.4.4.min.js")" type="text/javascript"></script>
+    <script src="/scripts/nav.js" type="text/javascript"></script>
+    <link rel="shortcut icon" href="@Url.Content("~/Content/default/images/favicon.ico")" />
+    <script src="@Url.Content("~/Scripts/RandomTask.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/dotask.js")" type="text/javascript"></script>
+    <script src="/Content/Interdict/Interdict.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-24939199-2']);
+        _gaq.push(['_setDomainName', '.youxishuo.com']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+</head>
+<body>
+    @Html.Partial("_Header")
+    <div class="clear">
+    </div>
+    <div class="containter">
+        @RenderBody()
+    </div>
+    <div class="dibu">
+    </div>
+    @Html.Partial("_Footer")
+</body>
+</html>

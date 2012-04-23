@@ -1,0 +1,89 @@
+﻿<div id="Report">
+    <ul class="manBox">
+        <li>
+            <div class="T">
+                <span class="T_1" onmousedown="ReportDrag(this.parentNode.parentNode)">举报不良信息</span>
+                <span class="T_2" onclick="ReportHidden()" title="关闭"></span>
+            </div>
+            <div class="content">
+                <form action="/GameWeiBo/doreport/" method="POST" enctype="multipart/form-data">
+                <table>
+                    <tr>
+                        <td colspan="2">
+                            <input id="tid" name="tid" style="display: none;" />
+                            <textarea name="report_content" id="report_content" class="textBox"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select style="width: 200px" id="report_reason" name="report_reason">
+                                <option value="0" selected="">--请选择不良信息的类型--</option>
+                                <option value="1">内容涉及色情或暴力</option>
+                                <option value="2">政治反动举报</option>
+                                <option value="3">内容可能侵权</option>
+                                <option value="4">内容涉及其他违规事项</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+                <table style="width: 100%">
+                    <tr>
+                        <td>
+                            <p style="color: #666; font-size: 12px;">
+                                如果您在游历中发现有色情、暴力或者其它违规的内容,请提交上述表格，我们将尽快处理。您的隐私会得到严格的保护.</p>
+                        </td>
+                    </tr>
+                </table>
+                <input type="hidden" id="report_url" name="report_url" value="" />
+                <div class="mIput">
+                    <input type="button" class="shareI" value="确 定" onclick="ReportSub('tid','report_content','report_reason');return false;" />
+                    <input type="button" class="shareI" value="取 消" onclick="ReportHidden()" />
+                </div>
+                </form>
+            </div>
+        </li>
+    </ul>
+</div>
+<script type="text/javascript">
+    function ReportBox(tid) {
+        //alert(tid);
+        document.getElementById("tid").value = tid;
+        document.getElementById("Report").style.display = "inline";
+
+    }
+    function ReportHidden() {
+        if (document.getElementById("Report")) {
+            document.getElementById("Report").style.display = "none";
+            document.getElementById('report_content').value = '';
+            document.getElementById('report_reason').value = '0';
+        }
+    }
+    function ReportDrag(str) {
+        var e = window.event || arguments.callee.caller.arguments[0];
+        var deltaX = e.clientX - parseInt(str.offsetLeft);
+        var deltaY = e.clientY - parseInt(str.offsetTop);
+        var deltaH = document.body.clientHeight;
+        var deltaW = document.body.clientWidth;
+        var drag = true;
+        str.onmousemove = function (ev) {
+            ev = ev ? ev : window.event;
+            if (drag) {
+                var Y = ev.clientY - deltaY;
+                var X = ev.clientX - deltaX;
+                var H = deltaH - str.offsetHeight;
+                var W = deltaW - str.offsetWidth;
+                if (Y > 0 || X > 0) {
+                    if (Y >= H) { str.style.top = H + "px"; } else { str.style.top = Y + "px"; }
+                    if (X >= W) { str.style.left = W + "px"; } else { str.style.left = X + "px"; }
+                }
+                if (Y <= 0) { str.style.top = 0; }
+                if (X <= 0) { str.style.left = 0; }
+                //str.setCapture();
+            }
+        }
+        str.onmouseup = function () {
+            drag = false;
+            //str.releaseCapture();
+        }
+    }
+</script>

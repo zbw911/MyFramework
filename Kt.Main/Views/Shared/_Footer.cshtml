@@ -1,0 +1,207 @@
+﻿<div class="foot">
+    <p>
+        <a href="/Content/Help/aboutus.html">关于我们</a>|<a href="/Content/Help/disclaimer.html">免责声明</a>|<a
+            href="/Content/Help/Privacy.html">隐私保护</a>|<a target="_blank" href="/Content/Help/HelpCenter.html">帮助中心</a></p>
+    <p>
+        增值电信业务经营许可证：冀B2-20115029 ICP备案：<a href="http://www.miitbeian.gov.cn">冀ICP备11003943号</a></p>
+</div>
+<!-- JS消息提示层 show_message('发布成功') -->
+<div id="show_message_area">
+</div>
+<script type="text/javascript">
+    var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Ff79e03ad090e1c3649d62e0bc82c99ae' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<div style="display: none;">
+    <script type="text/javascript" src="http://s20.cnzz.com/stat.php?id=3188196&web_id=3188196"
+        language="JavaScript"></script>
+</div>
+<script type="text/javascript"  charset="utf-8" src="@Url.Content("~/Content/default/js/common.js")"></script>
+<script type="text/javascript">
+    function ReportBox(tid) {
+        //alert(tid);
+        document.getElementById("tid").value = tid;
+        document.getElementById("Report").style.display = "inline";
+
+    }
+    function ReportHidden() {
+        if (document.getElementById("Report")) {
+            document.getElementById("Report").style.display = "none";
+            document.getElementById('report_content').value = '';
+            document.getElementById('report_reason').value = '0';
+        }
+    }
+    function ReportDrag(str) {
+        var e = window.event || arguments.callee.caller.arguments[0];
+        var deltaX = e.clientX - parseInt(str.offsetLeft);
+        var deltaY = e.clientY - parseInt(str.offsetTop);
+        var deltaH = document.body.clientHeight;
+        var deltaW = document.body.clientWidth;
+        var drag = true;
+        str.onmousemove = function (ev) {
+            ev = ev ? ev : window.event;
+            if (drag) {
+                var Y = ev.clientY - deltaY;
+                var X = ev.clientX - deltaX;
+                var H = deltaH - str.offsetHeight;
+                var W = deltaW - str.offsetWidth;
+                if (Y > 0 || X > 0) {
+                    if (Y >= H) { str.style.top = H + "px"; } else { str.style.top = Y + "px"; }
+                    if (X >= W) { str.style.left = W + "px"; } else { str.style.left = X + "px"; }
+                }
+                if (Y <= 0) { str.style.top = 0; }
+                if (X <= 0) { str.style.left = 0; }
+                //str.setCapture();
+            }
+        }
+        str.onmouseup = function () {
+            drag = false;
+            //str.releaseCapture();
+        }
+    }
+</script>
+<script language="javascript">
+    //调用随机任务的显示
+    /* 此部分代码先注释
+    var flag = false;
+    function ShowRadomTask() {
+    var userid = @Kt.Framework.User.User.MEMBER_ID;
+        $.ajax({
+            type: "POST",
+            url: "/userhome/task/_GetRedomTask",
+            data:"uid="+userid,
+            async: true,
+            success: function (data) {
+                if (data.length > 0) {
+                    _OpenRandomTask(data);
+                }
+            }
+        });
+    }
+    //用户离线状态下可以完成的任务
+    function UserLoginInTask() {
+        var temp = "";
+        $.ajax({
+            type: "POST",
+            url: "/userhome/task/_TaskRewardsShow",
+            async: true,
+            data: "taskobject=" + temp,
+            success: function (data) {
+                if (data.length > 0) {
+                    flag = true;
+                    OpenCompelteTask(data,280,180);
+                }
+            }
+        });
+    }
+@if (Kt.Framework.User.User.IS_LOGIN)
+{
+    <text>
+var temp = window.location.href;
+if (temp.indexOf("Account/Log") <0){
+        //已经和覃飞核实，只需要再个人主页显示用户可以完成的任务就可以了。
+        if (temp.indexOf("UserHome/Index/") > -1)
+            UserLoginInTask();  
+        //若没有完成任务的提示，可以给用户提示接受随机任务
+        if (!flag) ShowRadomTask();
+        }
+    </text>
+}*/
+//调用随机任务的显示 老的
+
+    function ShowRadomTask() {
+    var userid = @Kt.Framework.User.User.MEMBER_ID;
+        $.ajax({
+            type: "POST",
+            url: "/userhome/task/_GetRedomTask",
+            data:"uid="+userid,
+            async: true,
+            success: function (data) {
+                if (data.length > 0) {
+                    _OpenRandomTask(data);
+                }
+            }
+        });
+    }
+    //用户离线状态下可以完成的任务
+    function UserLoginInTask() {
+        var flag = false;
+        var temp = "";
+        $.ajax({
+            type: "POST",
+            url: "/userhome/task/_TaskRewardsShow",
+            async: true,
+            data: "taskobject=" + temp,
+            success: function (data) {
+                if (data.length > 0) {
+                    flag = true;
+                    OpenCompelteTask(data,280,180);
+                }
+            }
+        });
+        if (!flag) ShowRadomTask();
+    }
+
+@if (Kt.Framework.User.User.IS_LOGIN)
+{
+    <text>
+    var temp = window.location.href;
+    if (temp.indexOf("Account/Log") <0)
+    {
+        UserLoginInTask();    
+    }
+    </text>
+}
+</script>
+<script>    (function () {
+        var url = window.location.href;
+        var referer = document.referrer;
+        $.ajax({
+            type: "POST",
+            url: "/userhome/Index/TraceUser",
+            data: { url: url, referer: referer },
+            async: true,
+            success: function (data) {
+                
+            }
+        });
+    })();</script>
+<style type="text/css">
+    .backTop
+    {
+        bottom: 25px;
+        height: 73px;
+        left: 44.5%;
+        margin-left: 565px;
+        position: fixed;
+        _position: absolute;
+        visibility: visible;
+        width: 24px;
+    }
+</style>
+<script src="@Url.Content("~/Content/default/js/gotop.js")" type="text/javascript"></script>
+<div class="backTop">
+    <a id="toTop" class="goTop"></a>
+</div>
+<div id="trace" style="display: none;">
+</div>
+<script type="text/javascript">
+    $("#toTop").goToTop();
+    /*
+    var moneyTip = jQuery.cookie("t58com_moneyTip_last");
+    if (moneyTip == null) {
+    $("#moneyTip").show();
+    jQuery.cookie("t58com_moneyTip_last", "show", { expires: 5, path: "/", domain: ".58.com" });
+    } else {
+    $("#moneyTip").hide();
+    }
+    */
+</script>
+@*<script src="../../Scripts/jquery-1.4.4-vsdoc.js" type="text/javascript"></script>*@
+@*<script type="text/javascript">
+    $(document).ready(
+    function () {
+        $('#trace').load('/trace.axd');
+    }
+    );
+</script>*@ 

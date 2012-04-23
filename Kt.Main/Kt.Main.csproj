@@ -1,0 +1,341 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0C8434B0-93F9-4446-9D48-AE47E62618D5}</ProjectGuid>
+    <ProjectTypeGuids>{E53F8FEA-EAE0-44A6-8774-FFD645390401};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Kt.Main</RootNamespace>
+    <AssemblyName>Kt.Main</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <UseIISExpress>false</UseIISExpress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CommonServiceLocator.NinjectAdapter">
+      <HintPath>..\LIB\CommonServiceLocator.NinjectAdapter.dll</HintPath>
+    </Reference>
+    <Reference Include="DS.Web.UCenter">
+      <HintPath>..\LIB\DS.Web.UCenter.dll</HintPath>
+    </Reference>
+    <Reference Include="Dx.Common">
+      <HintPath>..\LIB\Dx.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\LIB\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\LIB\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\LIB\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Mvc">
+      <HintPath>..\LIB\Ninject.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.WebPages" />
+    <Reference Include="System.Web.Helpers" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\IndexController.cs" />
+    <Compile Include="Core\BaseController.cs" />
+    <Compile Include="Core\ModuleLoader.cs" />
+    <Compile Include="Core\UcApiDispose.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\aaAlertmsg.js" />
+    <Content Include="Scripts\DoTask.js" />
+    <Content Include="Scripts\fh-salert.js" />
+    <Content Include="Scripts\fh-salert1.js" />
+    <Content Include="Scripts\GameGroup.js" />
+    <Content Include="Scripts\ie_png.js" />
+    <Content Include="Scripts\jq.Slide.js" />
+    <Content Include="Scripts\jquery-1.4a2.min.js" />
+    <Content Include="Scripts\jquery.effects.blind.js" />
+    <Content Include="Scripts\jquery.KinSlideshow-1.2.1.min.js" />
+    <Content Include="Scripts\jquery.pngFix.js" />
+    <Content Include="Scripts\nav.js" />
+    <Content Include="Scripts\plugin\autocomplete\css\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Scripts\plugin\autocomplete\css\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Scripts\plugin\autocomplete\css\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Scripts\plugin\autocomplete\css\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Scripts\plugin\autocomplete\css\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Scripts\plugin\autocomplete\css\images\ui-bg_glass_75_ffffff_1x400.png" />
+    <Content Include="Scripts\plugin\autocomplete\css\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Scripts\plugin\autocomplete\css\images\ui-bg_inset-soft_95_fef1ec_1x100.png" />
+    <Content Include="Scripts\plugin\autocomplete\css\images\ui-icons_222222_256x240.png" />
+    <Content Include="Scripts\plugin\autocomplete\css\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Scripts\plugin\autocomplete\css\images\ui-icons_454545_256x240.png" />
+    <Content Include="Scripts\plugin\autocomplete\css\images\ui-icons_888888_256x240.png" />
+    <Content Include="Scripts\plugin\autocomplete\css\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Scripts\plugin\autocomplete\css\jquery-ui-1.8.11.custom.css" />
+    <Content Include="Scripts\plugin\autocomplete\css\jquery.autocomplete.css" />
+    <Content Include="Scripts\plugin\autocomplete\ui\jquery-ui-1.8.11.custom.min.js" />
+    <Content Include="Scripts\plugin\autocomplete\ui\jquery-ui-1.8.12.custom.js" />
+    <Content Include="Scripts\plugin\autocomplete\ui\jquery.autocomplete.js" />
+    <Content Include="Scripts\plugin\corners\jquery.corners.min.js" />
+    <Content Include="Scripts\plugin\DMenu\DMenu.htm" />
+    <Content Include="Scripts\plugin\DMenu\img625.gif" />
+    <Content Include="Scripts\plugin\DMenu\jquery.DMenu.js" />
+    <Content Include="Scripts\plugin\jcarousel\images\arrow-down.gif" />
+    <Content Include="Scripts\plugin\jcarousel\images\arrow-up.gif" />
+    <Content Include="Scripts\plugin\jcarousel\images\loading-small.gif" />
+    <Content Include="Scripts\plugin\jcarousel\images\loading-thickbox.gif" />
+    <Content Include="Scripts\plugin\jcarousel\images\loading.gif" />
+    <Content Include="Scripts\plugin\jcarousel\images\next-horizontal.gif" />
+    <Content Include="Scripts\plugin\jcarousel\images\prev-horizontal.gif" />
+    <Content Include="Scripts\plugin\jcarousel\jquery.jcarousel.css" />
+    <Content Include="Scripts\plugin\jcarousel\jquery.jcarousel.js" />
+    <Content Include="Scripts\plugin\jcarousel\skins\ie7\credits.txt" />
+    <Content Include="Scripts\plugin\jcarousel\skins\ie7\loading-small.gif" />
+    <Content Include="Scripts\plugin\jcarousel\skins\ie7\loading.gif" />
+    <Content Include="Scripts\plugin\jcarousel\skins\ie7\loading_small.gif" />
+    <Content Include="Scripts\plugin\jcarousel\skins\ie7\next-horizontal.gif" />
+    <Content Include="Scripts\plugin\jcarousel\skins\ie7\prev-horizontal.gif" />
+    <Content Include="Scripts\plugin\jcarousel\skins\ie7\skin.css" />
+    <Content Include="Scripts\plugin\jcarousel\skins\tango\credits.txt" />
+    <Content Include="Scripts\plugin\jcarousel\skins\tango\next-horizontal.png" />
+    <Content Include="Scripts\plugin\jcarousel\skins\tango\next-vertical.png" />
+    <Content Include="Scripts\plugin\jcarousel\skins\tango\prev-horizontal.png" />
+    <Content Include="Scripts\plugin\jcarousel\skins\tango\prev-vertical.png" />
+    <Content Include="Scripts\plugin\jcarousel\skins\tango\skin.css" />
+    <Content Include="Scripts\plugin\jcarousel\skins\web\loading-small.gif" />
+    <Content Include="Scripts\plugin\jcarousel\skins\web\loading.gif" />
+    <Content Include="Scripts\plugin\jcarousel\skins\web\loading_small.gif" />
+    <Content Include="Scripts\plugin\jcarousel\skins\web\next-horizontal.gif" />
+    <Content Include="Scripts\plugin\jcarousel\skins\web\prev-horizontal.gif" />
+    <Content Include="Scripts\plugin\jcarousel\skins\web\skin.css" />
+    <Content Include="Scripts\plugin\boxy\css\boxy.css" />
+    <Content Include="Scripts\plugin\boxy\images\boxy-ne.png" />
+    <Content Include="Scripts\plugin\boxy\images\boxy-nw.png" />
+    <Content Include="Scripts\plugin\boxy\images\boxy-se.png" />
+    <Content Include="Scripts\plugin\boxy\images\boxy-sw.png" />
+    <Content Include="Scripts\plugin\boxy\images\flaotClose.gif" />
+    <Content Include="Scripts\plugin\boxy\images\x_to_hide.gif" />
+    <Content Include="Scripts\plugin\boxy\images\x_to_hide_hover.gif" />
+    <Content Include="Scripts\plugin\boxy\js\jquery.boxy.js" />
+    <Content Include="Scripts\plugin\jqueryStrength\css\password_strength.css" />
+    <Content Include="Scripts\plugin\jqueryStrength\images\progressImg1.png" />
+    <Content Include="Scripts\plugin\jqueryStrength\js\jquery.passwordStrength.js" />
+    <Content Include="Scripts\plugin\jqueryStrength\js\passwordstrength.js" />
+    <Content Include="Scripts\plugin\jSelectDate\jquery.jSelectDate.js" />
+    <Content Include="Scripts\plugin\jSelectDate\jquery.jSelectDateForUserInfo.js" />
+    <Content Include="Scripts\plugin\KinSlideshow\jquery.KinSlideshow-1.2.1.min.js" />
+    <Content Include="Scripts\plugin\msgbox\jquery.dragndrop.js" />
+    <Content Include="Scripts\plugin\msgbox\jquery.dragndrop.min.js" />
+    <Content Include="Scripts\plugin\msgbox\jquery.msgbox.css" />
+    <Content Include="Scripts\plugin\msgbox\jquery.msgbox.js" />
+    <Content Include="Scripts\plugin\thickbox\index.html" />
+    <Content Include="Scripts\plugin\thickbox\thickbox.css" />
+    <Content Include="Scripts\plugin\thickbox\thickbox.js" />
+    <Content Include="Scripts\png.js" />
+    <Content Include="Scripts\popup_layer.js" />
+    <Content Include="Scripts\RandomTask.js" />
+    <Content Include="Scripts\salert.js" />
+    <Content Include="Scripts\Task.js" />
+    <Content Include="Scripts\zwj_tab.js" />
+    <Content Include="Views\Account\ActivateAccount.cshtml" />
+    <Content Include="Views\Account\Activation.cshtml" />
+    <Content Include="Views\Account\ApiLogOn.cshtml" />
+    <Content Include="Views\Account\GetPassword.cshtml" />
+    <Content Include="Views\Account\LogOn.cshtml" />
+    <Content Include="Views\Account\RegActivate.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\Tips.cshtml" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\jquery-1.4.4.js" />
+    <Content Include="Scripts\jquery-1.4.4.min.js" />
+    <Content Include="Scripts\jquery-1.4.4-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui.js" />
+    <Content Include="Scripts\jquery-ui.min.js" />
+    <Content Include="Scripts\MicrosoftAjax.js" />
+    <Content Include="Scripts\MicrosoftAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.debug.js" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_LogOnPartial.cshtml" />
+    <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\" />
+    <Folder Include="Scripts\plugin\autocomplete\images\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Framework\Kt.Framework.Common\Kt.Framework.Common.csproj">
+      <Project>{184E47B4-F5CB-454C-A8A7-CD367471A931}</Project>
+      <Name>Kt.Framework.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework\Kt.Framework.Helpers\Kt.Framework.Helpers.csproj">
+      <Project>{86B25F1B-3B99-4C4E-8ACF-0CEE25DDF185}</Project>
+      <Name>Kt.Framework.Helpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework\Kt.Framework.Repository.ContainerAdapter.NInject\Kt.Framework.Repository.ContainerAdapter.NInject.csproj">
+      <Project>{C8179219-6811-45D3-A04B-7ADCF90AD691}</Project>
+      <Name>Kt.Framework.Repository.ContainerAdapter.NInject</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework\Kt.Framework.Repository.EntityFramework\Kt.Framework.Repository.EntityFramework.csproj">
+      <Project>{587DE2F4-A635-4AA5-9ED8-DD342889BE91}</Project>
+      <Name>Kt.Framework.Repository.EntityFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework\Kt.Framework.Repository\Kt.Framework.Repository.csproj">
+      <Project>{F73EB92E-6F20-4AE6-9FC9-E6CA638F5EAE}</Project>
+      <Name>Kt.Framework.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework\Kt.Framework.User\Kt.Framework.User.csproj">
+      <Project>{B5AE4C66-4576-4A5B-BC74-9C909EC1D4A1}</Project>
+      <Name>Kt.Framework.User</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework\Kt.Framework\Kt.Framework.csproj">
+      <Project>{26C8B0AA-F640-4EAD-A537-89684CB4C655}</Project>
+      <Name>Kt.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HelloWord.Service\HelloWorld.Service.csproj">
+      <Project>{ECA94685-C0B2-46AD-B97B-27D9BDFDF17D}</Project>
+      <Name>HelloWorld.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HelloWorld.Model\HelloWorld.Model.csproj">
+      <Project>{F42845F1-68CB-409C-995F-97082D323932}</Project>
+      <Name>HelloWorld.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="log4net.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_Messager.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_Pagination.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_LayoutMain.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Shared\_Header.cshtml" />
+    <Content Include="Views\Shared\_PaginationAjax.cshtml" />
+    <Content Include="Views\Shared\Report.cshtml" />
+    <Content Include="Views\RegNav\Index.cshtml" />
+    <Content Include="Views\RegNav\UserInfo.cshtml" />
+    <Content Include="Views\RegNav\RegistByEmail.cshtml" />
+    <Content Include="Views\RegNav\RegistByPhone.cshtml" />
+    <Content Include="Views\RegNav\LikeGroupList.cshtml" />
+    <Content Include="Views\RegNav\GetDate.cshtml" />
+    <Content Include="Views\RegNav\ActivateAccount.cshtml" />
+    <Content Include="Views\RegNav\LogOn.cshtml" />
+    <Content Include="Views\RegNav\CreateRole.cshtml" />
+    <Content Include="Views\RegNav\Activation.cshtml" />
+    <Content Include="Views\Shared\_RegNavMain.cshtml" />
+    <Content Include="Views\RegNav\RecommendFriend.cshtml" />
+    <Content Include="Views\RegNav\ApiLogOn.cshtml" />
+    <Content Include="Views\RegNav\CreateProtypes.cshtml" />
+    <Content Include="Views\Shared\_Messager_Nav.cshtml" />
+    <Content Include="Views\RegNav\Tips.cshtml" />
+    <Content Include="Views\RegNav\ApiIndex.cshtml" />
+    <Content Include="Views\Index\Index.cshtml" />
+    <Content Include="Views\Index\Create.cshtml" />
+    <Content Include="Views\Index\Edit.cshtml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

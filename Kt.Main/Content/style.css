@@ -1,0 +1,84 @@
+/* CSS Document */
+*{margin:0;padding:0;}
+body{font-size:12px;}
+ul li{list-style:none}
+a{color:#000000; text-decoration:none}
+a img{border:none}
+.clear{clear:both;height:0;line-height:0;font-size:0}
+
+/*内容*/
+.containter{width:1013px;background:url(images/containter_bg.gif) repeat-y;margin:0 auto;}
+.main{width:963px;margin:0 auto;padding-top:5px;}
+/*焦点图*/
+.foucs_main{width:643px;display:inline;float:left;background:url(images/foucs_main_top.gif) no-repeat top;padding-top:4px;}
+.foucs_main_bottom{width:643px;background:url(images/foucs_main_bottom.gif) no-repeat ;height:4px;}
+.foucs_main .lunhuan{width:638px;height:259px;overflow:hidden;padding-left:4px;text-align:center;border-left:1px solid #D8D8D8;border-right:1px solid #D8D8D8;}
+
+/*右侧*/
+.main_right{float:right;width:307px;overflow:hidden;}
+.main_right_con{width:307px;height:77px;background:url(images/right_bg.gif);overflow:hidden;margin-bottom:17px;}
+.main_right_img{float:left;padding:5px 0 0 5px;}
+.main_right_list{float:right;width:200px;}
+.main_right_list ul{float:left;margin-top:15px;margin-left:8px;}
+.main_right_list ul li{line-height:22px;padding-left:12px;background:url(images/right_list_ico.gif) no-repeat 0 50%;}
+.main_right_list ul li a{color:#666666;}
+/*搜索*/
+.inputline{position:relative;height:20px;}
+.select1,.select2,.select3{float:left;line-height:20px;color:#666666;}
+.select1,.select2{border:1px solid #D5D5D5;width:179px;height:19px;padding-left:5px;margin-right:8px; background:url(images/select_botton.gif) no-repeat right;border-right:none}
+.select3 .serchinput{height:19px;border:1px solid #D5D5D5;width:302px;line-height:20px;color:#666666;padding-left:5px;}
+.game_size{position:absolute;right:36px;top:0;padding-top:5px;}
+.game_size span{color:#0080BF;padding:0 3px;}
+.game_size span.game_geshu{font-weight:bold}
+/*input{border:none}*/
+/*分类*/
+.fenlei{border:1px solid #A6D0E7;margin-top:10px;width:963px;}
+.fenlei_top{height:35px;line-height:35px;background:url(images/fenlei_title_bg_re.gif) repeat-x;padding-left:20px;overflow:hidden;}
+.fenlei_title{wdith:95px;height:35px;background:url(images/fenlei_title_hover_bg.gif) no-repeat;padding:12px 20px 0 20px;float:left}
+.fenlei_top ul{float:left;}
+.fenlei_top ul li{float:left;color:#666666}
+.fenlei_top ul li a{color:#666666;padding:0 7px;font-family:Arial, Helvetica, sans-serif;}
+.fenlei_list{margin-top:10px;padding-bottom:10px;}
+.fenlei_game{width:906px;margin:5px auto}
+.fenlei_game li{float:left;width:151px;height:100px;text-align:center}
+.fenlei_game li a{display:block;color:#FF0404;}
+.fenlei_game li a img{margin-bottom:10px;}
+/*新游戏推荐*/
+.index_bottom{margin-top:10px;overflow:hidden;}
+.xinyou,.paihang{width:315px;height:300px;border:1px solid #D6D6D6;float:left;margin-right:5px;}
+.xinyou_title,.paihang_title,.zixun_title{width:315px;height:32px;overflow:hidden}
+.xinyou_title span,.paihang_title span,.zixun_title span{padding-left:10px;background:url(images/tuijian_ico.jpg) no-repeat 0 50%;margin-left:10px;display:block;margin-top:10px;}
+.xinyou dl,.paihang dl{width:305px;padding-left:10px;overflow:hidden;float:left}
+.xinyou dl dd,.paihang dl dd{float:left;line-height:22px;}
+.xinyou_list_title,.paihang_list_title{background:#F8F8F8;height:32px;line-height:32px;color:#0066CC;}
+.xinyou_list_title dd,.paihang_list_title dd{margin-top:5px;color:#0066CC;}
+.xinyou dl dd a,.paihang dl dd a{color:#666666}
+.xinyou_date,.paihang_date{width:81px;color:#666666}
+.xinyou_game,.paihang_game{width:150px;}
+.xinyou_type,.paihang_type{width:57px;}
+/*资讯*/
+.zixun{float:right;width:315px;height:300px;border:1px solid #D6D6D6;overflow:hidden}
+.zixun_title{border-bottom:1px solid #D6D6D6;}
+.zixun_list{margin-top:15px ;height:162px;}
+.zixun dl{float:left;padding-left:10px;}
+.zixun dl dd{float:left;line-height:22px;color:#999999}
+.zixun dl dd a{color:#999999}
+.zixun dl dd.zixun_news a{color:#0066CC}
+.zixun_type{width:47px;}
+.zixun_news{width:203px;}
+.zixun_date{width:39px;}
+.zixun_yijian{width:315px;height:109px;background:url(images/zixun_bg.jpg);padding-top:20px;padding-left:20px;}
+.zixun_yijian p{color:#333333;line-height:24px;}
+.zixun_yijian p a{color:#0066CC;}
+/*底部*/
+.dibu{width:1013px;margin:0 auto;height:21px; background:url(images/index_bottom.gif);}
+.foot{width:1013px;margin:10px auto;text-align:center;line-height:22px;color:#666666;}
+.foot a{color:#666666;padding:0 10px;}
+
+
+
+/*add by zhouhao*/
+.main_2{ width:960px; margin:0 auto; border:none; background:#fff; overflow:hidden;min-height:350px; height:auto !important; height:auto;}
+.main_t{ margin:0; height:35px; line-height:35px;border-bottom:#ccc 1px solid;}
+.main_t span{ padding-left:30px; font-size:14px;}
+.main_t img{ vertical-align:middle}

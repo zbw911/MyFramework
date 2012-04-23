@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="addRoom">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="gid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="rname" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="rpsw" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="rmaxnum" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="rtype" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="rorder" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="rmode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addRoomResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="addRoomResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteRoom">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="rid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteRoomResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="deleteRoomResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateRoom">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="rid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="rpsw" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="rmaxnum" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="rtype" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="rorder" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="rmode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="rname" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateRoomResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="updateRoomResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateRoomInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="rid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="rpsw" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="rname" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="rmembertype" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="rmic" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="rmictime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="rtextchat" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="rchatspeed" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="rtextwords" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateRoomInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="updateRoomInfoResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="selectRoom">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="rid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="selectRoomResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="selectRoomResult" type="tns:Room" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Room">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="rId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="rName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="rPsw" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="rNowNum" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="rMaxNum" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="rOrder" nillable="true" type="s:short" />
+          <s:element minOccurs="0" maxOccurs="1" name="rMode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="rType" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="gId" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="fId" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="rMemberType" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="rMic" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="rMicTime" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="rTextChat" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="rChatSpeed" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="rTextWords" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="selectRoomByfId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="gid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="selectRoomByfIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="selectRoomByfIdResult" type="tns:ArrayOfAnyType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfAnyType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="anyType" nillable="true" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="addRoomSoapIn">
+    <wsdl:part name="parameters" element="tns:addRoom" />
+  </wsdl:message>
+  <wsdl:message name="addRoomSoapOut">
+    <wsdl:part name="parameters" element="tns:addRoomResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteRoomSoapIn">
+    <wsdl:part name="parameters" element="tns:deleteRoom" />
+  </wsdl:message>
+  <wsdl:message name="deleteRoomSoapOut">
+    <wsdl:part name="parameters" element="tns:deleteRoomResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateRoomSoapIn">
+    <wsdl:part name="parameters" element="tns:updateRoom" />
+  </wsdl:message>
+  <wsdl:message name="updateRoomSoapOut">
+    <wsdl:part name="parameters" element="tns:updateRoomResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateRoomInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:updateRoomInfo" />
+  </wsdl:message>
+  <wsdl:message name="updateRoomInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:updateRoomInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="selectRoomSoapIn">
+    <wsdl:part name="parameters" element="tns:selectRoom" />
+  </wsdl:message>
+  <wsdl:message name="selectRoomSoapOut">
+    <wsdl:part name="parameters" element="tns:selectRoomResponse" />
+  </wsdl:message>
+  <wsdl:message name="selectRoomByfIdSoapIn">
+    <wsdl:part name="parameters" element="tns:selectRoomByfId" />
+  </wsdl:message>
+  <wsdl:message name="selectRoomByfIdSoapOut">
+    <wsdl:part name="parameters" element="tns:selectRoomByfIdResponse" />
+  </wsdl:message>
+  <wsdl:portType name="gameServiceSoap">
+    <wsdl:operation name="addRoom">
+      <wsdl:input message="tns:addRoomSoapIn" />
+      <wsdl:output message="tns:addRoomSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteRoom">
+      <wsdl:input message="tns:deleteRoomSoapIn" />
+      <wsdl:output message="tns:deleteRoomSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateRoom">
+      <wsdl:input message="tns:updateRoomSoapIn" />
+      <wsdl:output message="tns:updateRoomSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateRoomInfo">
+      <wsdl:input message="tns:updateRoomInfoSoapIn" />
+      <wsdl:output message="tns:updateRoomInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="selectRoom">
+      <wsdl:input message="tns:selectRoomSoapIn" />
+      <wsdl:output message="tns:selectRoomSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="selectRoomByfId">
+      <wsdl:input message="tns:selectRoomByfIdSoapIn" />
+      <wsdl:output message="tns:selectRoomByfIdSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="gameServiceSoap" type="tns:gameServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="addRoom">
+      <soap:operation soapAction="http://tempuri.org/addRoom" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteRoom">
+      <soap:operation soapAction="http://tempuri.org/deleteRoom" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateRoom">
+      <soap:operation soapAction="http://tempuri.org/updateRoom" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateRoomInfo">
+      <soap:operation soapAction="http://tempuri.org/updateRoomInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="selectRoom">
+      <soap:operation soapAction="http://tempuri.org/selectRoom" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="selectRoomByfId">
+      <soap:operation soapAction="http://tempuri.org/selectRoomByfId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="gameServiceSoap12" type="tns:gameServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="addRoom">
+      <soap12:operation soapAction="http://tempuri.org/addRoom" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteRoom">
+      <soap12:operation soapAction="http://tempuri.org/deleteRoom" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateRoom">
+      <soap12:operation soapAction="http://tempuri.org/updateRoom" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateRoomInfo">
+      <soap12:operation soapAction="http://tempuri.org/updateRoomInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="selectRoom">
+      <soap12:operation soapAction="http://tempuri.org/selectRoom" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="selectRoomByfId">
+      <soap12:operation soapAction="http://tempuri.org/selectRoomByfId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="gameService">
+    <wsdl:port name="gameServiceSoap" binding="tns:gameServiceSoap">
+      <soap:address location="http://www.usingo.com:8011/webService/gameService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="gameServiceSoap12" binding="tns:gameServiceSoap12">
+      <soap12:address location="http://www.usingo.com:8011/webService/gameService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

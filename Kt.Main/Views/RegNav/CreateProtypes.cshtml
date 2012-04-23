@@ -1,0 +1,130 @@
+﻿         @{
+    ViewBag.Title = "创建角色属性";
+    Layout = "/Views/Shared/_RegNavMain.cshtml";
+}
+<script type="text/javascript" src="@Url.Content("~/Content/default/gamenav/js/gamenav.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/plugin/boxy/js/jquery.boxy.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/DoTask.js")"></script>
+<link href="@Url.Content("~/Scripts/plugin/boxy/css/boxy.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/default/gamenav/styles/gamenav.css")" rel="stylesheet" type="text/css" />
+
+<div class="main">
+    <div class="content">
+        <div class="reg_left">
+            <div class="reg_title">
+                创建游戏角色，为您快速找到亲密战友。</div>
+            <div class="reg_form">
+                <div class="new_item">
+                    <div class="tit">
+                        角色名</div>
+                    <div class="bdmain">
+                        <div class="bd_js_input">
+                            <input type="text" name="roleName" value="@ViewBag.KtRoleProtype.role_name"  maxlength="20"/></div>
+                    </div>
+                    <div class="clear">
+                    </div>
+                    <input type="hidden" name="gameid" id="gameid" value="@ViewBag.KtRoleProtype.gameId" />
+                    <input type="hidden" name="game_server_id" id="game_server_id" value="@ViewBag.KtRoleProtype.game_server_id" />
+                    <input type="hidden" name="game_role_id" id="game_role_id" value="@ViewBag.KtRoleProtype.game_role_id" />
+                    <input type="hidden" name="isshow" id="isshow" value="@ViewBag.isshow" />
+                    <input type="hidden" name="step" id="step" value="@ViewBag.step" />
+                </div>
+                @*         <div class="new_item">
+            	<div class="tit">等级</div>
+                <div class="bdmain">
+                	<div class="bd_js_input"><input type="text"/></div>
+                </div> <div class="reg_msg"><span>提示：请输入1-100的数字</span></div>
+            <div class="clear"></div>
+            </div>
+            <div class="new_item">
+            	<div class="tit">阵营</div>
+                <div class="bdmain">
+                	<div class="bd_js_select"><select><option>请选择</option></select></div>
+                </div>
+            <div class="clear"></div>
+            </div>
+            <div class="new_item">
+            	<div class="tit">种族</div>
+                <div class="bdmain">
+                	<div class="bd_js_select"><select><option>请选择</option></select></div>
+                </div>
+                +-
+            <div class="clear"></div>
+            </div>
+            <div class="new_item">
+            	<div class="tit">职业</div>
+                <div class="bdmain">
+                	<div class="bd_js_select"><select><option>请选择</option></select></div>
+                </div>
+            <div class="clear"></div>
+            </div>*@
+                @(new HtmlString(ViewBag.html))
+                <div class="new_item">
+                    <div class="tit">
+                        备注</div>
+                    <div class="bdmain">
+                        <div class="bd_js_input">
+                            <textarea id="tata" class="ta" rows="3" cols="30" name="roleDescript">@ViewBag.KtRoleProtype.role_discript</textarea></div>
+                    </div>
+                    <div class="clear">
+                    </div>
+                </div>
+                <div class="new_item">
+                    <p class="con_button">
+                        <a class="" onclick="javascript:addGameRoleExtProtypeJC(1);">
+                            <img src="@Url.Content("~/Content/reg/images/creat_done.gif")"></a></p>
+                </div>
+            </div>
+        </div>
+        <div class="reg_right2">
+            <div class="right_title">
+                <p>
+                    创建游戏角色</p>
+                <div>
+                    为自己心爱的游戏角色建立专属展示页面，把玩过的每一个游戏记录下来，那既是你游戏人生的足迹，也是你展示游戏成就的舞台，更是联结你游戏火爆的桥梁。 成功创建游戏角色即可获得<span>@ViewBag.tuandou</span>团豆，<span>@ViewBag.jingyan</span>经验值。</div>
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    //添加游戏扩展属性
+    function addGameRoleExtProtypeJC(isLoadGameRole) {
+        var step = $.trim($("#step").val());
+        var url = "";
+        $(".reg_form").find("input").not("input:reset").each(function (i) {
+            var v = $(this).val();
+            var name = $(this).attr("name");
+            url += "&" + name + "=" + v;
+        });
+        //select标签属性
+        $(".reg_form").find("select").each(function (i) {
+            var v = $(this).val();
+            var name = $(this).attr("name");
+            url += "&" + name + "=" + v;
+        });
+ 
+        url = "roleDescript=" + encodeURIComponent($("#tata").val()) + "" + url;
+        $(".upbutton").click = null; // + new Date().getTime()
+        $.ajax({ url: "/RegNav/getGameProtypesForReg/",
+            type: "POST",
+            dataType:"text",
+            data: url,
+            async: false,
+            timeout: 10000,
+            success: function (data) {
+
+                alert("游戏属性更新成功");
+                location.href = "/RegNav/LikeGroupList";
+                //bAlert("游戏属性更新成功", function () { obj.hide(); getMyRoleList(); });            
+
+
+
+            }
+        });
+
+    }
+</script>

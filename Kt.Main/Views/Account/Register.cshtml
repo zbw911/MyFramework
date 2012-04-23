@@ -1,0 +1,347 @@
+﻿@{
+    ViewBag.Title = "用户注册";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+<link href="@Url.Content("~/Content/default/images/favicon.ico")" rel="shortcut icon" type="text/css" />
+<link href="@Url.Content("~/Content/default/styles/main.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/top.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/default/styles/reg.css")" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/Content/default/js/reg.js"></script>
+<script language="javascript" type="text/javascript" src="/Content/default/js/provincedate.js"></script>
+<div class="main_t">
+</div>
+<div class="_main">
+    <div class="set_warp">
+        <div class="R_L">
+            <form action="/Account/Register/" method="post" target="_top">
+            <table width="100%" border="0">
+                <tr>
+                    <td>
+                        &nbsp;
+                    </td>
+                    <td>
+                        &nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right" valign="top" width="90">
+                        常用Email：
+                    </td>
+                    <td>
+                        <div>
+                            <input type="text" name="email" id="email_input" value="" class="regP" maxlength="32" />
+                            <span class="MessagePanel">用于<a href="/RegNav/logon" target="_blank">登录</a>、<a href="/Account/GetPassword/"
+                                target="_blank">找回密码</a></span></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right" valign="top" width="90">
+                        登录密码：
+                    </td>
+                    <td>
+                        <div>
+                            <input type="password" name="password" id="password" value="" class="regP" maxlength="16"
+                                onkeyup="$('#passwordLength').show();pwStrength(this.value,'img','imgs','ilength')" />
+                            <span class="MessagePanel">密码长度应在6~16位之间</span></div>
+                    </td>
+                </tr>
+                <!--密码强度begin-->
+                <tr id="passwordLength" style="display: none;">
+                    <td valign="top" align="right">
+                        密码强度：
+                    </td>
+                    <td class="m" id="img" valign="top">
+                    </td>
+                </tr>
+                <!--密码强度end-->
+                <tr>
+                    <td align="right" valign="top" width="90">
+                        确认密码：
+                    </td>
+                    <td>
+                        <div>
+                            <input type="password" name="password2" id="password2" value="" class="regP" maxlength="16" />
+                            <span class="MessagePanel">请再次输入密码</span></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right" valign="top" width="90">
+                        昵称：
+                    </td>
+                    <td>
+                        <div>
+                            <input name="nickname" value="@ViewBag.apiNickName" type="text" id="nickname_input" maxlength="14"  class="regP"/>
+                            <span class="MessagePanel">设定后不允许修改，长度在4至14个字符之间</span></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right" valign="top" width="90">
+                        所在地区：
+                    </td>
+                    <td>
+                        <div>
+                            <select id="province" name="province" style="width: 80px">
+                            </select>
+                            <select id="city" name="city" style="width: 80px;">
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right" valign="middle">
+                        &nbsp;
+                    </td>
+                    <td>
+                        <br />
+                        <input id="copyrightInput" name="copyrightInput" type="checkbox" checked onclick="regCopyrightSubmit();" /><label
+                            for="copyrightInput">
+                            <span class="font12px"><a href="/Content/Help/agreement.html">我已看过并同意《使用协议》</a></span></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right" valign="middle">
+                        &nbsp;
+                    </td>
+                    <td>
+                        <br />
+                        <input class="Reg_b" type="submit" value="确定注册" disabled="disabled" id="regSubmit" />
+                    </td>
+                </tr>
+            </table>
+            </form>
+        </div>
+        <div class="R_R">
+            <div class="r_tit">
+                已有@(Kt.GameWeiBo.Common.GlobalConfig.site_name)帐号？请直接登录</div>
+            <a class="r_loginbtn" href="/RegNav/Logon/" rel="nofollow" title="登录即可分享新鲜事">登录社区</a>
+        </div>
+    </div>
+</div>
+<!--密码强度提示-->
+<script type="text/javascript" language="javascript">
+    function CharMode(iN) {
+        if (iN >= 48 && iN <= 57) //数字
+            return 1;
+        if (iN >= 65 && iN <= 90) //大写字母
+            return 2;
+        if (iN >= 97 && iN <= 122) //小写
+            return 4;
+        else
+            return 8; //特殊字符
+    }
+    function bitTotal(num) {
+        modes = 0;
+        for (i = 0; i < 5; i++) {
+            if (num & 1) modes++;
+            num >>>= 1;
+        }
+        return modes;
+    }
+    function checkStrong(sPW) {
+        if (sPW.length <= 5)
+            return 0;  //密码太短
+        Modes = 0;
+        for (i = 0; i < sPW.length; i++) {
+            Modes |= CharMode(sPW.charCodeAt(i));
+        }
+        return bitTotal(Modes);
+    }
+    function pwStrength(pwd, vImg, vImgs, ilength) {
+
+        if (pwd == null || pwd == '') {
+            document.getElementById(vImg).className = "m";
+        }
+        else {
+            S_level = checkStrong(pwd);
+            switch (S_level) {
+                case 0:
+                    document.getElementById(vImg).className = "m";
+                    break;
+                case 1:
+                    document.getElementById(vImg).className = "r";
+                    break;
+                case 2:
+                    document.getElementById(vImg).className = "z";
+                    break;
+                default:
+                    document.getElementById(vImg).className = "q";
+
+            }
+        }
+        return;
+    }
+</script>
+<script type="text/javascript" language="javascript">
+    var weburl = '@(System.Configuration.ConfigurationManager.AppSettings["KATUAN_URL"].ToString())';
+    var error = 1;
+    function _checkusername(toserver) {
+        var obj = $('input[name=nickname]');
+        $(obj).next().remove();
+        error = 0;
+        if (GetCharLength($(obj).val()) < 4 || GetCharLength($(obj).val()) > 14) {
+            $(obj).after('<span class="ErrorMessagePanel"><img src="/Content/default/images/check_error.gif" align="absmiddle"> 昵称过长/昵称过短，长度在4至14个字符之间</span>');
+            error = 1;
+            return false;
+        }
+        //window.alert(!toserver);
+        if (!toserver) return true; //是否进行server验证
+        $.ajax({
+            url: "/Account/AjaxValideRegInfo/",
+            async: false,
+            type: "POST",
+            data: "code=check_nickname&check_value=" + encodeURI($(obj).val()),
+            timeout: 100000,
+            error: function () { },
+            success: function (r) {
+                if (r != '') {
+                    $(obj).after('<span class="ErrorMessagePanel"><img src="/Content/default/images/check_error.gif" align="absmiddle">' + r + '</span>');
+                    error = 1;
+                }
+                else {
+                    $(obj).after('<span class="MessagePanel"> 设定后不允许修改，长度在4至14个字符之间</span>');
+                    error = 0;
+                }
+            }
+        });
+    }
+    function _checkPassword() {
+        var obj = $('input[name=password]');
+        $(obj).next().remove();
+        error = 0;
+        if ($(obj).val() == $('input[name=password2]').val() && $('input[name=password2]').val().length > 0) {
+            $('input[name=password2]').next().remove();
+        }
+        if ($(obj).val() != $('input[name=password2]').val() && $('input[name=password2]').val().length > 0) {
+            $('input[name=password2]').next().remove();
+            $('input[name=password2]').after('<span class="ErrorMessagePanel"><img src="/Content/default/images/check_error.gif"> 两次输入密码不一致</span>');
+        }
+
+        if ($(obj).val().length < 6 || $(obj).val().length > 16) {
+            $(obj).after('<span class="ErrorMessagePanel"><img src="/Content/default/images/check_error.gif" align="absmiddle"> 密码长度应在6到16之间</span>');
+            error = 1;
+            return false;
+        }
+        if (checkStrong($(obj).val()) < 2) {
+            $(obj).after('<span class="ErrorMessagePanel"><img src="/Content/default/images/check_error.gif" align="absmiddle"> 密码强度太低，请输入更复杂的密码</span>');
+            error = 1;
+            return false;
+        }
+    }
+    function _checkRepassword() {
+        var obj = $('input[name=password2]');
+        $(obj).next().remove();
+        error = 0;
+        if ($(obj).val().length == 0) {
+            $(obj).after('<span class="ErrorMessagePanel"><img src="/Content/default/images/check_error.gif"align="absmiddle"> 请输入确认密码</span>');
+            error = 1;
+            return false;
+        }
+        if ($(obj).val() != $('input[name=password]').val()) {
+            $(obj).after('<span class="ErrorMessagePanel"><img src="/Content/default/images/check_error.gif"> 两次输入密码不一致</span>');
+            error = 1;
+            return false;
+        }
+    }
+    function _checkEmail(toserver) {
+        var obj = $('input[name=email]');
+        $(obj).next().remove();
+        error = 0;
+        if ($(obj).val().length == 0) {
+            $(obj).after('<span class="ErrorMessagePanel"><img src="/Content/default/images/check_error.gif"> 请输入邮件</span>');
+            error = 1;
+            return false;
+        }
+        var regu = "^(([0-9a-zA-Z]+)|([0-9a-zA-Z]+[_.0-9a-zA-Z-]*[0-9a-zA-Z]+))@@([a-zA-Z0-9-]+[.])+([a-zA-Z]{2}|net|NET|com|COM|gov|GOV|mil|MIL|org|ORG|edu|EDU|int|INT|cn|CN)$"
+        var re = new RegExp(regu);
+        if ($(obj).val().search(re) == -1) {
+            $(obj).after('<span class="ErrorMessagePanel"><img src="/Content/default/images/check_error.gif"> 邮件格式不正确</span>');
+            error = 1;
+            return false;
+        }
+        if (!toserver) return true; //是否进行server验证
+        $.ajax({
+            url: "/Account/AjaxValideRegInfo/",
+            async: false,
+            type: "POST",
+            data: "code=check_email&check_value=" + encodeURI($(obj).val()),
+            timeout: 100000,
+            error: function () { },
+            success: function (r) {
+                if (r != '') {
+                    $(obj).after('<span class="ErrorMessagePanel"><img src="/Content/default/images/check_error.gif" align="absmiddle">' + r + '</span>');
+                    error = 1;
+                }
+                else {
+                    error = 0;
+                }
+            }
+        });
+    }
+    function _checkArea() {
+        $('#city').next().remove();
+        if ($('#city').val() == 0) {
+            $('#city').after('<span class="ErrorMessagePanel"><img src="/Content/default/images/check_error.gif" align="absmiddle"> 请选择所在地</span>');
+            error = 1;
+            return false;
+        }
+    }
+
+    $(document).ready(function () {
+        //地区赋值
+        $("#province").doubleSelect('city', selectOption);
+        //昵称截取
+        $("#nickname_input").keyup(function () {
+            val = $(this).val();
+            if (GetCharLength(val) > 14) {
+                $(this).val(CutStr(val, 14));
+            }
+        });
+        //用户名
+        $('input[name=nickname]').blur(_checkusername);
+        //密码
+        $('input[name=password]').blur(_checkPassword);
+        //确认密码
+        $('input[name=password2]').blur(_checkRepassword);
+        //邮件
+        $('input[name=email]').blur(_checkEmail);
+        //地区
+        $('#province').change(_checkArea);
+        //提交前验证
+        $('form').submit(function () {
+            //alert(_checkusername(false))
+            _checkusername(true);
+            _checkEmail(true);
+            _checkPassword();
+            _checkRepassword();
+            _checkArea();
+            if (error == 1) return false;
+        });
+    });
+    function regCopyrightSubmit() {
+        document.getElementById('regSubmit').disabled = !document.getElementById('copyrightInput').checked;
+    }
+    regCopyrightSubmit();
+</script>
+<script type="text/javascript" language="javascript">
+    function GetCharLength(str) {
+        var iLength = 0;
+        for (var i = 0; i < str.length; i++) {
+            if (str.charCodeAt(i) > 255) {
+                iLength += 2;
+            } else {
+                iLength += 1;
+            }
+        }
+        return iLength;
+    }
+    function CutStr(Str, Len) {
+        var CurStr = "";
+        for (var i = 0; i < Str.length; i++) {
+            CurStr += Str.charAt(i);
+            if (GetCharLength(CurStr) > Len) {
+                return Str.substring(0, i);
+            }
+        }
+        return CurStr;
+    } 
+</script>

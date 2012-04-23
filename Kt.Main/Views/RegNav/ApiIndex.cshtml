@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "接口-选择logo";
+    Layout = null;
+
+    var r = Request.QueryString["r"];
+}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="refresh" content="2;url=/regnav/apilogon?r=@r">
+    <title>接口-选择logo</title>
+    <link rel="stylesheet" href="@Url.Content("~/Content/usercenter/jk_style.css")" type="text/css" />    
+</head>
+<body>
+    <div class="jk_wapper">
+        <div class="jk_title">
+            <img src="@Url.Content("~/Content/usercenter/images/title.gif")" /></div>
+        <div class="jk_link">
+            2秒后自动跳转页面，如果您的浏览器没有自动跳转，<a href="/regnav/apilogon?r=@r">请点这里继续。</a></div>
+        <div class="logo">
+            <a href="@ViewBag.TuanKaUrl">
+                <img src="@Url.Content("~/Content/usercenter/images/tuanka_logo.gif")"/></a>
+            <a href="ViewBag.YouXiShouUrl?r=r">
+                <img src="@Url.Content("~/Content/usercenter/images/youxishuo_logo.gif")"/></a></div>
+    </div>
+</body>
+</html>

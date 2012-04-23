@@ -1,0 +1,57 @@
+﻿@model Kt.Framework.Models.Messager
+@{
+    ViewBag.Title = Kt.GameWeiBo.Common.GlobalConfig.site_name + " 提示消息";
+    Layout = "~/Views/Shared/_RegNavMain.cshtml";
+}
+@*信息提示*@
+<div class="reg_left">
+    <div class="mail_act">
+        @foreach (var msg in Model.MessageList)
+        {<p>
+            @(new HtmlString(msg))</p>
+        }
+        <div>
+            @if (string.IsNullOrEmpty(Model.return_msg))
+            {
+                if (Model.time > 0)
+                {
+                <a href="@Model.redirectto"><span id='redirect_status'><span id='msg_time'>@(Model.time)</span>秒后@(Model.to_title)</span>，
+                    <script language="JavaScript" type="text/javascript">
+                        function showTimeStatus() {
+                            var timeObj = document.getElementById('msg_time');
+                            if (timeObj.innerHTML == 1) {
+                                document.getElementById('redirect_status').innerHTML = "正在@(new HtmlString(Model.to_title))";
+                                window.location = "@(new HtmlString(Model.redirectto))";
+                                return false;
+                            }
+                            timeObj.innerHTML -= 1;
+
+                            setTimeout(showTimeStatus, 1000);
+                        }
+                        showTimeStatus();
+                    </script>
+                    如果您的浏览器没有自动跳转，请点这里继续</a>
+                }
+                else
+                {
+                <a href="@Model.redirectto">@(new HtmlString(Model.to_title))</a>
+                }
+            }
+            else
+            {
+                @(new HtmlString(Model.return_msg))
+            }
+        </div>
+    </div>
+</div>
+<div class="reg_right2">
+    <div class="right_title">
+        <p>
+            信息提示</p>
+        <div>
+            @Model.tips
+        </div>
+    </div>
+</div>
+<div class="clear">
+</div>

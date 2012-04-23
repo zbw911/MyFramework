@@ -1,0 +1,208 @@
+﻿@{
+    ViewBag.Title = "创建游戏角色";
+    Layout = "/Views/Shared/_RegNavMain.cshtml";
+}
+<script type="text/javascript" src="@Url.Content("~/Content/default/gamenav/js/gamenav.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/plugin/boxy/js/jquery.boxy.js")"></script>
+<link href="@Url.Content("~/Scripts/plugin/boxy/css/boxy.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/default/gamenav/styles/gamenav.css")" rel="stylesheet" type="text/css" />
+<div class="main">
+    <div class="content">
+        <div class="reg_left">
+            <div class="reg_title">
+                创建游戏角色，为您快速找到亲密战友。</div>
+            <div class="reg_form">
+                <div class="new_item" style="z-index:105">
+                    <div class="tit">
+                        选择游戏</div>
+                    <div class="bdmain" style="z-index:104" >
+                        <div class="bd_js_input">
+                            <input id="game" name="game" class="text_ys" type="text" readonly="readonly" onclick="javascript:showgamelists();" />
+                            <input type="hidden" name="gameid" id="gameid" value="0" />
+                            <a href="javascript:void(0)" onclick="javascript:showgamelists();">
+                                <img src="@Url.Content("~/Content/reg/images/all_ico.gif")"/></a></div>
+                        <!--游戏列表begin-->
+<div class="gamelist" id="gamelist">
+    <p class="gamet">
+        <span class="spanin" id="tab1" onclick="tabChange(this,0)">网页游戏</span> <span onclick="tabChange(this,1);">
+            客户端游戏</span> <span onclick="tabChange(this,2);">单机游戏</span> <a class="floatclose"
+                href='javascript:void(0)' hidefocus="true" onclick='$("#gamelist").hide();' title="取消游戏选择">
+                <img src="http://res.ceplay.com/img/gametclose.gif" border="0" />
+            </a>
+    </p>
+    <p class="leterp">
+        <a href="javascript:void(0)" id="sABCD" onclick="getGameABC(this,'A B C D');" class="ain"
+            hidefocus="true">ABCD</a> <a href="javascript:void(0)" onclick="getGameABC(this,'E F G H');"
+                hidefocus="true" id="sEFGH">EFGH</a> <a href="javascript:void(0)" onclick="javascript:getGameABC(this,'I J K L');"
+                    hidefocus="true" id="sIJKL">IJKL</a> <a href="javascript:void(0)" onclick="javascript:getGameABC(this,'M N O P');"
+                        hidefocus="true" id="sMNOP">MNOP</a> <a href="javascript:void(0)" onclick="javascript:getGameABC(this,'Q R S T');"
+                            hidefocus="true" id="sQRST">QRST</a> <a href="javascript:void(0)" onclick="javascript:getGameABC(this,'U V W X Y Z');"
+                                hidefocus="true" id="sWXYZ">UVWXYZ</a> <a href="javascript:void(0)" onclick="javascript:getGameABC(this,'09');"
+                                    hidefocus="true" id="s09">0-9</a></p>
+    <p class="showgame" id="showgame">
+    </p>
+</div>
+
+<!--游戏列表end-->
+                    </div>
+                    <div class="reg_msg">
+                        <span>提示：您可以输入或选择想添加角色的游戏、平台和服务器</span></div>
+                    <div class="clear">
+                    </div>
+                </div>
+                <div class="new_item" style="z-index:103">
+                    <div class="tit">
+                        选择平台</div>
+                    <div class="bdmain" style="z-index:103">
+                        <div class="bd_js_input">
+                            <input id="plat" name="plat" class="text_ys" type="text" readonly="readonly" onclick="showgameplatlists();" />
+                            <input type="hidden" name="platid" id="platid" value="0" />
+                            <a href="javascript:void(0)" onclick="showgameplatlists();">
+                                <img src="@Url.Content("~/Content/reg/images/all_ico.gif")"/></a></div>
+                        <div class="inputTip" id="inputTip">
+    <div id="tiplist">
+    </div>
+</div>
+                    </div>
+                    <div class="clear">
+                    </div>
+                </div>
+                <div class="new_item" style="z-index:101">
+                    <div class="tit">
+                        选择服务器</div>
+                    <div class="bdmain" style="z-index:100">
+                        <div class="bd_js_input">
+                            <input id="servername" name="servername" class="text_ys" type="text" readonly="readonly"
+                                onclick="showserverlists();" />
+                            <input type="hidden" name="serverid" id="serverid" value="0" />
+                            <a href="javascript:void(0)" onclick="showserverlists();">
+                                <img src="@Url.Content("~/Content/reg/images/all_ico.gif")"/></a></div>
+                        <div class="inputTip" id="inputTips">
+    <div id="tiplists">
+    </div>
+</div>
+                    </div>
+                    <div class="clear">
+                    </div>
+                </div>
+                <div class="new_item">
+                    <div class="tit">
+                        角色名</div>
+                    <div class="bdmain">
+                        <div class="bd_js_input">
+                            <input type="text" id="Role" value="" class="text_ys" name="roleName" maxlength="20" />
+                            <input type="hidden" name="sid" id="sid" />
+                        </div>
+                    </div>
+                    <div class="clear">
+                    </div>
+                </div>
+                <div class="new_item">
+                    <div class="tit">
+                        角色描述</div>
+                    <div class="bdmain">
+                        <div class="bd_js_input">
+                            <textarea name="intro" id="intro"></textarea></div>
+                    </div>
+                    <div class="clear">
+                    </div>
+                </div>
+                <div class="new_item">
+                    <p class="con_button">
+                        <a class="" onclick="javascript:createRoleJC();">
+                            <img src="@Url.Content("~/Content/reg/images/creat_js.gif")"></a><a href="/RegNav/LikeGroupList">>>偷懒跳过</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="reg_right2">
+            <div class="right_title">
+                <p>
+                    创建游戏角色</p>
+                <div>
+                    为自己心爱的游戏角色建立专属展示页面，把玩过的每一个游戏记录下来，那既是你游戏人生的足迹，也是你展示游戏成就的舞台，更是联结你游戏火爆的桥梁。 成功创建游戏角色即可获得<span>@ViewBag.tuandou</span>团豆，<span>@ViewBag.jingyan</span>经验值。</div>
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+</div>
+
+<script language="javascript" type="text/javascript">
+//注册时创建游戏角色
+
+    function createRoleJC() {
+        var gameid, platid, serverid, Role, intro;
+        var message = "";
+        var flag = false;
+        gameid = $.trim($("#gameid").val());
+        platid = $.trim($("#platid").val());
+        serverid = $.trim($("#serverid").val());
+        // alert("platid:" + platid + "serverid:" + serverid);
+        Role = $.trim($("#Role").val());
+        intro = $.trim($("#intro").val());
+        if (gameid == 0) { message = "请选择游戏！"; $("#gameid").focus(); }
+        else if (platid == 0) { message = "请选择平台！"; $("#platid").focus(); }
+        else if (platid == "-1") { message = "暂无运营平台！"; $("#platid").focus(); }
+        else if (serverid == 0) { message = "请选择服务器！"; $("#serverid").focus(); }
+        else if (serverid == "-1") { message = "暂无区服！"; $("#serverid").focus(); }
+        else if (!!Role == false) { message = "请添加用户角色！"; $("#Role").focus(); };
+        if (!!message == true) {
+            window.alert(message);
+            return false;
+        } else {
+            $(".next_ys").click = null; // + new Date().getTime()
+            $.ajax({ url: "/GameWeiBo/GameRole/CreateRole/",
+                type: "POST",
+                dataType: "text",
+                data: "gameid=" + gameid + "&platid=" + platid + "&serverid=" + serverid + "&Role=" + encodeURIComponent(Role) + "&intro=" + encodeURIComponent(intro),
+                async: false,
+                timeout: 10000,
+                success: function (data) {
+                    if (data == "-8") {
+                        window.alert("暂无区服");
+                        flag = false;
+                    }
+                    else if (data == "-7") {
+                        window.alert("暂无运营平台");
+                        flag = false;
+                    }
+                    else if (data == "-6") {
+                        window.alert("角色名应在20个字符以内");
+                        flag = false;
+                    }
+                    else if (data == "-5") {
+                        window.alert("游戏编号不能为空！");
+                        flag = false;
+                    }
+                    else if (data == "-4") {
+                        window.alert("请选择平台！");
+                        flag = false;
+                    }
+                    else if (data == "-3") {
+                        window.alert("请选择服务器！");
+                        flag = false;
+                    }
+                    else if (data == "-2") {
+                        window.alert("请选择用户角色");
+                        flag = false;
+                    }
+                    else if (data == "-1") {
+                        window.alert("添加角色失败！所选择服务器已经存在此角色名，请重新选择角色名！");
+                        flag = false;
+                    }
+                    else {
+                        var arr = data.split(",");
+                        flag = true;
+                        window.location = "/RegNav/CreateProtypes?step=1&game_role_id=" + arr[0] + "&gameid=" + arr[1];
+                        //obj.hide(function () { bAlert("aaa"); });
+
+                    }
+                }
+            });
+            return flag;
+        }
+        
+    }
+</script>

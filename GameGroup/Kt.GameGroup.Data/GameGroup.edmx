@@ -1,0 +1,538 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="GameGroupModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="GameGroupModelStoreContainer">
+          <EntitySet Name="group_bbs" EntityType="GameGroupModel.Store.group_bbs" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="group_bbsReply" EntityType="GameGroupModel.Store.group_bbsReply" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="group_bbsSort" EntityType="GameGroupModel.Store.group_bbsSort" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="group_gameStat" EntityType="GameGroupModel.Store.group_gameStat" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Group_Grade" EntityType="GameGroupModel.Store.Group_Grade" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="group_Infor" EntityType="GameGroupModel.Store.group_Infor" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="group_member" EntityType="GameGroupModel.Store.group_member" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_GROUP_BB_REFERENCE_GROUP_BB_xx" Association="GameGroupModel.Store.FK_GROUP_BB_REFERENCE_GROUP_BB_xx">
+            <End Role="group_bbs" EntitySet="group_bbs" />
+            <End Role="group_bbsReply" EntitySet="group_bbsReply" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GROUP_BB_REFERENCE_GROUP_IN" Association="GameGroupModel.Store.FK_GROUP_BB_REFERENCE_GROUP_IN">
+            <End Role="group_Infor" EntitySet="group_Infor" />
+            <End Role="group_bbs" EntitySet="group_bbs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GROUP_BB_REFERENCE_GROUP_IN_1" Association="GameGroupModel.Store.FK_GROUP_BB_REFERENCE_GROUP_IN_1">
+            <End Role="group_Infor" EntitySet="group_Infor" />
+            <End Role="group_bbsSort" EntitySet="group_bbsSort" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GROUP_ME_REFERENCE_GROUP_IN" Association="GameGroupModel.Store.FK_GROUP_ME_REFERENCE_GROUP_IN">
+            <End Role="group_Infor" EntitySet="group_Infor" />
+            <End Role="group_member" EntitySet="group_member" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="group_bbs">
+          <Key>
+            <PropertyRef Name="bbsId" />
+          </Key>
+          <Property Name="bbsId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="gId" Type="int" />
+          <Property Name="postSortId" Type="int" Nullable="false" />
+          <Property Name="publishId" Type="int" />
+          <Property Name="uId" Type="numeric" Precision="11" />
+          <Property Name="sendTime" Type="datetime" />
+          <Property Name="nickName" Type="nvarchar" MaxLength="50" />
+          <Property Name="title" Type="nvarchar" MaxLength="100" />
+          <Property Name="content" Type="text" />
+          <Property Name="replyNum" Type="int" />
+          <Property Name="clickNum" Type="int" />
+          <Property Name="lastUid" Type="numeric" Precision="11" />
+          <Property Name="lastNickName" Type="nvarchar" MaxLength="50" />
+          <Property Name="lastTime" Type="datetime" />
+          <Property Name="isTop" Type="bit" />
+          <Property Name="isLight" Type="bit" />
+          <Property Name="isPith" Type="bit" />
+          <Property Name="isAudit" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="group_bbsReply">
+          <Key>
+            <PropertyRef Name="replyId" />
+          </Key>
+          <Property Name="replyId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="bbsId" Type="int" />
+          <Property Name="uId" Type="numeric" Precision="11" />
+          <Property Name="nickName" Type="nvarchar" MaxLength="50" />
+          <Property Name="content" Type="text" />
+          <Property Name="repTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="group_bbsSort">
+          <Key>
+            <PropertyRef Name="sortId" />
+          </Key>
+          <Property Name="sortId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="gId" Type="int" />
+          <Property Name="showXh" Type="int" />
+          <Property Name="sortName" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="group_gameStat">
+          <Key>
+            <PropertyRef Name="gameId" />
+          </Key>
+          <Property Name="gameId" Type="int" Nullable="false" />
+          <Property Name="groupNum" Type="int" />
+        </EntityType>
+        <EntityType Name="Group_Grade">
+          <Key>
+            <PropertyRef Name="AutoId" />
+          </Key>
+          <Property Name="AutoId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Gid" Type="int" Nullable="false" />
+          <Property Name="GradeId" Type="int" Nullable="false" />
+          <Property Name="GradeName" Type="varchar" Nullable="false" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="group_Infor">
+          <Key>
+            <PropertyRef Name="gId" />
+          </Key>
+          <Property Name="gId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="uId" Type="numeric" Precision="11" />
+          <Property Name="gName" Type="nvarchar" MaxLength="50" />
+          <Property Name="memberNum" Type="int" />
+          <Property Name="maxNum" Type="int" />
+          <Property Name="postNum" Type="int" />
+          <Property Name="points" Type="int" />
+          <Property Name="account" Type="nvarchar" MaxLength="300" />
+          <Property Name="notice" Type="nvarchar" MaxLength="500" />
+          <Property Name="gPic" Type="nvarchar" MaxLength="150" />
+          <Property Name="gameId" Type="int" />
+          <Property Name="platFormId" Type="int" />
+          <Property Name="gameserverid" Type="int" />
+          <Property Name="joinPerm" Type="int" />
+          <Property Name="viewPerm" Type="bit" />
+          <Property Name="postPerm" Type="bit" />
+          <Property Name="recommend" Type="bit" />
+          <Property Name="reserve" Type="nvarchar" MaxLength="100" />
+          <Property Name="createDate" Type="datetime2" />
+          <Property Name="vistUrl" Type="nvarchar" MaxLength="200" />
+          <Property Name="isOpenSort" Type="bit" />
+          <Property Name="isClass" Type="bit" />
+          <Property Name="isPrefix" Type="bit" />
+          <Property Name="isChatRoom" Type="int" />
+        </EntityType>
+        <EntityType Name="group_member">
+          <Key>
+            <PropertyRef Name="autoId" />
+          </Key>
+          <Property Name="autoId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="myUid" Type="decimal" Precision="11" />
+          <Property Name="uType" Type="int" />
+          <Property Name="gId" Type="int" />
+          <Property Name="state" Type="bit" />
+          <Property Name="revTime" Type="datetime" />
+          <Property Name="postNum" Type="int" Nullable="false" />
+          <Property Name="LastPostTime" Type="datetime2" />
+          <Property Name="GradeId" Type="int" Nullable="false" />
+          <Property Name="GroupUserName" Type="varchar" MaxLength="50" />
+          <Property Name="GroupUserImg" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <Association Name="FK_GROUP_BB_REFERENCE_GROUP_BB_xx">
+          <End Role="group_bbs" Type="GameGroupModel.Store.group_bbs" Multiplicity="0..1" />
+          <End Role="group_bbsReply" Type="GameGroupModel.Store.group_bbsReply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="group_bbs">
+              <PropertyRef Name="bbsId" />
+            </Principal>
+            <Dependent Role="group_bbsReply">
+              <PropertyRef Name="bbsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GROUP_BB_REFERENCE_GROUP_IN">
+          <End Role="group_Infor" Type="GameGroupModel.Store.group_Infor" Multiplicity="0..1" />
+          <End Role="group_bbs" Type="GameGroupModel.Store.group_bbs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="group_Infor">
+              <PropertyRef Name="gId" />
+            </Principal>
+            <Dependent Role="group_bbs">
+              <PropertyRef Name="gId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GROUP_BB_REFERENCE_GROUP_IN_1">
+          <End Role="group_Infor" Type="GameGroupModel.Store.group_Infor" Multiplicity="0..1" />
+          <End Role="group_bbsSort" Type="GameGroupModel.Store.group_bbsSort" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="group_Infor">
+              <PropertyRef Name="gId" />
+            </Principal>
+            <Dependent Role="group_bbsSort">
+              <PropertyRef Name="gId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GROUP_ME_REFERENCE_GROUP_IN">
+          <End Role="group_Infor" Type="GameGroupModel.Store.group_Infor" Multiplicity="0..1" />
+          <End Role="group_member" Type="GameGroupModel.Store.group_member" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="group_Infor">
+              <PropertyRef Name="gId" />
+            </Principal>
+            <Dependent Role="group_member">
+              <PropertyRef Name="gId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GameGroupModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="GameGroupEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="group_bbs" EntityType="GameGroupModel.group_bbs" />
+          <EntitySet Name="group_bbsReply" EntityType="GameGroupModel.group_bbsReply" />
+          <EntitySet Name="group_bbsSort" EntityType="GameGroupModel.group_bbsSort" />
+          <EntitySet Name="group_gameStat" EntityType="GameGroupModel.group_gameStat" />
+          <EntitySet Name="Group_Grade" EntityType="GameGroupModel.Group_Grade" />
+          <EntitySet Name="group_Infor" EntityType="GameGroupModel.group_Infor" />
+          <EntitySet Name="group_member" EntityType="GameGroupModel.group_member" />
+          <AssociationSet Name="FK_GROUP_BB_REFERENCE_GROUP_BB_xx" Association="GameGroupModel.FK_GROUP_BB_REFERENCE_GROUP_BB_xx">
+            <End Role="group_bbs" EntitySet="group_bbs" />
+            <End Role="group_bbsReply" EntitySet="group_bbsReply" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GROUP_BB_REFERENCE_GROUP_IN" Association="GameGroupModel.FK_GROUP_BB_REFERENCE_GROUP_IN">
+            <End Role="group_Infor" EntitySet="group_Infor" />
+            <End Role="group_bbs" EntitySet="group_bbs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GROUP_BB_REFERENCE_GROUP_IN_1" Association="GameGroupModel.FK_GROUP_BB_REFERENCE_GROUP_IN_1">
+            <End Role="group_Infor" EntitySet="group_Infor" />
+            <End Role="group_bbsSort" EntitySet="group_bbsSort" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GROUP_ME_REFERENCE_GROUP_IN" Association="GameGroupModel.FK_GROUP_ME_REFERENCE_GROUP_IN">
+            <End Role="group_Infor" EntitySet="group_Infor" />
+            <End Role="group_member" EntitySet="group_member" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="group_bbs">
+          <Key>
+            <PropertyRef Name="bbsId" />
+          </Key>
+          <Property Type="Int32" Name="bbsId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="gId" />
+          <Property Type="Int32" Name="postSortId" Nullable="false" />
+          <Property Type="Int32" Name="publishId" />
+          <Property Type="Decimal" Name="uId" Precision="11" Scale="0" />
+          <Property Type="DateTime" Name="sendTime" />
+          <Property Type="String" Name="nickName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="title" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="content" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="replyNum" />
+          <Property Type="Int32" Name="clickNum" />
+          <Property Type="Decimal" Name="lastUid" Precision="11" Scale="0" />
+          <Property Type="String" Name="lastNickName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="lastTime" />
+          <Property Type="Boolean" Name="isTop" />
+          <Property Type="Boolean" Name="isLight" />
+          <Property Type="Boolean" Name="isPith" />
+          <Property Type="Boolean" Name="isAudit" Nullable="false" />
+          <NavigationProperty Name="group_bbsReply" Relationship="GameGroupModel.FK_GROUP_BB_REFERENCE_GROUP_BB_xx" FromRole="group_bbs" ToRole="group_bbsReply" />
+          <NavigationProperty Name="group_Infor" Relationship="GameGroupModel.FK_GROUP_BB_REFERENCE_GROUP_IN" FromRole="group_bbs" ToRole="group_Infor" />
+        </EntityType>
+        <EntityType Name="group_bbsReply">
+          <Key>
+            <PropertyRef Name="replyId" />
+          </Key>
+          <Property Type="Int32" Name="replyId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="bbsId" />
+          <Property Type="Decimal" Name="uId" Precision="11" Scale="0" />
+          <Property Type="String" Name="nickName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="content" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="repTime" />
+          <NavigationProperty Name="group_bbs" Relationship="GameGroupModel.FK_GROUP_BB_REFERENCE_GROUP_BB_xx" FromRole="group_bbsReply" ToRole="group_bbs" />
+        </EntityType>
+        <EntityType Name="group_bbsSort">
+          <Key>
+            <PropertyRef Name="sortId" />
+          </Key>
+          <Property Type="Int32" Name="sortId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="gId" />
+          <Property Type="Int32" Name="showXh" />
+          <Property Type="String" Name="sortName" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="group_Infor" Relationship="GameGroupModel.FK_GROUP_BB_REFERENCE_GROUP_IN_1" FromRole="group_bbsSort" ToRole="group_Infor" />
+        </EntityType>
+        <EntityType Name="group_gameStat">
+          <Key>
+            <PropertyRef Name="gameId" />
+          </Key>
+          <Property Type="Int32" Name="gameId" Nullable="false" />
+          <Property Type="Int32" Name="groupNum" />
+        </EntityType>
+        <EntityType Name="Group_Grade">
+          <Key>
+            <PropertyRef Name="AutoId" />
+          </Key>
+          <Property Type="Int32" Name="AutoId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Gid" Nullable="false" />
+          <Property Type="Int32" Name="GradeId" Nullable="false" />
+          <Property Type="String" Name="GradeName" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="group_Infor">
+          <Key>
+            <PropertyRef Name="gId" />
+          </Key>
+          <Property Type="Int32" Name="gId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Decimal" Name="uId" Precision="11" Scale="0" />
+          <Property Type="String" Name="gName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="memberNum" />
+          <Property Type="Int32" Name="maxNum" />
+          <Property Type="Int32" Name="postNum" />
+          <Property Type="Int32" Name="points" />
+          <Property Type="String" Name="account" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="notice" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="gPic" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="gameId" />
+          <Property Type="Int32" Name="platFormId" />
+          <Property Type="Int32" Name="gameserverid" />
+          <Property Type="Int32" Name="joinPerm" />
+          <Property Type="Boolean" Name="viewPerm" />
+          <Property Type="Boolean" Name="postPerm" />
+          <Property Type="Boolean" Name="recommend" />
+          <Property Type="String" Name="reserve" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="createDate" />
+          <Property Type="String" Name="vistUrl" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="isOpenSort" />
+          <Property Type="Boolean" Name="isClass" />
+          <Property Type="Boolean" Name="isPrefix" />
+          <Property Type="Int32" Name="isChatRoom" />
+          <NavigationProperty Name="group_bbs" Relationship="GameGroupModel.FK_GROUP_BB_REFERENCE_GROUP_IN" FromRole="group_Infor" ToRole="group_bbs" />
+          <NavigationProperty Name="group_bbsSort" Relationship="GameGroupModel.FK_GROUP_BB_REFERENCE_GROUP_IN_1" FromRole="group_Infor" ToRole="group_bbsSort" />
+          <NavigationProperty Name="group_member" Relationship="GameGroupModel.FK_GROUP_ME_REFERENCE_GROUP_IN" FromRole="group_Infor" ToRole="group_member" />
+        </EntityType>
+        <EntityType Name="group_member">
+          <Key>
+            <PropertyRef Name="autoId" />
+          </Key>
+          <Property Type="Int32" Name="autoId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Decimal" Name="myUid" Precision="11" Scale="0" />
+          <Property Type="Int32" Name="uType" />
+          <Property Type="Int32" Name="gId" />
+          <Property Type="Boolean" Name="state" />
+          <Property Type="DateTime" Name="revTime" />
+          <Property Type="Int32" Name="postNum" Nullable="false" />
+          <Property Type="DateTime" Name="LastPostTime" />
+          <Property Type="Int32" Name="GradeId" Nullable="false" />
+          <Property Type="String" Name="GroupUserName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="GroupUserImg" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="group_Infor" Relationship="GameGroupModel.FK_GROUP_ME_REFERENCE_GROUP_IN" FromRole="group_member" ToRole="group_Infor" />
+        </EntityType>
+        <Association Name="FK_GROUP_BB_REFERENCE_GROUP_BB_xx">
+          <End Type="GameGroupModel.group_bbs" Role="group_bbs" Multiplicity="0..1" />
+          <End Type="GameGroupModel.group_bbsReply" Role="group_bbsReply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="group_bbs">
+              <PropertyRef Name="bbsId" />
+            </Principal>
+            <Dependent Role="group_bbsReply">
+              <PropertyRef Name="bbsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GROUP_BB_REFERENCE_GROUP_IN">
+          <End Type="GameGroupModel.group_Infor" Role="group_Infor" Multiplicity="0..1" />
+          <End Type="GameGroupModel.group_bbs" Role="group_bbs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="group_Infor">
+              <PropertyRef Name="gId" />
+            </Principal>
+            <Dependent Role="group_bbs">
+              <PropertyRef Name="gId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GROUP_BB_REFERENCE_GROUP_IN_1">
+          <End Type="GameGroupModel.group_Infor" Role="group_Infor" Multiplicity="0..1" />
+          <End Type="GameGroupModel.group_bbsSort" Role="group_bbsSort" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="group_Infor">
+              <PropertyRef Name="gId" />
+            </Principal>
+            <Dependent Role="group_bbsSort">
+              <PropertyRef Name="gId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GROUP_ME_REFERENCE_GROUP_IN">
+          <End Type="GameGroupModel.group_Infor" Role="group_Infor" Multiplicity="0..1" />
+          <End Type="GameGroupModel.group_member" Role="group_member" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="group_Infor">
+              <PropertyRef Name="gId" />
+            </Principal>
+            <Dependent Role="group_member">
+              <PropertyRef Name="gId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GameGroupModelStoreContainer" CdmEntityContainer="GameGroupEntities">
+          <EntitySetMapping Name="group_bbs">
+            <EntityTypeMapping TypeName="GameGroupModel.group_bbs">
+              <MappingFragment StoreEntitySet="group_bbs">
+                <ScalarProperty Name="isAudit" ColumnName="isAudit" />
+                <ScalarProperty Name="isPith" ColumnName="isPith" />
+                <ScalarProperty Name="isLight" ColumnName="isLight" />
+                <ScalarProperty Name="isTop" ColumnName="isTop" />
+                <ScalarProperty Name="lastTime" ColumnName="lastTime" />
+                <ScalarProperty Name="lastNickName" ColumnName="lastNickName" />
+                <ScalarProperty Name="lastUid" ColumnName="lastUid" />
+                <ScalarProperty Name="clickNum" ColumnName="clickNum" />
+                <ScalarProperty Name="replyNum" ColumnName="replyNum" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="nickName" ColumnName="nickName" />
+                <ScalarProperty Name="sendTime" ColumnName="sendTime" />
+                <ScalarProperty Name="uId" ColumnName="uId" />
+                <ScalarProperty Name="publishId" ColumnName="publishId" />
+                <ScalarProperty Name="postSortId" ColumnName="postSortId" />
+                <ScalarProperty Name="gId" ColumnName="gId" />
+                <ScalarProperty Name="bbsId" ColumnName="bbsId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="group_bbsReply">
+            <EntityTypeMapping TypeName="GameGroupModel.group_bbsReply">
+              <MappingFragment StoreEntitySet="group_bbsReply">
+                <ScalarProperty Name="repTime" ColumnName="repTime" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="nickName" ColumnName="nickName" />
+                <ScalarProperty Name="uId" ColumnName="uId" />
+                <ScalarProperty Name="bbsId" ColumnName="bbsId" />
+                <ScalarProperty Name="replyId" ColumnName="replyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="group_bbsSort">
+            <EntityTypeMapping TypeName="GameGroupModel.group_bbsSort">
+              <MappingFragment StoreEntitySet="group_bbsSort">
+                <ScalarProperty Name="sortName" ColumnName="sortName" />
+                <ScalarProperty Name="showXh" ColumnName="showXh" />
+                <ScalarProperty Name="gId" ColumnName="gId" />
+                <ScalarProperty Name="sortId" ColumnName="sortId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="group_gameStat">
+            <EntityTypeMapping TypeName="GameGroupModel.group_gameStat">
+              <MappingFragment StoreEntitySet="group_gameStat">
+                <ScalarProperty Name="groupNum" ColumnName="groupNum" />
+                <ScalarProperty Name="gameId" ColumnName="gameId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Group_Grade">
+            <EntityTypeMapping TypeName="GameGroupModel.Group_Grade">
+              <MappingFragment StoreEntitySet="Group_Grade">
+                <ScalarProperty Name="GradeName" ColumnName="GradeName" />
+                <ScalarProperty Name="GradeId" ColumnName="GradeId" />
+                <ScalarProperty Name="Gid" ColumnName="Gid" />
+                <ScalarProperty Name="AutoId" ColumnName="AutoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="group_Infor">
+            <EntityTypeMapping TypeName="GameGroupModel.group_Infor">
+              <MappingFragment StoreEntitySet="group_Infor">
+                <ScalarProperty Name="isChatRoom" ColumnName="isChatRoom" />
+                <ScalarProperty Name="isPrefix" ColumnName="isPrefix" />
+                <ScalarProperty Name="isClass" ColumnName="isClass" />
+                <ScalarProperty Name="isOpenSort" ColumnName="isOpenSort" />
+                <ScalarProperty Name="vistUrl" ColumnName="vistUrl" />
+                <ScalarProperty Name="createDate" ColumnName="createDate" />
+                <ScalarProperty Name="reserve" ColumnName="reserve" />
+                <ScalarProperty Name="recommend" ColumnName="recommend" />
+                <ScalarProperty Name="postPerm" ColumnName="postPerm" />
+                <ScalarProperty Name="viewPerm" ColumnName="viewPerm" />
+                <ScalarProperty Name="joinPerm" ColumnName="joinPerm" />
+                <ScalarProperty Name="gameserverid" ColumnName="gameserverid" />
+                <ScalarProperty Name="platFormId" ColumnName="platFormId" />
+                <ScalarProperty Name="gameId" ColumnName="gameId" />
+                <ScalarProperty Name="gPic" ColumnName="gPic" />
+                <ScalarProperty Name="notice" ColumnName="notice" />
+                <ScalarProperty Name="account" ColumnName="account" />
+                <ScalarProperty Name="points" ColumnName="points" />
+                <ScalarProperty Name="postNum" ColumnName="postNum" />
+                <ScalarProperty Name="maxNum" ColumnName="maxNum" />
+                <ScalarProperty Name="memberNum" ColumnName="memberNum" />
+                <ScalarProperty Name="gName" ColumnName="gName" />
+                <ScalarProperty Name="uId" ColumnName="uId" />
+                <ScalarProperty Name="gId" ColumnName="gId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="group_member">
+            <EntityTypeMapping TypeName="GameGroupModel.group_member">
+              <MappingFragment StoreEntitySet="group_member">
+                <ScalarProperty Name="GroupUserImg" ColumnName="GroupUserImg" />
+                <ScalarProperty Name="GroupUserName" ColumnName="GroupUserName" />
+                <ScalarProperty Name="GradeId" ColumnName="GradeId" />
+                <ScalarProperty Name="LastPostTime" ColumnName="LastPostTime" />
+                <ScalarProperty Name="postNum" ColumnName="postNum" />
+                <ScalarProperty Name="revTime" ColumnName="revTime" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="gId" ColumnName="gId" />
+                <ScalarProperty Name="uType" ColumnName="uType" />
+                <ScalarProperty Name="myUid" ColumnName="myUid" />
+                <ScalarProperty Name="autoId" ColumnName="autoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="GameGroup" ZoomLevel="88">
+        <EntityTypeShape EntityType="GameGroupModel.group_bbs" Width="1.5" PointX="3" PointY="1.375" Height="4.3201302083333388" />
+        <EntityTypeShape EntityType="GameGroupModel.group_bbsReply" Width="1.5" PointX="5.25" PointY="2.5" Height="2.1280729166666674" />
+        <EntityTypeShape EntityType="GameGroupModel.group_bbsSort" Width="1.5" PointX="3" PointY="6.375" Height="1.7908333333333388" />
+        <EntityTypeShape EntityType="GameGroupModel.group_gameStat" Width="1.5" PointX="5.75" PointY="5.75" Height="1.2849739583333388" />
+        <EntityTypeShape EntityType="GameGroupModel.Group_Grade" Width="1.5" PointX="7.75" PointY="0.75" Height="1.6222135416666674" />
+        <EntityTypeShape EntityType="GameGroupModel.group_Infor" Width="1.5" PointX="0.75" PointY="3.875" Height="5.5004687500000022" />
+        <EntityTypeShape EntityType="GameGroupModel.group_member" Width="1.5" PointX="3" PointY="9" Height="2.971171874999996" />
+        <AssociationConnector Association="GameGroupModel.FK_GROUP_BB_REFERENCE_GROUP_BB_xx" >
+          <ConnectorPoint PointX="4.5" PointY="3.5640364583333337" />
+          <ConnectorPoint PointX="5.25" PointY="3.5640364583333337" />
+        </AssociationConnector>
+        <AssociationConnector Association="GameGroupModel.FK_GROUP_BB_REFERENCE_GROUP_IN" >
+          <ConnectorPoint PointX="2.25" PointY="4.7850651041666694" />
+          <ConnectorPoint PointX="3" PointY="4.7850651041666694" />
+        </AssociationConnector>
+        <AssociationConnector Association="GameGroupModel.FK_GROUP_BB_REFERENCE_GROUP_IN_1" >
+          <ConnectorPoint PointX="2.25" PointY="7.2704166666666694" />
+          <ConnectorPoint PointX="3" PointY="7.2704166666666694" />
+        </AssociationConnector>
+        <AssociationConnector Association="GameGroupModel.FK_GROUP_ME_REFERENCE_GROUP_IN" >
+          <ConnectorPoint PointX="2.25" PointY="9.1877343750000016" />
+          <ConnectorPoint PointX="3" PointY="9.1877343750000016" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

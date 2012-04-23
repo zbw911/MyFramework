@@ -1,0 +1,60 @@
+﻿@{
+    ViewBag.Title = "激活账号";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+<link href="@Url.Content("~/Content/top.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/default/styles/reg.css")" rel="stylesheet" type="text/css" />
+<div class="containter">
+      <div class="maintop"></div>
+			<div class="main" style="height:500px;">
+                
+                <div class="maintitle1"><img src="/Content/default/images/Act.gif"  /></div>
+                <div class="regs-main">
+                <div class="regs-mainl">
+                      <h2>对不起，您的邮箱还没有激活！请接收邮件以完成激活</h2>
+                      <p>欢迎加入游戏说,我们给您发了激活邮件，地址是：</p>
+                      <p><a  href="javascript:void(0);"onclick="javascript:activateMail('@(ViewBag.email)');">@(ViewBag.email)</a></p>
+                      <p>点击邮件中的激活链接，即可开通账号</p>
+                    </div>
+                <a href="javascript:void(0);"onclick="javascript:activateMail('@(ViewBag.email)');">
+                <img class="regs-mainr" src="/Content/default/images/enteremail.png" width="98" height="34" /></a>
+                    <div class="clear"></div>
+                </div>
+               <div class="regs-mainb">
+                    <p>没有收到邮件？ </p>
+                    <P>试试在垃圾邮件中找找 <a href="/Account/goBackRegister/">返回重新注册</a> 
+                    <a href="javascript:void(0)" onclick="javascript:resendemail('@(ViewBag.email)');">
+                    重新发送激活邮件</a></P>
+               </div>
+        </div>
+      </div>
+<script type="text/javascript" language="javascript">
+    function activateMail(mail) {
+        var url = 'http://mail.' + mail.substring(mail.indexOf("@@") + 1, mail.length);
+        if (mail.substring(mail.indexOf("@@") + 1, mail.length).toLowerCase() == "gmail.com") {
+            url = 'http://mail.google.com';
+        }
+        if (mail.substring(mail.indexOf("@@") + 1, mail.length).toLowerCase() == "hotmail.com") {
+            url = 'http://mail.live.com/';
+        }
+
+        if (mail.substring(mail.indexOf("@@") + 1, mail.indexOf("@@") + 4).toLowerCase() == "vip") {
+            url = 'http://mail.' + mail.substring(mail.indexOf('vip') + 4, mail.length);
+        }
+        window.open(url);
+    }
+    function resendemail(useremail) {
+        var password = "";
+        $.ajax({ url: '/Account/sendRegActivateEmail', type: 'POST', data: 'userEmail=' + useremail, async: false, error: function () { }, timeout: 10000, success: function (data) {
+            if (data == 'error') {
+                window.alert('重新发送激活邮箱失败！');
+            } else if (data == 'yes') {
+                window.alert('游戏说已重新发送确认邮件！\n请到您的邮箱中查看！');
+            }
+            else if (data == "havesend") {
+                window.alert("请不要重复恶意发送，您的请求已经发送到您的信箱中，如有问题，请与管理员联系！");
+            }
+        }
+        });
+    }
+</script>

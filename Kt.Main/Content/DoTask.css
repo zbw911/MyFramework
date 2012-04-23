@@ -1,0 +1,17 @@
+﻿.alertdiv{color:#ff0000}
+    .fLeft{position:relative;}
+    .menu_showRole{line-height:25px;font-size:12px;width:230px;z-index:15;}
+    .tigBox_2 {background: url("/content/defauimages/tigBox_2.gif") no-repeat scroll 0 0 transparent;}
+/*任务弹出层*/
+#TaskTxt .ceng_set_bz{width:280px;padding-bottom:10px}
+#TaskTxt .task_left{width:230px;text-align:left;padding:20px 10px 0 25px;line-height:22px;color:#666666;}
+#TaskTxt .task_left ul li{margin-bottom:5px}
+#TaskTxt .task_left ul li span{font-weight:bold}
+#TaskTxt .task_left ul li span img{vertical-align:middle}
+#TaskTxt .task_left ul li span.task_name{color:#D90000}
+#TaskTxt .task_left ul li span.uc_tuandou,#TaskTxt .task_left ul li span.uc_jiangli{color:#D90000;margin-right:5px}
+#TaskTxt  .task_go{margin:10px 0;line-height:26px;height:26px;text-align:center}
+#TaskTxt  .task_go .task_pass{color:#666666;margin-right:10px;background:url("/content/images/task_botton.gif");display:inline-block;width:105px;height:29px;text-align:center;line-height:29px;color:#fff;font-weight:bold;}
+#TaskTxt .task_go .task_goto{width:105px;height:29px;text-align:center;line-height:29px;display:inline-block;background:url("/content/images/go_task_botton.gif");color:#D90000;font-weight:bold}
+#TaskTxt .uc_tuandou em,#TaskTxt .uc_jiangli em{vertical-align:middle;margin-left:5px}
+#TaskTxt .uc_jiangli em{background-position: right -13px}
