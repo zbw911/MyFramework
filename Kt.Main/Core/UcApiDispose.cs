@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Kt.Framework.User;
+ 
 using Kt.Framework.Repository.Data;
 using System.Web.SessionState;
 
@@ -100,7 +100,7 @@ namespace Kt.Main.Areas.GameWeiBo.Core
         /// <returns></returns>
         public override DS.Web.UCenter.Api.ApiReturn SynLogout()
         {
-            UserState.AllLoginOut();
+            //UserState.AllLoginOut();
             return DS.Web.UCenter.Api.ApiReturn.Success;
         }
 

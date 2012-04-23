@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Kt.Framework.Filter;
-using Kt.Framework.User;
+//using Kt.Framework.User;
 
 namespace Kt.Main.Core
 {

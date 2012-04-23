@@ -48,9 +48,6 @@
     <Reference Include="DS.Web.UCenter">
       <HintPath>..\LIB\DS.Web.UCenter.dll</HintPath>
     </Reference>
-    <Reference Include="Dx.Common">
-      <HintPath>..\LIB\Dx.Common.dll</HintPath>
-    </Reference>
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\LIB\log4net.dll</HintPath>
@@ -263,10 +260,6 @@
     <ProjectReference Include="..\Framework\Kt.Framework.Repository\Kt.Framework.Repository.csproj">
       <Project>{F73EB92E-6F20-4AE6-9FC9-E6CA638F5EAE}</Project>
       <Name>Kt.Framework.Repository</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Framework\Kt.Framework.User\Kt.Framework.User.csproj">
-      <Project>{B5AE4C66-4576-4A5B-BC74-9C909EC1D4A1}</Project>
-      <Name>Kt.Framework.User</Name>
     </ProjectReference>
     <ProjectReference Include="..\Framework\Kt.Framework\Kt.Framework.csproj">
       <Project>{26C8B0AA-F640-4EAD-A537-89684CB4C655}</Project>
