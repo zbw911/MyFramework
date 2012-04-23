@@ -44,7 +44,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWorld.Model", "HelloWo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWorld.Service", "HelloWord.Service\HelloWorld.Service.csproj", "{ECA94685-C0B2-46AD-B97B-27D9BDFDF17D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kt.Framework.User", "Framework\Kt.Framework.User\Kt.Framework.User.csproj", "{86550306-D356-4F0D-AFDF-1849DEA6AD58}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kt.Framework.Users", "Framework\Kt.Framework.User\Kt.Framework.Users.csproj", "{86550306-D356-4F0D-AFDF-1849DEA6AD58}"
 EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution

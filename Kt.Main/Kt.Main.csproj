@@ -261,6 +261,10 @@
       <Project>{F73EB92E-6F20-4AE6-9FC9-E6CA638F5EAE}</Project>
       <Name>Kt.Framework.Repository</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Framework\Kt.Framework.User\Kt.Framework.Users.csproj">
+      <Project>{86550306-D356-4F0D-AFDF-1849DEA6AD58}</Project>
+      <Name>Kt.Framework.Users</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Framework\Kt.Framework\Kt.Framework.csproj">
       <Project>{26C8B0AA-F640-4EAD-A537-89684CB4C655}</Project>
       <Name>Kt.Framework</Name>
