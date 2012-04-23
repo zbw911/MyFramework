@@ -102,6 +102,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\HelloWorld.mdf" />
+    <Content Include="App_Data\HelloWorld_log.ldf">
+      <DependentUpon>HelloWorld.mdf</DependentUpon>
+    </Content>
     <Content Include="Global.asax" />
     <Content Include="Scripts\aaAlertmsg.js" />
     <Content Include="Scripts\DoTask.js" />
@@ -236,7 +240,6 @@
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Areas\" />
     <Folder Include="Scripts\plugin\autocomplete\images\" />
   </ItemGroup>
