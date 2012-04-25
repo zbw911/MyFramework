@@ -3,15 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_LIB", "_LIB", "{CD456A0C-0D56-468A-8BD4-818480E5E0C2}"
 	ProjectSection(SolutionItems) = preProject
-		LIB\CommonServiceLocator.NinjectAdapter.dll = LIB\CommonServiceLocator.NinjectAdapter.dll
 		LIB\DS.Web.UCenter.dll = LIB\DS.Web.UCenter.dll
 		LIB\DS.Web.UCenter.XML = LIB\DS.Web.UCenter.XML
 		LIB\Dx.Common.dll = LIB\Dx.Common.dll
 		LIB\log4net.dll = LIB\log4net.dll
 		LIB\log4net.xml = LIB\log4net.xml
 		LIB\Microsoft.Practices.ServiceLocation.dll = LIB\Microsoft.Practices.ServiceLocation.dll
-		LIB\Ninject.dll = LIB\Ninject.dll
-		LIB\Ninject.Web.Mvc.dll = LIB\Ninject.Web.Mvc.dll
 		LIB\Qzone.Api.dll = LIB\Qzone.Api.dll
 		LIB\Sina.Api.dll = LIB\Sina.Api.dll
 		LIB\TopSdk.dll = LIB\TopSdk.dll
@@ -45,6 +42,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWorld.Service", "HelloWord.Service\HelloWorld.Service.csproj", "{ECA94685-C0B2-46AD-B97B-27D9BDFDF17D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kt.Framework.Users", "Framework\Kt.Framework.User\Kt.Framework.Users.csproj", "{86550306-D356-4F0D-AFDF-1849DEA6AD58}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "多线程情况下", "多线程情况下", "{14BA41EB-49F7-4E44-B04F-C7BB9C513903}"
 EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution

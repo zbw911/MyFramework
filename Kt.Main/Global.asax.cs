@@ -84,7 +84,7 @@ namespace Kt.Main
             //使用自定义视图引擎及控制器
             //System.Web.Mvc.ViewEngines.Engines.Clear();
             //System.Web.Mvc.ViewEngines.Engines.Add(new ViewEngine());
-            ControllerBuilder.Current.SetControllerFactory(new ControllerFactory(this.Kernel));
+            //ControllerBuilder.Current.SetControllerFactory(new ControllerFactory(this.Kernel));
 
             //ServiceLocator.Initialize(this.Kernel);
         }
@@ -124,7 +124,7 @@ namespace Kt.Main
                     {
                         ConstructorArgument parameter2 = new ConstructorArgument("connectionString", System.Configuration.ConfigurationManager.ConnectionStrings["HelloWordEntities"].ConnectionString);
                         //装系统的方法注入构造函数
-                        _kernel.Bind<ObjectContext>().To<HelloWorld.Model.HelloWordEntities>().InRequestScope().WithParameter(parameter2);
+                        _kernel.Bind<ObjectContext>().To<HelloWorld.Model.HelloWordEntities>().InSingletonScope().WithParameter(parameter2);
                         var Entities2 = _kernel.Get<HelloWorld.Model.HelloWordEntities>();
                         return Entities2;
                     });
